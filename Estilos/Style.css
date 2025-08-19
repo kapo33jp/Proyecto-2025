@@ -26,6 +26,33 @@ body {
     background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../Fotos/Adentrooo-modified.jpg');
 }
 
+/* Forzar la imagen de fondo detrás de todo el contenido usando un pseudo-elemento */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0; /* top:0; right:0; bottom:0; left:0 */
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../Fotos/Adentrooo-modified.jpg') center/cover no-repeat fixed;
+    z-index: -999;
+    pointer-events: none;
+}
+
+html, body {
+    min-height: 100vh;
+    height: 100%;
+    background-position: center center;
+}
+
+/* Asegura que el contenido principal no oculte el fondo y que cubra al menos la altura de la ventana */
+.contenido {
+    min-height: 100vh;
+    background: transparent;
+}
+
+/* Evita que otros contenedores tengan fondo sólido que tape la imagen */
+main, header, section {
+    background: transparent;
+}
+
 /* Tipografía para títulos estilo barbería (Bebas Neue) */
 h1, h2, h3 {
     font-family: 'Lexend Mega', sans-serif;
