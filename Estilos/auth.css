@@ -1,0 +1,86 @@
+/* Estilos exclusivos para la página de registro (No-Existe-Cuenta.html) */
+.registro-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  background: transparent;
+}
+
+.registro-box {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #222;
+  margin: 6% auto 0 auto;
+  padding: 20px 28px;
+  border-radius: 12px;
+  width: 450px;
+  min-height: 440px;
+  max-width: 900px;
+  color: white;
+  box-shadow: 0 0 10px #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.registro-box input[type="text"],
+.registro-box input[type="email"],
+.registro-box input[type="password"] {
+  margin-right: 30px;
+  width: 350px;
+  padding: 10px;
+  margin-top: 10px;
+  margin-left: 30px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  text-align: center;
+  background: rgba(255,255,255,0.04);
+  color: #fff;
+}
+
+.registro-box input:focus {
+  outline: 2px solid #57c4d3;
+  outline-offset: 2px;
+}
+
+.registro-box button {
+  background-color: #4d59b9;
+  border: none;
+  color: white;
+  font-weight: bold;
+  padding: 12px 20px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  width: 375px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.registro-box button:hover {
+  background-color: #363d88;
+  padding-bottom: 12px;
+}
+
+@media (max-width: 480px) {
+  .registro-box {
+    width: calc(100% - 40px);
+    margin: 30px 16px;
+    padding: 22px;
+  }
+  .registro-box input[type="text"],
+  .registro-box input[type="email"],
+  .registro-box input[type="password"] {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .registro-box button {
+    width: 100%;
+  }
+}
