@@ -1,27 +1,35 @@
 <?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Definición de variables
+    $nombre = $_POST['nombre'];
+    $apellido = $_POST['apellido'];
+    $email = $_POST['email'];
+    $contrasena = $_POST['password'];
 
-    //Definicion de las variables
-
-    $usuario = $_POST['Usuario'];
-    $contrasena = $_POST['Contrasena'];
-
-    //conexion a la base de datos
-
+    // Conexión a la base de datos
     $conexion = mysqli_connect("localhost", "root", "", "bdbarberia");
 
-    $consulta = "SELECT * FROM `Usuarios` WHERE Usuario = '$usuario' AND Contrasena = '$contrasena'";
-
-    $resultado = mysqli_query($conexion, $consulta);
-
-    $filas = mysqli_num_rows($resultado);
-
-    if($filas>0){
-        header("Location: index.html");
-        
-    }else{
-        echo "Error en la autenticacion";
-
+    if (!$conexion) {
+        die("Conexión fallida: " . mysqli_connect_error());
     }
 
-    mysqli_free_result($resultado);
+    // Preparar la consulta
+    $stmt = mysqli_prepare($conexion, "INSERT INTO usuarios (nombre, apellido, email, contrasena) VALUES (?, ?, ?, ?)");
+    mysqli_stmt_bind_param($stmt, "ssss", $nombre, $apellido, $email, $contrasena);
+
+    // Ejecutar
+    if (mysqli_stmt_execute($stmt)) {
+        // Cerrar conexión antes de redirigir
+        mysqli_stmt_close($stmt);
+        mysqli_close($conexion);
+
+        header("Location: index.html"); 
+        exit();
+    } else {
+        echo "Error: " . mysqli_error($conexion);
+    }
+
+    mysqli_stmt_close($stmt);
     mysqli_close($conexion);
+}
+?>
