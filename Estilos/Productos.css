@@ -83,7 +83,7 @@ body.productos .producto p {
     color: #ddd;
 }
 
-/* Botón menú Moca s*/
+/* Botón menú Moca */
 .menu-toggle {
     position: fixed;
     top: 30px;
@@ -172,5 +172,5 @@ body.productos .agregar-carrito {
 
 body.productos .agregar-carrito:hover {
     background-color: #48d1b3;
-    transform: scale(1.05);
+    transform: scale(1.05);
 }
