@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Preparar la consulta
-    $stmt = mysqli_prepare($conexion, "INSERT INTO usuarios (nombre, apellido, email, contrasena) VALUES (?, ?, ?, ?)");
+    $stmt = mysqli_prepare($conexion, "INSERT INTO clientes (nombre, apellido, email, contrasena) VALUES (?, ?, ?, ?)");
     mysqli_stmt_bind_param($stmt, "ssss", $nombre, $apellido, $email, $contrasena);
 
     // Ejecutar
