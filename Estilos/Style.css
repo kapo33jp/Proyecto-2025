@@ -26,15 +26,6 @@ body {
     background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../Fotos/Adentrooo-modified.jpg');
 }
 
-/* Forzar la imagen de fondo detrás de todo el contenido usando un pseudo-elemento */
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0; /* top:0; right:0; bottom:0; left:0 */
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../Fotos/Adentrooo-modified.jpg') center/cover no-repeat fixed;
-    z-index: -999;
-    pointer-events: none;
-}
 
 html, body {
     min-height: 100vh;
@@ -79,7 +70,7 @@ h1, h2, h3 {
 }
 
 .contenido h1 {
-    text-shadow: aquamarine 6px 6px 8px, rgb(72, 145, 121) -6px -6px 8px;
+    text-shadow: rgba(127, 255, 212, 0.723) 6px 6px 8px, rgba(72, 145, 121, 0.698) -6px -6px 8px;
     font-size: 100px;
     text-align: center;
     margin-bottom: 20px;
@@ -130,7 +121,7 @@ width: 50px;
 height: 50px;
 border-radius: 50%;
 object-fit: cover;
-border: 3px solid aquamarine;
+border: 3px solid rgba(127, 255, 212, 0.819);
 padding: 2px;
 box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
 }
@@ -366,6 +357,7 @@ background: linear-gradient(145deg, #6d74d8, aquamarine);
 
 /* Boton de reserva */
 .reserva-btn {
+    Font-family: 'Meow Script', cursive;
     background: none;
     color: white;
     border: none;
