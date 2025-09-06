@@ -4,7 +4,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombre = $_POST['nombre'];
     $apellido = $_POST['apellido'];
     $email = $_POST['email'];
-    $contrasena = $_POST['password'];
+    $contrasena = ($_POST['password']);
 
     // Conexión a la base de datos
     $conexion = mysqli_connect("localhost", "root", "", "bdbarberia");
@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         mysqli_stmt_close($stmt);
         mysqli_close($conexion);
 
-        header("Location: index.html"); 
+        header("Location: ../html/index.html"); 
         exit();
     } else {
         echo "Error: " . mysqli_error($conexion);

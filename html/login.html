@@ -3,38 +3,31 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Registro - MOCA-hairstudio</title>
+    <title>Login - MOCA-hairstudio</title>
     <link rel="stylesheet" href="../Estilos/Style.css">
 </head>
 <body>
 
-    <!-- Página de Registro -->
+    <!-- Página de login -->
     <div class="modal" style="display: block;">
         <div class="modal-content">
             <a href="index.html" class="close" aria-label="Cerrar">&times;</a>
-            <h2>Registro</h2>
-            <form action="Validar.php" method="post">
-
-                <!--Campo de Nombre-->
-                <input type="text" id="nombre" name="nombre" required placeholder="Nombre" /><br /><br />
-                <!--Campo de Apellido-->
-                <input type="text" id="apellido" name="apellido" required placeholder="Apellido" /><br /><br />
+            <h2>Inicio de Sesión</h2>
+            <form action="../php/Login.php" method="post">
                 <!--Campo de Email-->
                 <input type="email" id="email" name="email" required placeholder="Email" /><br /><br />
-                <!--Campo de contraseña-->
+                <!--Campo de Contrasena-->
                 <input type="password" id="password" name="password" required placeholder="Contraseña" /><br /><br />
-                
                 <!--Checkbox para recordatorio-->
                 <div class="Recordarme">
                     <input type="checkbox" id="Recordarme" name="Recordarme">
-
                     <p>Recordarme</p>
                 </div>
                 <br /><br />
 
-                <button type="submit">Registrarse</button>
+                <button type="submit">Iniciar Sesión</button>
             </form>
-            <existente>¿Ya tenes una cuenta? <a href="login.html">Inicia Sesion</a></existente>
+            <existente>¿No tienes una cuenta? <a href="Registro.html">Regístrate</a></existente>
         </div>
     </div>
 
