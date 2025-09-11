@@ -1,0 +1,82 @@
+body{
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+    /*container de la reserva */
+.reserva-box{
+    background-color: rgb(255, 255, 255);
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    /* padding más balanceado y responsive */
+    padding: 60px 32px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    width: min(95%, 760px);
+}
+
+/* Estilos para el formulario dentro de .reserva-box: separar renglones */
+.reserva-box form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+}
+
+/* Inputs, selects y textarea ocupan todo el ancho y con padding */
+.reserva-box input,
+.reserva-box select,
+.reserva-box textarea {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    background: #fff;
+}
+
+/* Botón centrado y sin margen izquierdo forzado */
+.boton-reserva{
+    border: none;
+    margin-top: 8px;
+    margin-left: 320px;
+    padding: 10px 22px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+    align-self: center;
+}
+
+.boton-reserva:hover {
+    background-color: #64f3d4;
+}
+
+/* Ajustes para información adicional y listas */
+.info-box{
+    margin-top: 12px;
+    width: 100%;
+}
+
+/* Quitar punteo y añadir separación entre li */
+.reserva-box li {
+    list-style: none;
+    margin-bottom: 8px;
+}
+
+/* Responsive: reducir padding en pantallas pequeñas */
+@media (max-width: 480px) {
+    .reserva-box{
+        padding: 28px 16px;
+    }
+}
+
