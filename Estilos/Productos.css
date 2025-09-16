@@ -20,13 +20,10 @@ body.productos .contenido h1 {
     text-align: center;
     font-size: 60px;
     margin: 50px auto 50px auto;
-    color: aquamarine;
-    text-shadow: 2px 2px 0 #000, -2px -2px 0 #000;
+    color: rgb(255, 255, 255);
     display: inline-block;
-    background-color: rgba(72, 239, 195, 0.3);
     padding: 20px 40px;
     border-radius: 12px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
 
 body.productos .productos-grid {

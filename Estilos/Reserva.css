@@ -55,10 +55,13 @@ body{
     border-radius: 6px;
     transition: background-color 0.3s ease;
     align-self: center;
+    background-color: rgb(0, 0, 0);
+    color: #fff;
 }
 
 .boton-reserva:hover {
-    background-color: #64f3d4;
+    background-color: #64f3d4a2;
+    color : black;
 }
 
 /* Ajustes para información adicional y listas */
