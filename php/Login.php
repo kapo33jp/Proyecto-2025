@@ -2,7 +2,7 @@
 
     // Conexión a la base de datos
     $conexion = mysqli_connect("localhost", "root", "", "bdbarberia");
-if (!$conexion) {
+    if (!$conexion) {
     die("Conexión fallida: " . mysqli_connect_error());
 }
 
