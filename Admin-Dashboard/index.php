@@ -9,8 +9,8 @@
         <title>Dashboard - SB Admin</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -39,13 +39,17 @@
             </ul>
         </nav>
         </div>
-            <div class="col-9 p-4 ">
+
+        <div class="container-fluid">
+            <div class="col-8 p-4"> ">
             <table class="tabla-clientes">
                 <thead>
                     <tr>
                         <th>Nombre</th>
                         <th>Apellido</th>
                         <th>Email</th>
+                        <th>Turno</th>
+                        <
                     </tr>
                 </thead>
                 <tbody>
@@ -53,8 +57,30 @@
                         <td>Juan</td>
                         <td>Perez</td>
                         <td>juanperez@gmail.com</td>
+                        <td>10:00 - 20:00</td>
                     </tr>
                 </tbody>
+                    <?php
+                    include '../php/conexion.php';
+                    $sql = $conn->query("SELECT * FROM barbero");
+                    while($datos = $sql->fetch_object()) {      ?>
+
+                    <tr>
+
+                        <td> <?= $datos->idbarbero?></td>
+                        <td> <?= $datos->nombrebarbero?></td>
+                        <td> <?= $datos->apellidobarbero?></td>
+                        <td> <?= $datos->email?></td>
+                        <td> <?= $datos->turno?></td>
+                        <td> <?= $datos->contrasena?></td>
+
+                        <td>
+                            <a href="editar.php?id=<?= $datos->idcliente?>" class="btn btn-small btn-warning">Editar</a>
+                            <a href="eliminar.php?id=<?= $datos->idcliente?>" class="btn btn-small btn-danger">Eliminar</a>   
+                        </td>
+                    </tr>
+                    <?php } ?>
+                    
             </table>
             </div> 
         <div id="layoutSidenav">
@@ -110,5 +136,6 @@
         <script src="assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
         <script src="js/datatables-simple-demo.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     </body>
 </html>
