@@ -11,7 +11,6 @@
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-<<<<<<< HEAD
         
 <body class="sb-nav-fixed">
     <!-- Barra superior -->
@@ -45,43 +44,9 @@
                 <h2>Listado de Usuarios</h2>
                 <div class="table-responsive">
 
-=======
-    </head>
-    <body class="sb-nav-fixed">
-        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.html">Start Bootstrap</a>
-            <!-- Sidebar Toggle-->
-            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
-            <!-- Navbar Search-->
-            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
-                </div>
-            </form>
-            <!-- Navbar-->
-            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Configuraciones</a></li>
-                        <li><a class="dropdown-item" href="#!">Registro de Actividades</a></li>
-                        <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Cerrar sesion</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-        </div>
-
-        <div class="container-fluid">
-            <div class="col-8 p-4"> ">
->>>>>>> 973a6d3a061e42981b253bda59e81c9803c4dfd9
             <table class="tabla-clientes">
                 <thead class ="bg-gray-50">
                     <tr>
-<<<<<<< HEAD
 
                         <th class = "p-3"style="padding-right: 30px" scope="col-8">ID </th>
                         <th style="padding-right: 30px" scope="col-">Nombre</th>
@@ -90,13 +55,6 @@
                         <th style="padding-right: 30px" scope="col-">Turno</th>
                         <th style="padding-right: 30px" scope="col-">Contraseña</th>
 
-=======
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Email</th>
-                        <th>Turno</th>
-                        <
->>>>>>> 973a6d3a061e42981b253bda59e81c9803c4dfd9
                     </tr>
                 </thead>
                 <tbody>
@@ -108,7 +66,6 @@
                     while($datos = $sql->fetch_object()) {      ?>
 
                     <tr>
-<<<<<<< HEAD
                         <td class ="text-center"><?= $datos->idbarbero?></td>
                         <td><?= $datos->nombrebarbero?></td>
                         <td><?= $datos->apellidobarbero?></td>
@@ -123,34 +80,6 @@
                     </tr>
                     <?php } ?>
             </tbody>
-=======
-                        <td>Juan</td>
-                        <td>Perez</td>
-                        <td>juanperez@gmail.com</td>
-                        <td>10:00 - 20:00</td>
-                    </tr>
-                </tbody>
-                    <?php
-                    include '../php/conexion.php';
-                    $sql = $conn->query("SELECT * FROM barbero");
-                    while($datos = $sql->fetch_object()) {      ?>
-
-                    <tr>
-
-                        <td> <?= $datos->idbarbero?></td>
-                        <td> <?= $datos->nombrebarbero?></td>
-                        <td> <?= $datos->apellidobarbero?></td>
-                        <td> <?= $datos->email?></td>
-                        <td> <?= $datos->turno?></td>
-                        <td> <?= $datos->contrasena?></td>
-
-                        <td>
-                            <a href="editar.php?id=<?= $datos->idcliente?>" class="btn btn-small btn-warning">Editar</a>
-                            <a href="eliminar.php?id=<?= $datos->idcliente?>" class="btn btn-small btn-danger">Eliminar</a>   
-                        </td>
-                    </tr>
-                    <?php } ?>
->>>>>>> 973a6d3a061e42981b253bda59e81c9803c4dfd9
                     
             </table>
             </div> 
@@ -209,10 +138,6 @@
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
         <script src="js/datatables-simple-demo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-<<<<<<< HEAD
         </body>
-=======
-    </body>
->>>>>>> 973a6d3a061e42981b253bda59e81c9803c4dfd9
 </html>
 
