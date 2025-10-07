@@ -80,7 +80,7 @@
                         <td class ="text-center"><?= $datos->idbarbero?></td>
                         <td><?= $datos->nombrebarbero?></td>
                         <td><?= $datos->apellidobarbero?></td>
-                        <td><?= $datos->email?></td>
+                        <td><?= $datos->emailbarbero?></td>
                         <td><?= $datos->turno?></td>
                         <td><?= $datos->contrasena?></td>
 
