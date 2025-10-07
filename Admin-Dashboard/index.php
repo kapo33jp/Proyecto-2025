@@ -52,7 +52,7 @@
 
 
     <div>
-    <button style="margin: 20px" type="button" class="Add-Empleado" id="boton-empleado" onclick="window.location.href='agregar-empleado.html'">Agregar Empleado</button>
+    <button style="margin: 20px " type="button" class="Add-Empleado" id="boton-empleado" onclick="window.location.href='agregar-empleado.html'">Agregar Empleado</button>
     </div>
 
             <table class="tabla-clientes">
