@@ -74,7 +74,8 @@
                     <?php
                     include '../php/conexion.php';
                     $sql = $conn->query("SELECT * FROM barbero");
-                    while($datos = $sql->fetch_object()) {      ?>
+                    while($datos = $sql->fetch_object()) {      
+                    ?>
 
                     <tr>
                         <td class ="text-center"><?= $datos->idbarbero?></td>
