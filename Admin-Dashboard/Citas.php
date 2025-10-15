@@ -1,17 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" 
-        <meta name="description" content=""/>
-        <meta name="author" content="" />
-        <title>Dashboard - SB Admin</title>
-        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-        <link href="css/styles.css" rel="stylesheet" />
-        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-        
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citas</title>
+</head>
+
 <body class="sb-nav-fixed">
     
         <!-- Barra superior -->
@@ -47,33 +41,31 @@
 
         <div id="layoutSidenav_content" style="margin-left: 250px; padding: 20px;">
             <main>
-                <h2 style="margin: 25px;">Listado de Usuarios</h2>
+                <h2>Listado de Usuarios</h2>
                 <div class="table-responsive">
 
 
     <div>
-    <button type="button" id="boton-empleado" onclick="window.location.href='agregar-empleado.html'"> 
-    <i class="fa-solid fa-user-plus"></i> Agregar Empleado</button> 
-    
-    </div>  
+    <button style="margin: 20px " type="button" class="Add-Empleado" id="boton-empleado" onclick="window.location.href='agregar-empleado.html'">Agregar Empleado</button>
+    </div>
+
             <table class="tabla-clientes">
                 <thead class ="bg-gray-50">
                     <tr>
 
                         <th class = "p-3"style="padding-right: 30px" scope="col-8">ID </th>
-                        <th style="padding-right: 30px" scope="col-">Nombre</th>
-                        <th style="padding-right: 30px" scope="col-">Apellido</th>
-                        <th style="padding-right: 30px" scope="col-">Email</th>
-                        <th style="padding-right: 30px" scope="col-">Turno</th>
-                        <th style="padding-right: 30px" scope="col-">Contraseña</th>
+                        <th style="padding-right: 30px" scope="col-">Fecha</th>
+                        <th style="padding-right: 30px" scope="col-">Hora</th>
+                        <th style="padding-right: 30px" scope="col-">Servicio</th>
+                        <th style="padding-right: 30px" scope="col-">Barbero</th>
 
                     </tr>
                 </thead>
                 <tbody>
                     
-
+                    
                     <?php
-                    include '../php/conexion.php';
+                    include '..//php/conexion.php';
                     $sql = $conn->query("SELECT * FROM barbero");
                     while($datos = $sql->fetch_object()) {      
                     ?>
@@ -159,6 +151,8 @@
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
         <script src="js/datatables-simple-demo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-        </body>
-</html>
 
+
+    
+</body>
+</html>
