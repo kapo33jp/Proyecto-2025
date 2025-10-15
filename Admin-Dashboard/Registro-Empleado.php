@@ -1,31 +1,40 @@
 <?php
     include "../php/conexion.php";
-    if(!empty($_POST['boton-empleado'])){
-        if(!empty($_POST['idbarbero']) and !empty($_POST['nombrebarbero']) and !empty($_POST['apellidobarbero']) and !empty($_POST['emailbarbero']) and !empty($_POST['turno']) and !empty($_POST['contrasena'])){
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
+    //Definición de variables
+    $nombrebarbero = isset($_POST['nombre']) ? $_POST['nombre'] : '';
+    $apellidobarbero = isset($_POST['apellido']) ? $_POST['apellido'] : '';
+    $emailbarbero = isset($_POST['email']) ? $_POST['email'] : '';
+    $contrasena = isset($_POST['password']) ? $_POST['password'] : '';
+    $turno = isset($_POST['turno']) ? $_POST['turno'] : '';
 
-            $idbarbero = ['idbarbero'];
-            $nombrebarbero = ['nombrebarbero'];
-            $apellidobarbero = ['apellidobarbero'];
-            $emailbarbero = ['emailbarbero'];
-            $turno = ['turno'];
-            $contrasena = ['contrasena'];
+    //Conexión a la base de datos
+    $conexion = mysqli_connect("localhost", "root", "", "bdbarberia");
 
-            $sql = $conn-> query ("INSERT INTO barbero(idbarbero, nombrebarbero, apellidobarbero, emailbarbero, turno, contrasena) VALUES ('idbarbero','nombrebarbero','apellidobarbero', 'emailbarbero', 'turno','contrasena')");
-            if ($sql==1){
-                echo '<div class = "alert alert-sucess">Persona registrada correctamente </div>';
+    if (!$conexion) {
+        die("Conexión fallida: " . mysqli_connect_error());
+    }
 
-                header("Location:../Admin-Dashboard/index.php");
-                exit;
-            
+    //Asegurar charset
+    mysqli_set_charset($conexion, "utf8mb4");
 
-                }else{
-                    echo '<div class = "alert alert-danger">Error al registrar</div>';
-                }
+    //Preparar la consulta (guardar la contraseña en texto plano según solicitud)
+    $stmt = mysqli_prepare($conexion, "INSERT INTO barbero (nombrebarbero, apellidobarbero, emailbarbero, contrasena, turno) VALUES (?, ?, ?, ?, ?)");
+    mysqli_stmt_bind_param($stmt, "sssss", $nombrebarbero, $apellidobarbero, $emailbarbero, $contrasena, $turno);
 
+    //Ejecutar
+    if (mysqli_stmt_execute($stmt)) {
+        mysqli_stmt_close($stmt);
+        mysqli_close($conexion);
 
-                }else{
-                    echo '<div class = "alert alert-warning">Algunos campos estan vacios</div>';
-                }
-            }
+        header("Location: ../Admin-Dashboard/index.php"); 
+        exit();
+    } else {
+        echo "Error: " . mysqli_error($conexion);
+    }
+
+    mysqli_stmt_close($stmt);
+    mysqli_close($conexion);
+}
 ?>
