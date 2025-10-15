@@ -120,7 +120,7 @@
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-scissors"></i></div>
                                 Empleados
                             </a>
-                            <a class="nav-link" href="index.php">
+                            <a class="nav-link" href="..//Admin-Dashboard/Citas.php">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
                                 Citas
                             </a>

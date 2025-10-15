@@ -8,11 +8,12 @@
 </head>
 <body>
 
+        <Form action="..//Admin-Dashboard/ABML-Cita/Alta-Cita.php" method="post">
     <div class="reserva-box" id="reserva-box">
         <li>
             <h1>Reserva tu cita</h1>
         </li>
-        <form action="/submit_reservation" method="post">
+        <form action="Reserva-Cita" method="post">
             <li>
                 <label for="date">Fecha:</label>
                 <input type="date" id="date" name="date" required>
@@ -51,13 +52,14 @@
                     </select>
                     </li>
                     <li>
-                    <button class="boton-reserva" id="boton-reserva" type="submit">Reservar</button>
+                    <button class="boton-reserva" id="boton-reserva" name="Btn-Reserva" type="submit">Reservar</button>
                     </li>
                     <li class="info-box" id="info-box">
                         <h2>Horario de Atencion</h2>
                         <p>Lunes a Sabado 10:00 - 19:00</p>
                         <p>Domingo: Cerrado</p>
                     </li>
+            </Form>
 
             </li>
         </form>
