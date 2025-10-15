@@ -81,13 +81,20 @@
                         <td class ="text-center"><?= $datos->idbarbero?></td>
                         <td><?= $datos->nombrebarbero?></td>
                         <td><?= $datos->apellidobarbero?></td>
-                        <td><?= $datos->emailbarbero    ?></td>
+                        <td><?= $datos->emailbarbero?></td>
                         <td><?= $datos->turno?></td>
                         <td><?= $datos->contrasena?></td>
 
                         <td>
-                            <a href="" class= "btn btn-small btn-danger"><i class="fa-solid fa-pen-to-square"></i></a>
-                            <a href="" class= "btn btn-small btn-warning"><i class="fa-solid fa-trash"></i></a>   
+                            <a href="" class="btn btn-small btn-danger"><i class="fa-solid fa-pen-to-square"></i></a>
+
+                            <form class="Baja-Empleado-Form" id="Baja-Empleado-Form" action="../ABML-Empleado/Borrar-Empleado.php" method="POST" style="display:inline;">
+                                <input type="hidden" name="idbarbero" value="<?= $datos->idbarbero ?>" />
+                                <button type="submit" class="btn btn-small btn-warning" onclick="return confirm('¿Está seguro de borrar este empleado?');">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </form>
+                            </div>
                         </td>
                     </tr>
                     <?php } ?>

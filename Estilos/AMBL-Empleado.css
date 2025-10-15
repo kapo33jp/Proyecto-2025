@@ -1,0 +1,6 @@
+body .Baja-Empleado-Container {
+        display: block;
+        visibility: hidden;
+        opacity: 0;
+        position: fixed;
+    }
