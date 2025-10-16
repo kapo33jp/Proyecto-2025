@@ -66,29 +66,27 @@
                     
                     
                     <?php
-                    include '..//php/conexion.php';
+                    include '../php/conexion.php';
                     $sql = $conn->query("SELECT * FROM cita");
                     while($datos = $sql->fetch_object()) {      
                     ?>
 
                     <tr>
                         <td class ="text-center"><?= $datos->idcita?></td>
-                        <td><?= $datos->idcita?></td>
-                        <td><?= $datos->Fecha?></td>
-                        <td><?= $datos->Hora?></td>
-                        <td><?= $datos->Servicio?></td>
-                        <td><?= $datos->Barbero?></td>
+                        <td><?= $datos->Fecha ?? $datos->fecha ?? '' ?></td>
+                        <td><?= $datos->Hora ?? $datos->hora ?? '' ?></td>
+                        <td><?= $datos->Servicio ?? $datos->servicio ?? '' ?></td>
+                        <td><?= $datos->Barbero ?? $datos->barbero ?? '' ?></td>
 
                         <td>
                             <a href="" class="btn btn-small btn-danger"><i class="fa-solid fa-pen-to-square"></i></a>
 
                             <form class="Baja-Empleado-Form" id="Baja-Empleado-Form" action="../ABML-Empleado/Borrar-Cita.php" method="POST" style="display:inline;">
-                                <input type="hidden" name="idbarbero" value="<?= $datos->idcita ?>" />
+                                <input type="hidden" name="idcita" value="<?= $datos->idcita ?>" />
                                 <button type="submit" class="btn btn-small btn-warning" onclick="return confirm('¿Está seguro de cancelar esta cita?');">
                                     <i class="fa-solid fa-trash"></i>
                                 </button>
                             </form>
-                            </div>
                         </td>
                     </tr>
                     <?php } ?>
