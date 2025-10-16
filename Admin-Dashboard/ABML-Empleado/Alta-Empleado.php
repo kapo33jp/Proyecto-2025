@@ -1,40 +1,28 @@
 <?php
-    include "../php/conexion.php";
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    //Definición de variables
-    $nombrebarbero = isset($_POST['nombre']) ? $_POST['nombre'] : '';
-    $apellidobarbero = isset($_POST['apellido']) ? $_POST['apellido'] : '';
-    $emailbarbero = isset($_POST['email']) ? $_POST['email'] : '';
-    $contrasena = isset($_POST['password']) ? $_POST['password'] : '';
-    $turno = isset($_POST['turno']) ? $_POST['turno'] : '';
+include "../../php/conexion.php";
 
-    //Conexión a la base de datos
-    $conexion = mysqli_connect("localhost", "root", "", "bdbarberia");
 
-    if (!$conexion) {
-        die("Conexión fallida: " . mysqli_connect_error());
-    }
+if(!empty($_POST['btnempleado'])){
+    if(!empty($_POST['nombrebarbero']) && !empty($_POST['apellidobarbero']) && !empty($_POST['idbarbero']) && !empty($_POST['emailbarbero']) && !empty($_POST['contrasena']) && !empty($_POST['turno'])){
+        $idbarbero = $_POST['idbarbero'];
+        $nombrebarbero = $_POST['nombrebarbero'];
+        $apellidobarbero = $_POST['apellidobarbero'];
+        $emailbarbero = $_POST['emailbarbero'];
+        $contrasena = $_POST['contrasena'];
+        $turno = $_POST['turno'];
 
-    //Asegurar charset
-    mysqli_set_charset($conexion, "utf8mb4");
+    $sql = $conexion->query("INSERT INTO barbero (idbarbero, nombrebarbero, apellidobarbero, emailbarbero, contrasena, turno) VALUES ('$idbarbero', '$nombrebarbero', '$apellidobarbero', '$emailbarbero', '$contrasena', '$turno')");
 
-    //Preparar la consulta (guardar la contraseña en texto plano según solicitud)
-    $stmt = mysqli_prepare($conexion, "INSERT INTO barbero (nombrebarbero, apellidobarbero, emailbarbero, contrasena, turno) VALUES (?, ?, ?, ?, ?)");
-    mysqli_stmt_bind_param($stmt, "sssss", $nombrebarbero, $apellidobarbero, $emailbarbero, $contrasena, $turno);
+    if($sql==1){
 
-    //Ejecutar
-    if (mysqli_stmt_execute($stmt)) {
-        mysqli_stmt_close($stmt);
-        mysqli_close($conexion);
-
-        header("Location: ../Admin-Dashboard/index.php"); 
-        exit();
+        echo'<div class="alert alert-success">Empleado registrado correctamente</div>';
+        header("   Location: ..//Admin-Dashboard/index.php");
     } else {
-        echo "Error: " . mysqli_error($conexion);
+        echo '<div class="alert alert-danger">Error al registrar empleado</div>';
     }
-
-    mysqli_stmt_close($stmt);
-    mysqli_close($conexion);
+} else {
+    echo '<div class="alert alert-danger">Por favor complete todos los campos</div>';   
+}
 }
 ?>
