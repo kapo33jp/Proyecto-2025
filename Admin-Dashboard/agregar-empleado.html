@@ -13,7 +13,7 @@
         <div class="modal-content">
             <a href="index.php" class="close" aria-label="Cerrar">&times;</a>
             <h2>Registro</h2>
-            <form action="../ABML-Empleado/Alta-Empleado.php" method="post">
+            <form action="../Admin-Dashboard/ABML-Empleado/Alta-Empleado.php" method="post">
 
                 <!--Campo de Nombre-->
                 <input type="text" id="nombre" name="nombre" required placeholder="Nombre" /><br /><br />
@@ -23,6 +23,14 @@
                 <input type="email" id="email" name="email" required placeholder="Email" /><br /><br />
                 <!--Campo de contraseña-->
                 <input type="password" id="password" name="password" required placeholder="Contraseña" /><br /><br />
+                <!--Campo de Turno-->
+                <div>
+                    <select id="turno" name="turno" required>
+                        <option value="" disabled selected>Seleccione un turno</option>
+                        <option value="Mañana">Mañana</option>
+                        <option value="Tarde">Tarde</option>
+                        <option value="Noche">Noche</option>
+                    </select>
                 </div>
                 <br /><br />
 

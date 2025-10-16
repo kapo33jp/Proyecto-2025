@@ -1,40 +1,58 @@
 <?php
-    include "../php/conexion.php";
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
-    //Definición de variables
-    $nombrebarbero = isset($_POST['nombre']) ? $_POST['nombre'] : '';
-    $apellidobarbero = isset($_POST['apellido']) ? $_POST['apellido'] : '';
-    $emailbarbero = isset($_POST['email']) ? $_POST['email'] : '';
-    $contrasena = isset($_POST['password']) ? $_POST['password'] : '';
-    $turno = isset($_POST['turno']) ? $_POST['turno'] : '';
+    // Parámetros de conexión - ajusta según tu entorno
+    $host = 'localhost';
+    $user = 'root';
+    $pass = '';
+    $db   = 'bdbarberia';
 
-    //Conexión a la base de datos
-    $conexion = mysqli_connect("localhost", "root", "", "bdbarberia");
+    $conn = mysqli_connect($host, $user, $pass, $db);
 
-    if (!$conexion) {
-        die("Conexión fallida: " . mysqli_connect_error());
+    if (!$conn) {
+        error_log('Error de conexión MySQL: ' . mysqli_connect_error());
+        die('No se pudo establecer la conexión a la base de datos.');
     }
 
-    //Asegurar charset
-    mysqli_set_charset($conexion, "utf8mb4");
+    // Si prefieres que mysqli lance excepciones en errores, puedes activar:
+    // mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-    //Preparar la consulta (guardar la contraseña en texto plano según solicitud)
-    $stmt = mysqli_prepare($conexion, "INSERT INTO barbero (nombrebarbero, apellidobarbero, emailbarbero, contrasena, turno) VALUES (?, ?, ?, ?, ?)");
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $nombrebarbero = isset($_POST['nombre']) ? trim($_POST['nombre']) : '';
+    $apellidobarbero = isset($_POST['apellido']) ? trim($_POST['apellido']) : '';
+    $emailbarbero = isset($_POST['email']) ? trim($_POST['email']) : '';
+    $contrasena = isset($_POST['password']) ? trim($_POST['password']) : '';
+    $turno = isset($_POST['turno']) ? trim($_POST['turno']) : '';
+
+    if (!isset($conn) || !$conn) {
+        die("No se pudo establecer la conexión a la base de datos.");
+    }
+
+    mysqli_set_charset($conn, "utf8mb4");
+
+    if ($nombrebarbero === '' || $apellidobarbero === '' || $emailbarbero === '' || $contrasena === '') {
+        echo "Faltan datos obligatorios.";
+        exit;
+    }
+
+    $stmt = mysqli_prepare($conn, "INSERT INTO barbero (nombrebarbero, apellidobarbero, emailbarbero, contrasena, turno) VALUES (?, ?, ?, ?, ?)");
+    if (!$stmt) {
+        echo "Error al preparar la consulta: " . mysqli_error($conn);
+        exit;
+    }
+
     mysqli_stmt_bind_param($stmt, "sssss", $nombrebarbero, $apellidobarbero, $emailbarbero, $contrasena, $turno);
 
-    //Ejecutar
     if (mysqli_stmt_execute($stmt)) {
         mysqli_stmt_close($stmt);
-        mysqli_close($conexion);
-
-        header("Location: ../Admin-Dashboard/index.php"); 
+        header("Location: ../index.php");
         exit();
     } else {
-        echo "Error: " . mysqli_error($conexion);
+        echo "Error al ejecutar la consulta: " . mysqli_error($conn);
     }
 
     mysqli_stmt_close($stmt);
-    mysqli_close($conexion);
 }
 ?>
