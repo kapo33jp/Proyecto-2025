@@ -2,7 +2,6 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-    // Parámetros de conexión - ajusta según tu entorno
     $host = 'localhost';
     $user = 'root';
     $pass = '';
@@ -14,9 +13,8 @@ ini_set('display_errors', 1);
         error_log('Error de conexión MySQL: ' . mysqli_connect_error());
         die('No se pudo establecer la conexión a la base de datos.');
     }
+    mysqli_set_charset($conn, "utf8mb4");
 
-    // Si prefieres que mysqli lance excepciones en errores, puedes activar:
-    // mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 

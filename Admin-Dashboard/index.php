@@ -89,7 +89,7 @@
                         <td>
                             <a href="" class="btn btn-small btn-danger"><i class="fa-solid fa-pen-to-square"></i></a>
 
-                            <form class="Baja-Empleado-Form" id="Baja-Empleado-Form" action="../ABML-Empleado/Borrar-Empleado.php" method="POST" style="display:inline;">
+                            <form class="Baja-Empleado-Form" id="Baja-Empleado-Form" action="../Admin-Dashboard/ABML-Empleado/Borrar-Empleado.php" method="POST" style="display:inline;">
                                 <input type="hidden" name="idbarbero" value="<?= $datos->idbarbero ?>" />
                                 <button type="submit" class="btn btn-small btn-warning" onclick="return confirm('¿Está seguro de borrar este empleado?');">
                                     <i class="fa-solid fa-trash"></i>
