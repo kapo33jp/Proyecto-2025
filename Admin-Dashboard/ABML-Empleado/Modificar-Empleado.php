@@ -1,10 +1,6 @@
 <?php
-
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-// Parámetros de conexión
-$host = 'localhost';
+    //conexion a la base de datos
+    $host = 'localhost';
     $user = 'root';
     $pass = '';
     $db   = 'bdbarberia';
@@ -16,50 +12,64 @@ $host = 'localhost';
         die('No se pudo establecer la conexión a la base de datos.');
     }
     mysqli_set_charset($conn, "utf8mb4");
-    
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $idbarbero = isset($_POST['idbarbero']) ? intval($_POST['idbarbero']) : 0;
-    $nombrebarbero = isset($_POST['nombrebarbero']) ? trim($_POST['nombrebarbero']) : '';
-    $apellidobarbero = isset($_POST['apellidobarbero']) ? trim($_POST['apellidobarbero']) : '';
-    $emailbarbero = isset($_POST['emailbarbero']) ? trim($_POST['emailbarbero']) : '';
-    $contrasena = isset($_POST['password']) ? trim($_POST['password']) : '';
-    $turno = isset($_POST['turno']) ? trim($_POST['turno']) : '';
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $idbarbero = intval($_POST['idbarbero']);
+    $nombrebarbero = trim($_POST['nombrebarbero']);
+    $apellidobarbero = trim($_POST['apellidobarbero']);
+    $emailbarbero = trim($_POST['emailbarbero']);
+    $turno = trim($_POST['turno']);
+    $contrasena = trim($_POST['password']);
 
-    if (!isset($conn) || !$conn) {
-        die("No se pudo establecer la conexión a la base de datos.");
-    }
+    if ($idbarbero <= 0) die("ID inválido");
 
-    mysqli_set_charset($conn, "utf8mb4");
+    $stmt = mysqli_prepare($conn, "UPDATE barbero SET nombrebarbero=?, apellidobarbero=?, emailbarbero=?, turno=?, contrasena=? WHERE idbarbero=?");
+    mysqli_stmt_bind_param($stmt, "sssssi", $nombrebarbero, $apellidobarbero, $emailbarbero, $turno, $contrasena, $idbarbero);
+    mysqli_stmt_execute($stmt);
 
-    if ($idbarbero <= 0) {
-        echo "ID de barbero inválido.";
-        exit;
-    }
-
-    if ($nombrebarbero === '' || $apellidobarbero === '' || $emailbarbero === '' || $contrasena === '') {
-        echo "Faltan datos obligatorios.";
-        exit;
-    }
-
-    $stmt = mysqli_prepare($conn, "UPDATE barbero SET nombrebarbero = ?, apellidobarbero = ?, emailbarbero = ?, contrasena = ?, turno = ? WHERE idbarbero = ?");
-    if (!$stmt) {
-        echo "Error al preparar la consulta: " . mysqli_error($conn);
-        exit;
-    }
-
-    mysqli_stmt_bind_param($stmt, "sssssi", $nombrebarbero, $apellidobarbero, $emailbarbero, $contrasena, $turno, $idbarbero);
-
-    if (mysqli_stmt_execute($stmt)) {
-        mysqli_stmt_close($stmt);
-        mysqli_close($conn);
-        header("Location: ../index.php");
-        exit();
-    } else {
-        echo "Error al ejecutar la consulta: " . mysqli_error($conn);
-    }
-
-    mysqli_stmt_close($stmt);
-    mysqli_close($conn);
+    header("Location: ../index.php"); //Volver al listado
+    exit;
 }
+
+$id = isset($_GET['idbarbero']) ? intval($_GET['idbarbero']) : 0;
+if ($id <= 0) {
+    die("ID de barbero inválido");
+}
+
+$sql = $conn->query("SELECT * FROM barbero WHERE idbarbero = $id");
+$barbero = $sql->fetch_assoc();
+if (!$barbero) {
+    die("Empleado no encontrado");
+}
+
 ?>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Modificar Empleado</title>
+</head>
+<body>
+    <h2>Modificar Empleado</h2>
+
+    <form action="modificar-empleado.php" method="post">
+        
+        <input type="hidden" name="idbarbero" value="<?= $barbero['idbarbero'] ?>">
+
+        Nombre: <input type="text" name="nombrebarbero" value="<?= $barbero['nombrebarbero'] ?>" required><br>
+        Apellido: <input type="text" name="apellidobarbero" value="<?= $barbero['apellidobarbero'] ?>" required><br>
+        Email: <input type="email" name="emailbarbero" value="<?= $barbero['emailbarbero'] ?>" required><br>
+
+        Turno:
+        <select name="turno" required>
+            <option value="Mañana" <?= $barbero['turno']=='Mañana'?'selected':'' ?>>Mañana</option>
+            <option value="Tarde" <?= $barbero['turno']=='Tarde'?'selected':'' ?>>Tarde</option>
+        </select><br>
+
+        Contraseña: <input type="password" name="password" value="<?= $barbero['contrasena'] ?>" required><br>
+
+        <button type="submit">Modificar</button>
+    </form>
+</body>
+</html>
