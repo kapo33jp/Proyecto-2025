@@ -47,7 +47,7 @@
 
         <div id="layoutSidenav_content" style="margin-left: 250px; padding: 20px;">
             <main>
-                <h2 style="margin: 25px;">Listado de Usuarios</h2>
+                <h2 style="margin: 25px;">Listado de Empleados</h2>
                 <div class="table-responsive">
 
 
@@ -75,7 +75,7 @@
                     <?php
                     include '../php/conexion.php';
                     $sql = $conn->query("SELECT * FROM barbero");
-                    while($datos = $sql->fetch_object()) {      
+                    while($datos = $sql->fetch_object()) { 
                     ?>
 
                     <tr>

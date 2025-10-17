@@ -47,7 +47,7 @@
 
         <div id="layoutSidenav_content" style="margin-left: 250px; padding: 20px;">
             <main>
-                <h2 style="margin: 25px;">Listado de Usuarios</h2>
+                <h2 style="margin: 25px;">Listado de Citas</h2>
                 <div class="table-responsive">
 
             <table class="tabla-clientes">
@@ -81,7 +81,7 @@
                         <td>
                             <a href="" class="btn btn-small btn-danger"><i class="fa-solid fa-pen-to-square"></i></a>
 
-                            <form class="Baja-Empleado-Form" id="Baja-Empleado-Form" action="../ABML-Empleado/Borrar-Cita.php" method="POST" style="display:inline;">
+                            <form class="Baja-Empleado-Form" id="Baja-Empleado-Form" action="../Admin-Dashboard/ABML-Cita/Baja-Cita.php" method="POST" style="display:inline;">
                                 <input type="hidden" name="idcita" value="<?= $datos->idcita ?>" />
                                 <button type="submit" class="btn btn-small btn-warning" onclick="return confirm('¿Está seguro de cancelar esta cita?');">
                                     <i class="fa-solid fa-trash"></i>
