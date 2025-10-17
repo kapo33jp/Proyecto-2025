@@ -87,10 +87,9 @@
                         <td><?= $datos->contrasena?></td>
 
                         <td>
-                            <form class="Modificar-Empleado-Form" id="Modificar-Empleado-Form" action="../Admin-Dashboard/ABML-Empleado/Modificar-Empleado.php" method="POST" style="display:inline;">
-                            <input type="hidden" name="idbarbero" value="<?= $datos->idbarbero ?>" />
-                            <button class="modificar-btn" onclick="window.location.href='modificar-empleado.html'">
-                            <i class="fa-solid fa-pen-to-square"></i></a>
+                            <a class="btn btn-small btn-danger" href="ABML-Empleado/modificar-empleado.php?id=<?= $datos->idbarbero ?>">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
 
                             <form class="Baja-Empleado-Form" id="Baja-Empleado-Form" action="../Admin-Dashboard/ABML-Empleado/Borrar-Empleado.php" method="POST" style="display:inline;">
                                 <input type="hidden" name="idbarbero" value="<?= $datos->idbarbero ?>" />
