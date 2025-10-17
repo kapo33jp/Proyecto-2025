@@ -1,3 +1,13 @@
+<?php
+
+$idbarbero = $_GET["idbarbero"];
+$conn = mysqli_connect("localhost","root","","bdbarberia");
+$consulta = "SELECT * FROM barbero WHERE idbarbero = $idbarbero";
+$resultado = mysqli_query($conn, $consulta);
+$barbero = mysqli_fetch_array($resultado);
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -15,11 +25,11 @@
             <form action="../Admin-Dashboard/ABML-Empleado/Modificar-Empleado.php" method="post">
 
                 <!--Campo de Nombre-->
-                <input type="text" id="nombre" name="nombre" required placeholder="Nombre" /><br /><br />
+                <input type="text" id="nombre" name="nombre" required placeholder="Nombre" value="<?php echo $barbero['nombre_barbero'] ?? ''; ?>" />
                 <!--Campo de Apellido-->
-                <input type="text" id="apellido" name="apellido" required placeholder="Apellido" /><br /><br />
+                <input type="text" id="apellido" name="apellido" required placeholder="Apellido" value="<?php echo $barbero['apellido_barbero'] ?? ''; ?>" />
                 <!--Campo de Email-->
-                <input type="email" id="email" name="email" required placeholder="Email" /><br /><br />
+                <input type="email" id="email" name="email" required placeholder="Email" value="<?php echo $barbero['email_barbero'] ?? ''; ?>" />
                 <!--Campo de Turno-->
                 <div>
                     <select id="turno" name="turno" required>
@@ -30,8 +40,7 @@
                 </div>
                 <br />
                 <!--Campo de contraseña-->
-                <input type="password" id="password" name="password" required placeholder="Contraseña" /><br /><br />
-                <br /><br />
+                <input type="password" id="password" name="password" required placeholder="Contraseña" value="<?php echo $barbero['contrasena'] ?? ''; ?>" />
 
                 <button type="submit" name="btnempleado">Modificar</button>
             </form>

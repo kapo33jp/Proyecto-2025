@@ -87,7 +87,7 @@
                         <td><?= $datos->contrasena?></td>
 
                         <td>
-                            <a class="btn btn-small btn-danger" href="ABML-Empleado/modificar-empleado.php?id=<?= $datos->idbarbero ?>">
+                            <a class="btn btn-small btn-danger" href="../Admin-Dashboard/ABML-Empleado/modificar-empleado.php?idbarbero=<?= $datos->idbarbero ?>">
                                 <i class="fa-solid fa-pen-to-square"></i>
                             </a>
 
