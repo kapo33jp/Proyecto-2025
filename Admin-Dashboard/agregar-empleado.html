@@ -7,12 +7,6 @@
     <link rel="stylesheet" href="../Estilos/Reg-Empleado-Style.css ">
 </head>
 <body>
-
-
-<?php
-include "../php/conexion.php";
-include "../ABML-Empleado/Alta-Empleado.php";
-?>
     <!-- Página de Registro -->
     <div class="modal" style="display: block;">
         <div class="modal-content">
@@ -37,15 +31,6 @@ include "../ABML-Empleado/Alta-Empleado.php";
                 <br />
                 <!--Campo de contraseña-->
                 <input type="password" id="password" name="password" required placeholder="Contraseña" /><br /><br />
-                <!--Campo de Turno-->
-                <div>
-                    <select id="turno" name="turno" required>
-                        <option value="" disabled selected>Seleccione un turno</option>
-                        <option value="Mañana">Mañana</option>
-                        <option value="Tarde">Tarde</option>
-                        <option value="Noche">Noche</option>
-                    </select>
-                </div>
                 <br /><br />
 
                 <button type="submit" name="btnempleado">Registrarse</button>
