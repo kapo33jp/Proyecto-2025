@@ -123,10 +123,7 @@
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
                                 Citas
                             </a>
-                            <a class="nav-link" href="..//Admin-Dashboard/Clientes.php">
-                                <div class="sb-nav-link-icon"><i class="fa-solid fa-users"></i> </i></div>
-                                Clientes
-                            </a>
+                            
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
