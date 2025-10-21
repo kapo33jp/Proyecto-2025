@@ -1,54 +1,29 @@
 <?php
-    //conexion a la base de datos
-    $host = 'localhost';
-    $user = 'root';
-    $pass = '';
-    $db   = 'bdbarberia';
 
-    $conn = mysqli_connect($host, $user, $pass, $db);
-
-    if (!$conn) {
-        error_log('Error de conexión MySQL: ' . mysqli_connect_error());
-        die('No se pudo establecer la conexión a la base de datos.');
-    }
-    mysqli_set_charset($conn, "utf8mb4");
+include "../../php/conexion.php";
 
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if(!empty($_POST['btnempleado'])){
+    if(!empty($_POST['nombrebarbero']) && !empty($_POST['apellidobarbero']) && !empty($_POST['idbarbero']) && !empty($_POST['emailbarbero']) && !empty($_POST['contrasena']) && !empty($_POST['turno'])){
+    
+        $idbarbero = $_POST['idbarbero'];
+        $nombrebarbero = $_POST['nombrebarbero'];
+        $apellidobarbero = $_POST['apellidobarbero'];
+        $emailbarbero = $_POST['emailbarbero'];
+        $contrasena = $_POST['contrasena'];
+        $turno = $_POST['turno'];
 
-    $nombrebarbero = isset($_POST['nombre']) ? trim($_POST['nombre']) : '';
-    $apellidobarbero = isset($_POST['apellido']) ? trim($_POST['apellido']) : '';
-    $emailbarbero = isset($_POST['email']) ? trim($_POST['email']) : '';
-    $contrasena = isset($_POST['password']) ? trim($_POST['password']) : '';
-    $turno = isset($_POST['turno']) ? trim($_POST['turno']) : '';
+    $sql = $conexion->query("INSERT INTO barbero (idbarbero, nombrebarbero, apellidobarbero, emailbarbero, contrasena, turno) VALUES ('$idbarbero', '$nombrebarbero', '$apellidobarbero', '$emailbarbero', '$contrasena', '$turno')");
 
-    if (!isset($conn) || !$conn) {
-        die("No se pudo establecer la conexión a la base de datos.");
-    }
+    if($sql==1){
 
-    mysqli_set_charset($conn, "utf8mb4");
-
-    if ($nombrebarbero === '' || $apellidobarbero === '' || $emailbarbero === '' || $contrasena === '') {
-        echo "Faltan datos obligatorios.";
-        exit;
-    }
-
-    $stmt = mysqli_prepare($conn, "INSERT INTO barbero (nombrebarbero, apellidobarbero, emailbarbero, contrasena, turno) VALUES (?, ?, ?, ?, ?)");
-    if (!$stmt) {
-        echo "Error al preparar la consulta: " . mysqli_error($conn);
-        exit;
-    }
-
-    mysqli_stmt_bind_param($stmt, "sssss", $nombrebarbero, $apellidobarbero, $emailbarbero, $contrasena, $turno);
-
-    if (mysqli_stmt_execute($stmt)) {
-        mysqli_stmt_close($stmt);
-        header("Location: ../index.php");
-        exit();
+        echo'<div class="alert alert-success">Empleado registrado correctamente</div>';
+        header("   Location: ..//Admin-Dashboard/index.php");
     } else {
-        echo "Error al ejecutar la consulta: " . mysqli_error($conn);
+        echo '<div class="alert alert-danger">Error al registrar empleado</div>';
     }
-
-    mysqli_stmt_close($stmt);
+} else {
+    echo '<div class="alert alert-danger">Por favor complete todos los campos</div>';   
+}
 }
 ?>

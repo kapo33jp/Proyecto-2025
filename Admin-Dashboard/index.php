@@ -44,10 +44,9 @@
     <a class="navbar-brand ps-3" href="index.html">Home</a>
 
 
-
         <div id="layoutSidenav_content" style="margin-left: 250px; padding: 20px;">
             <main>
-                <h2 style="margin: 25px;">Listado de Empleados</h2>
+                <h2 style="margin: 25px;">Listado de Usuarios</h2>
                 <div class="table-responsive">
 
 
@@ -56,7 +55,7 @@
     <i class="fa-solid fa-user-plus"></i> Agregar Empleado</button> 
     
     </div>  
-            <table class="tabla-citas" style="padding: 20px; border-collapse: separate; border-spacing: 20px 0;">
+            <table class="tabla-clientes">
                 <thead class ="bg-gray-50">
                     <tr>
 
@@ -75,7 +74,7 @@
                     <?php
                     include '../php/conexion.php';
                     $sql = $conn->query("SELECT * FROM barbero");
-                    while($datos = $sql->fetch_object()) { 
+                    while($datos = $sql->fetch_object()) {      
                     ?>
 
                     <tr>
@@ -87,12 +86,9 @@
                         <td><?= $datos->contrasena?></td>
 
                         <td>
-                        <a class="btn btn-small btn-danger" href="../Admin-Dashboard/ABML-Empleado/modificar-empleado.php?idbarbero=<?= $datos->idbarbero ?>">
-                        <i class="fa-solid fa-pen-to-square"></i>
-                        </a>
+                            <a href="" class="btn btn-small btn-danger"><i class="fa-solid fa-pen-to-square"></i></a>
 
-
-                            <form class="Baja-Empleado-Form" id="Baja-Empleado-Form" action="../Admin-Dashboard/ABML-Empleado/Borrar-Empleado.php" method="POST" style="display:inline;">
+                            <form class="Baja-Empleado-Form" id="Baja-Empleado-Form" action="../ABML-Empleado/Borrar-Empleado.php" method="POST" style="display:inline;">
                                 <input type="hidden" name="idbarbero" value="<?= $datos->idbarbero ?>" />
                                 <button type="submit" class="btn btn-small btn-warning" onclick="return confirm('¿Está seguro de borrar este empleado?');">
                                     <i class="fa-solid fa-trash"></i>
@@ -126,6 +122,10 @@
                             <a class="nav-link" href="..//Admin-Dashboard/Citas.php">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
                                 Citas
+                            </a>
+                            <a class="nav-link" href="..//Admin-Dashboard/Clientes.php">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-users"></i> </i></div>
+                                Clientes
                             </a>
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
