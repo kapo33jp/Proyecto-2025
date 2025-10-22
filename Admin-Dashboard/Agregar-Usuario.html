@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Agregar Empleado</title>
+    <title>Agregar Usuario</title>
     <link rel="stylesheet" href="">
 </head>
 <body>
@@ -12,7 +12,7 @@
         <div class="modal-content">
             <a  class="close" aria-label="Cerrar">&times;</a>
             <h2>Registro</h2>
-            <form action="../Admin-Dashboard/ABML-Empleado/Alta-Empleado.php" method="post">
+            <form action="ABML-Usuarios/Alta-Usuario.php" method="post">
 
                 <!--Campo de Nombre-->
                 <input type="text" id="nombre" name="nombre" required placeholder="Nombre" /><br /><br />
@@ -20,20 +20,11 @@
                 <input type="text" id="apellido" name="apellido" required placeholder="Apellido" /><br /><br />
                 <!--Campo de Email-->
                 <input type="email" id="email" name="email" required placeholder="Email" /><br /><br />
-                <!--Campo de Turno-->
-                <div>
-                    <select id="turno" name="turno" required>
-                        <option value="" disabled selected> turno</option>
-                        <option value="Mañana">Mañana</option>
-                        <option value="Tarde">Tarde</option>    
-                    </select>
-                </div>
-                <br />
                 <!--Campo de contraseña-->
                 <input type="password" id="password" name="password" required placeholder="Contraseña" /><br /><br />
                 <br /><br />
 
-                <button type="submit" name="btnempleado">Registrarse</button>
+                <button type="submit" name="btnusuario">Registrar</button>
             </form>
         </div>
     </div>

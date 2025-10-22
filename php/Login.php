@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $contrasena = isset($_POST['password']) ? $_POST['password'] : '';
 
     //Verificar que el email exista en la base de datos y obtener la contraseña almacenada
-    $check_stmt = mysqli_prepare($conexion, "SELECT idcliente, contrasena FROM clientes WHERE email = ?");
+    $check_stmt = mysqli_prepare($conexion, "SELECT idusuario, contrasena FROM usuarios WHERE email = ?");
     if ($check_stmt) {
         mysqli_stmt_bind_param($check_stmt, "s", $email);
         mysqli_stmt_execute($check_stmt);
@@ -21,12 +21,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //Compatibilidad sin get_result: usar store_result + bind_result + fetch
         mysqli_stmt_store_result($check_stmt);
         if (mysqli_stmt_num_rows($check_stmt) > 0) {
-            mysqli_stmt_bind_result($check_stmt, $idcliente, $stored);
+            mysqli_stmt_bind_result($check_stmt, $idusuario, $stored);
             mysqli_stmt_fetch($check_stmt);
 
             //Comparar contraseña en texto plano
             if ($contrasena === $stored) {
-                $_SESSION['user_idcliente'] = $idcliente;
+                $_SESSION['user_idusuario'] = $idusuario;
                 $_SESSION['user_email'] = $email;
                 header("Location: ../html/index.html");
                 exit();

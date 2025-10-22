@@ -4,12 +4,12 @@
 
     if(($_SERVER["REQUEST_METHOD"] == "POST")){
 
-        $idbarbero = ($_POST['idbarbero']);
+        $idusuario = ($_POST['idusuario']);
 
-        if (!empty($idbarbero)) {
+        if (!empty($idusuario)) {
 
-            $stmt = mysqli_prepare($conn, "DELETE FROM barbero WHERE idbarbero = ?");
-            mysqli_stmt_bind_param($stmt, "i", $idbarbero);
+            $stmt = mysqli_prepare($conn, "DELETE FROM usuarios WHERE idusuario = ?");
+            mysqli_stmt_bind_param($stmt, "i", $idusuario);
 
             if (mysqli_stmt_execute($stmt)) {
                 mysqli_stmt_close($stmt);

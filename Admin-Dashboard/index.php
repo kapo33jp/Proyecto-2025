@@ -43,7 +43,6 @@
     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
     <a class="navbar-brand ps-3" href="index.html">Home</a>
 
-
         <div id="layoutSidenav_content" style="margin-left: 250px; padding: 20px;">
             <main>
                 <h2 style="margin: 25px;">Listado de Usuarios</h2>
@@ -51,20 +50,20 @@
 
 
     <div>
-    <button type="button" id="boton-empleado" onclick="window.location.href='agregar-empleado.html'"> 
-    <i class="fa-solid fa-user-plus"></i> Agregar Empleado</button> 
+    <button type="button" id="boton-empleado" onclick="window.location.href='Agregar-Usuario.html'"> 
+    <i class="fa-solid fa-user-plus"></i> Agregar Usuario</button> 
     
     </div>  
-            <table class="tabla-clientes">
+            <table class="tabla-usuarios">
                 <thead class ="bg-gray-50">
                     <tr>
 
                         <th class = "p-3"style="padding-right: 30px" scope="col-8">ID </th>
-                        <th style="padding-right: 30px" scope="col-">Nombre</th>
-                        <th style="padding-right: 30px" scope="col-">Apellido</th>
-                        <th style="padding-right: 30px" scope="col-">Email</th>
-                        <th style="padding-right: 30px" scope="col-">Turno</th>
-                        <th style="padding-right: 30px" scope="col-">Contraseña</th>
+                        <th style="padding-right: 38px" scope="col-">Nombre</th>
+                        <th style="padding-right: 38px" scope="col-">Apellido</th>
+                        <th style="padding-right: 38px" scope="col-">Email</th>
+                        <th style="padding-right: 38px" scope="col-">Contraseña</th>
+                        <th style="padding-right: 38px" scope="col-">Rol</th>
 
                     </tr>
                 </thead>
@@ -73,28 +72,28 @@
 
                     <?php
                     include '../php/conexion.php';
-                    $sql = $conn->query("SELECT * FROM barbero");
-                    while($datos = $sql->fetch_object()) {      
+                    $sql = $conn->query("SELECT u.*, r.nombre_rol FROM usuarios u JOIN roles r ON u.idrol = r.idrol WHERE u.idrol IN (1, 2)");
+                    if (!$sql) { die("Error en la consulta: " . $conn->error); }
+                    while($datos = $sql->fetch_object()) {
                     ?>
 
                     <tr>
-                        <td class ="text-center"><?= $datos->idbarbero?></td>
-                        <td><?= $datos->nombrebarbero?></td>
-                        <td><?= $datos->apellidobarbero?></td>
-                        <td><?= $datos->emailbarbero?></td>
-                        <td><?= $datos->turno?></td>
+                        <td class ="text-center"><?= $datos->idusuario?></td>
+                        <td><?= $datos->nombre?></td>
+                        <td><?= $datos->apellido?></td>
+                        <td><?= $datos->email?></td>
                         <td><?= $datos->contrasena?></td>
+                        <td><?= $datos->nombre_rol ?? '' ?></td>
 
                         <td>
-                            <a href="" class="btn btn-small btn-danger"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <a href="ABML-Usuarios/Modificar-Usuario.php?idusuario=<?= $datos->idusuario?>" class="btn btn-small btn-danger"><i class="fa-solid fa-pen-to-square"></i></a>
 
-                            <form class="Baja-Empleado-Form" id="Baja-Empleado-Form" action="../ABML-Empleado/Borrar-Empleado.php" method="POST" style="display:inline;">
-                                <input type="hidden" name="idbarbero" value="<?= $datos->idbarbero ?>" />
-                                <button type="submit" class="btn btn-small btn-warning" onclick="return confirm('¿Está seguro de borrar este empleado?');">
+                            <form class="Baja-Usuario-Form" id="Baja-Usuario-Form" action="ABML-Usuarios/Borrar-Usuario.php" method="POST" style="display:inline;">
+                                <input type="hidden" name="idusuario" value="<?= $datos->idusuario ?>" />
+                                <button type="submit" class="btn btn-small btn-warning" onclick="return confirm('¿Está seguro de borrar este usuario?');">
                                     <i class="fa-solid fa-trash"></i>
                                 </button>
                             </form>
-                            </div>
                         </td>
                     </tr>
                     <?php } ?>
