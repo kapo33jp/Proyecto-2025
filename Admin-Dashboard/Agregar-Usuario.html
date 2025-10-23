@@ -22,8 +22,14 @@
                 <input type="email" id="email" name="email" required placeholder="Email" /><br /><br />
                 <!--Campo de contraseña-->
                 <input type="password" id="password" name="password" required placeholder="Contraseña" /><br /><br />
+                <!--Campo de Rol-->
+                <label for="idrol">Rol:</label>
+                <select class="form-select" id="idrol" name="idrol" required>
+                    <option value="1" selected>Admin</option>
+                    <option value="2" selected>Empleado</option>
+                    <option value="3" selected>Cliente</option>
+                </select>
                 <br /><br />
-
                 <button type="submit" name="btnusuario">Registrar</button>
             </form>
         </div>

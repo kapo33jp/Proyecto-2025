@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" 
         <meta name="description" content=""/>
         <meta name="author" content="" />
-        <title>Dashboard - SB Admin</title>
+        <title>Admin Dashboard</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -59,11 +59,11 @@
                     <tr>
 
                         <th class = "p-3"style="padding-right: 30px" scope="col-8">ID </th>
-                        <th style="padding-right: 38px" scope="col-">Nombre</th>
-                        <th style="padding-right: 38px" scope="col-">Apellido</th>
-                        <th style="padding-right: 38px" scope="col-">Email</th>
-                        <th style="padding-right: 38px" scope="col-">Contraseña</th>
-                        <th style="padding-right: 38px" scope="col-">Rol</th>
+                        <th style="padding-right: 55px" scope="col-">Nombre</th>
+                        <th style="padding-right: 55px" scope="col-">Apellido</th>
+                        <th style="padding-right: 55px" scope="col-">Email</th>
+                        <th style="padding-right: 55px" scope="col-">Contraseña</th>
+                        <th style="padding-right: 55px" scope="col-">Rol</th>
 
                     </tr>
                 </thead>
@@ -72,7 +72,7 @@
 
                     <?php
                     include '../php/conexion.php';
-                    $sql = $conn->query("SELECT u.*, r.nombre_rol FROM usuarios u JOIN roles r ON u.idrol = r.idrol WHERE u.idrol IN (1, 2)");
+                    $sql = $conn->query("SELECT u.*, r.nombrerol FROM usuarios u JOIN roles r ON u.idrol = r.idrol WHERE u.idrol IN (1, 2, 3)");
                     if (!$sql) { die("Error en la consulta: " . $conn->error); }
                     while($datos = $sql->fetch_object()) {
                     ?>
@@ -83,7 +83,7 @@
                         <td><?= $datos->apellido?></td>
                         <td><?= $datos->email?></td>
                         <td><?= $datos->contrasena?></td>
-                        <td><?= $datos->nombre_rol ?? '' ?></td>
+                        <td><?= $datos->nombrerol ?? '' ?></td>
 
                         <td>
                             <a href="ABML-Usuarios/Modificar-Usuario.php?idusuario=<?= $datos->idusuario?>" class="btn btn-small btn-danger"><i class="fa-solid fa-pen-to-square"></i></a>
