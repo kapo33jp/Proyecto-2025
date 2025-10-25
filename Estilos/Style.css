@@ -267,7 +267,7 @@ font-family: Arial, Helvetica, sans-serif;
     height: 18px;
     margin-right: 10px;
     vertical-align: middle;
-    accent-color: aquamarine;
+    accent-color: hwb(160 50% 0%);
 }
 
 .modal-content .Recordarme {
