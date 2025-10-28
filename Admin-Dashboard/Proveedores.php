@@ -3,9 +3,7 @@
     session_start();
     error_reporting(0);
 
-    $validar = $_SESSION['user_idusuario'];
-    $validar = $_SESSION['user_email'];
-    $validar = $_SESSION['user_idrol'];
+    $validar = $_SESSION['email'];
     if ($validar == null || $validar = '') {
         header("location: ../html/login.html");
         die();
@@ -87,8 +85,6 @@
 
                     <?php
                     include '../php/conexion.php';
-
-                    
                     $sql = $conn->query("SELECT u.*, r.nombrerol FROM usuarios u JOIN roles r ON u.idrol = r.idrol WHERE u.idrol IN (1, 2, 3)");
                     if (!$sql) { die("Error en la consulta: " . $conn->error); }
                     while($datos = $sql->fetch_object()) {
@@ -142,7 +138,7 @@
                             </a>
                             
                             <a class="nav-link" href="index.php">
-                                <div class="sb-nav-link-icon"><i class="fa-solid fa-truck-fast"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-truck-fast"></i></i></div>
                                 Proveedores
                             </a>
                             

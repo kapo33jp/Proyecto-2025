@@ -1,3 +1,19 @@
+<?php
+
+    session_start();
+    error_reporting(0);
+
+    $validar = $_SESSION['user_idusuario'];
+    $validar = $_SESSION['user_email'];
+    $validar = $_SESSION['user_idrol'];
+
+    if ($validar == null || $validar = '') {
+        header("location: ../html/login.html");
+        die();
+    }
+
+    ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -14,7 +30,7 @@ body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
     background: radial-gradient(circle at top, rgba(0,0,0,0.8), #000),
-                url('../Fotos/Adentrooo-modified.jpg') center/cover no-repeat fixed;
+    url('../Fotos/Adentrooo-modified.jpg') center/cover no-repeat fixed;
     color: white;
     overflow-x: hidden;
 }
@@ -208,15 +224,6 @@ header p {
     margin: 50px 0;
 }
 
-/* PIE DE PÁGINA */
-footer {
-    text-align: center;
-    padding: 20px;
-    background-color: rgba(0,0,0,0.9);
-    color: #aaa;
-    font-size: 0.9rem;
-}
-
 /* ANIMACIONES */
 @keyframes fadeInDown {
     from {opacity: 0; transform: translateY(-40px);}
@@ -245,39 +252,32 @@ footer {
 
 <nav class="menu">
     <ul>
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="Servicios.html">Servicios</a></li>
-        <li><a href="Quienes-Somos.html">Quiénes somos</a></li>
-        <li><a href="Productos.html">Productos</a></li>
+        <li><a href="Main.php">Inicio</a></li>
+        <li><a href="Quienes-Somos.php">Quiénes somos</a></li>
+        <li><a href="Productos.php">Productos</a></li>
     </ul>
 </nav>
 
 <header>
-    <h1>Conoce a Nuestros Peluqueros</h1>
+    <h1>Conocenos un poco mas</h1>
     <p>Transformamos tu estilo con pasión, técnica y dedicación.</p>
 </header>
 
 <section class="team">
     <div class="card">
         <img src="../Fotos/peluquero1.jpg" alt="Peluquero 1">
-        <h2>Leonardo Fernández</h2>
-        <p>Especialista en cortes modernos y barbería clásica. Cada estilo es una obra de precisión y carácter.</p>
-        <button>Contactar</button>
+        <h2>Luciano Garcia</h2>
+        <p>Descripcion</p>
     </div>
 
     <div class="card">
         <img src="../Fotos/peluquero2.jpg" alt="Peluquero 2">
-        <h2>María González</h2>
-        <p>Maestra en coloración y peinados de vanguardia. Su toque creativo redefine la confianza de cada cliente.</p>
-        <button>Contactar</button>
+        <h2>Guille Capote</h2>
+        <p>descripcion</p>
     </div>
 </section>
 
 <div class="frase">“En MOCA-hairstudio no solo cortamos cabello, creamos identidad.”</div>
-
-<footer>
-    <p>© 2025 MOCA Hairstudio. Todos los derechos reservados.</p>
-</footer>
 
 <script>
 function toggleMenu() {

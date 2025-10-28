@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         header("Location: ../Admin-Dashboard/index.php");
                         break;
                     case 3: // Cliente
-                        header("Location: ../html/index.html");
+                        header("Location: ../html/Main.php");
                         break;
                     default:
                         echo "Rol desconocido.";

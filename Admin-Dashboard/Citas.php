@@ -1,3 +1,19 @@
+<?php
+
+    session_start();
+    error_reporting(0);
+
+    $validar = $_SESSION['user_idusuario'];
+    $validar = $_SESSION['user_email'];
+    $validar = $_SESSION['user_idrol'];
+    
+    if ($validar == null || $validar = '') {
+        header("location: ../html/login.html");
+        die();
+    }
+
+    ?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -104,14 +120,19 @@
                             <div class="sb-sidenav-menu-heading">Panel de Control
                             </div>
                             <a class="nav-link" href="index.php">
-                                <div class="sb-nav-link-icon"><i class="fa-solid fa-scissors"></i></div>
-                                Empleados
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-users"></i></div>
+                                Usuarios
                             </a>
-                            <a class="nav-link" href="index.php">
+                            
+                            <a class="nav-link" href="..//Admin-Dashboard/Citas.php">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
                                 Citas
                             </a>
                             
+                            <a class="nav-link" href="index.php">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-truck-fast"></i></div>
+                                Proveedores
+                            </a>
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">

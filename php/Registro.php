@@ -17,16 +17,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //Asegurar charset
     mysqli_set_charset($conexion, "utf8mb4");
 
-    //Preparar la consulta (guardar la contraseña en texto plano según solicitud)
-    $stmt = mysqli_prepare($conexion, "INSERT INTO clientes (nombre, apellido, email, contrasena) VALUES (?, ?, ?, ?)");
+
+    $stmt = mysqli_prepare($conexion, "INSERT INTO usuarios (nombre, apellido, email, contrasena, idrol) VALUES (?, ?, ?, ?, 3)");
     mysqli_stmt_bind_param($stmt, "ssss", $nombre, $apellido, $email, $contrasena);
 
-    //Ejecutar
+    //Ejecutar  
     if (mysqli_stmt_execute($stmt)) {
         mysqli_stmt_close($stmt);
         mysqli_close($conexion);
 
-        header("Location: ../html/index.html"); 
+        header("Location: ../html/Main.php"); 
         exit();
     } else {
         echo "Error: " . mysqli_error($conexion);
