@@ -4,10 +4,9 @@ include '../../php/conexion.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Obtener valores del formulario
-    $idproveedor = isset($_POST['idproveedor']) ? trim($_POST['idproveedor']) : '';
-    $nombreproveedor = isset($_POST['nombreproveedor']) ? trim($_POST['nombreproveedor']) : '';
-    $emailproveedor = isset($_POST['emailproveedor']) ? trim($_POST['emailproveedor']) : '';
-    $telefonoproveedor = isset($_POST['telefonoproveedor']) ? trim($_POST['telefonoproveedor']) : '';
+    $nombreproveedor = trim($_POST['nombreproveedor'] ?? '');
+    $emailproveedor = trim($_POST['emailproveedor'] ?? '');
+    $telefonoproveedor = trim($_POST['telefonoproveedor'] ?? '');
 
     // Validar conexión
     if (!isset($conn) || !$conn) {
@@ -18,28 +17,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Validar campos obligatorios
     if ($nombreproveedor === '' || $emailproveedor === '' || $telefonoproveedor === '') {
-        echo '<div class="alert alert-danger">⚠️ Por favor complete todos los campos obligatorios.</div>';
+        echo '<div class="alert alert-danger">Por favor complete todos los campos obligatorios.</div>';
         exit;
     }
 
-    // Preparar consulta SQL
+    // Preparar la consulta SQL
     $stmt = mysqli_prepare($conn, "INSERT INTO proveedores (nombreproveedor, emailproveedor, telefonoproveedor) VALUES (?, ?, ?)");
-
     if (!$stmt) {
-        echo "Error al preparar la consulta: " . mysqli_error($conn);
-        exit;
+        die("Error al preparar la consulta: " . mysqli_error($conn));
     }
 
-    // Asignar parámetros (sin ID si es autoincremental)
+    // Asignar los parámetros
     mysqli_stmt_bind_param($stmt, "sss", $nombreproveedor, $emailproveedor, $telefonoproveedor);
 
-    // Ejecutar la consulta
+    // Ejecutar y verificar
     if (mysqli_stmt_execute($stmt)) {
         mysqli_stmt_close($stmt);
-        header("Location: ../index.php"); // Redirige al listado de proveedores
+        header("Location: ../Proveedores.php"); // edirección corregida
         exit();
     } else {
-        echo '<div class="alert alert-danger"> rror al registrar proveedor: ' . mysqli_error($conn) . '</div>';
+        echo '<div class="alert alert-danger"> Error al registrar proveedor: ' . mysqli_error($conn) . '</div>';
     }
 
     mysqli_stmt_close($stmt);

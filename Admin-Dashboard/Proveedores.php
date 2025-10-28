@@ -34,7 +34,7 @@
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
         <path fill="currentColor" d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"></path>
-        <a class="navbar-brand ps-3" href="index.html">Admin's Dashboard</a>
+        <a class="navbar-brand ps-3" href="index.html">Homes</a>
         <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
             <div class="input-group">
                 <input class="form-control" type="text" placeholder="Buscar..." />
@@ -80,30 +80,23 @@
                     </tr>
                 </thead>
                 <tbody>
-                    
-
-                    
-
                     <tr>
                         <td class ="text-center"><?= $datos->idproveedor?></td>
                         <td><?= $datos->nombreproveedor?></td>
                         <td><?= $datos->emailproveedor?></td>
                         <td><?= $datos->telefonoproveedor?></td>
-
                         <td>
                             <a href="ABML-Proveedor/Modificar-Proveedor.php?idproveedor=<?= $datos->idproveedor?>" class="btn btn-small btn-danger"><i class="fa-solid fa-pen-to-square"></i></a>
 
-                            <form class="Baja-Usuario-Form" id="Baja-Usuario-Form" action="ABML-Proveedor/Baja-Proveedor.php" method="POST" style="display:inline;">
+                            <form class="Baja-Proveedor-Form" id="Baja-Proveedor-Form" action="ABML-Proveedor/Baja-Proveedor.php" method="POST" style="display:inline;">
                                 <input type="hidden" name="idusuario" value="<?= $datos->idproveedor ?>" />
-                                <button type="submit" class="btn btn-small btn-warning" onclick="return confirm('¿Está seguro de borrar este usuario?');">
+                                <button type="submit" class="btn btn-small btn-warning" onclick="return confirm('¿Está seguro de borrar este proveedor?');">
                                     <i class="fa-solid fa-trash"></i>
                                 </button>
                             </form>
                         </td>
                     </tr>
-                    }
             </tbody>
-                    
             </table>
             </div> 
             </main>
