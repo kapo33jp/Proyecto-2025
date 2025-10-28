@@ -3,7 +3,9 @@
     session_start();
     error_reporting(0);
 
-    $validar = $_SESSION['email'];
+    $validar = $_SESSION['user_idusuario'];
+    $validar = $_SESSION['user_email'];
+    $validar = $_SESSION['user_idrol'];
     if ($validar == null || $validar = '') {
         header("location: ../html/login.html");
         die();
@@ -63,53 +65,43 @@
 
 
     <div>
-    <button type="button" id="boton-empleado" onclick="window.location.href='Agregar-Usuario.html'"> 
-    <i class="fa-solid fa-user-plus"></i> Agregar Usuario</button> 
-    
+    <button type="button" id="boton-empleado" onclick="window.location.href='Agregar-Proveedor.html'"> 
+    <i class="fa-solid fa-user-plus"></i> Agregar Proveedor</button> 
     </div>  
-            <table class="tabla-usuarios">
+            <table class="tabla-proveedores">
                 <thead class ="bg-gray-50">
                     <tr>
 
                         <th class = "p-3"style="padding-right: 30px" scope="col-8">ID </th>
                         <th style="padding-right: 55px" scope="col-">Nombre</th>
-                        <th style="padding-right: 55px" scope="col-">Apellido</th>
                         <th style="padding-right: 55px" scope="col-">Email</th>
-                        <th style="padding-right: 55px" scope="col-">Contraseña</th>
-                        <th style="padding-right: 55px" scope="col-">Rol</th>
+                        <th style="padding-right: 55px" scope="col-">Telefono</th>
 
                     </tr>
                 </thead>
                 <tbody>
                     
 
-                    <?php
-                    include '../php/conexion.php';
-                    $sql = $conn->query("SELECT u.*, r.nombrerol FROM usuarios u JOIN roles r ON u.idrol = r.idrol WHERE u.idrol IN (1, 2, 3)");
-                    if (!$sql) { die("Error en la consulta: " . $conn->error); }
-                    while($datos = $sql->fetch_object()) {
-                    ?>
+                    
 
                     <tr>
-                        <td class ="text-center"><?= $datos->idusuario?></td>
-                        <td><?= $datos->nombre?></td>
-                        <td><?= $datos->apellido?></td>
-                        <td><?= $datos->email?></td>
-                        <td><?= $datos->contrasena?></td>
-                        <td><?= $datos->nombrerol ?? '' ?></td>
+                        <td class ="text-center"><?= $datos->idproveedor?></td>
+                        <td><?= $datos->nombreproveedor?></td>
+                        <td><?= $datos->emailproveedor?></td>
+                        <td><?= $datos->telefonoproveedor?></td>
 
                         <td>
-                            <a href="ABML-Usuarios/Modificar-Usuario.php?idusuario=<?= $datos->idusuario?>" class="btn btn-small btn-danger"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <a href="ABML-Proveedor/Modificar-Proveedor.php?idproveedor=<?= $datos->idproveedor?>" class="btn btn-small btn-danger"><i class="fa-solid fa-pen-to-square"></i></a>
 
-                            <form class="Baja-Usuario-Form" id="Baja-Usuario-Form" action="ABML-Usuarios/Borrar-Usuario.php" method="POST" style="display:inline;">
-                                <input type="hidden" name="idusuario" value="<?= $datos->idusuario ?>" />
+                            <form class="Baja-Usuario-Form" id="Baja-Usuario-Form" action="ABML-Proveedor/Baja-Proveedor.php" method="POST" style="display:inline;">
+                                <input type="hidden" name="idusuario" value="<?= $datos->idproveedor ?>" />
                                 <button type="submit" class="btn btn-small btn-warning" onclick="return confirm('¿Está seguro de borrar este usuario?');">
                                     <i class="fa-solid fa-trash"></i>
                                 </button>
                             </form>
                         </td>
                     </tr>
-                    <?php } ?>
+                    }
             </tbody>
                     
             </table>
@@ -137,7 +129,7 @@
                                 Citas
                             </a>
                             
-                            <a class="nav-link" href="index.php">
+                            <a class="nav-link" href="Proveedores.php">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-truck-fast"></i></i></div>
                                 Proveedores
                             </a>

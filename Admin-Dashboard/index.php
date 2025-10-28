@@ -141,7 +141,7 @@
                                 Citas
                             </a>
                             
-                            <a class="nav-link" href="index.php">
+                            <a class="nav-link" href="Proveedores.php">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-truck-fast"></i></div>
                                 Proveedores
                             </a>
