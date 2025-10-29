@@ -1,7 +1,7 @@
 <?php
 include '../../php/conexion.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['btnproveedor'])) {
 
     // Obtener valores del formulario
     $nombreproveedor = trim($_POST['nombreproveedor'] ?? '');
@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Preparar la consulta SQL
-    $stmt = mysqli_prepare($conn, "INSERT INTO proveedores (nombreproveedor, emailproveedor, telefonoproveedor) VALUES (?, ?, ?)");
+    $stmt = mysqli_prepare($conn, "INSERT INTO proveedor (nombreproveedor, emailproveedor, telefonoproveedor) VALUES (?, ?, ?)");
     if (!$stmt) {
         die("Error al preparar la consulta: " . mysqli_error($conn));
     }
@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Ejecutar y verificar
     if (mysqli_stmt_execute($stmt)) {
         mysqli_stmt_close($stmt);
-        header("Location: ../Proveedores.php"); // edirección corregida
+        header("Location: ../Proveedores.php");
         exit();
     } else {
         echo '<div class="alert alert-danger"> Error al registrar proveedor: ' . mysqli_error($conn) . '</div>';

@@ -11,6 +11,22 @@
         die();
     }
 
+    $host = 'localhost';
+    $user = 'root';
+    $pass = '';
+    $db = 'bdbarberia';
+
+    $conn = new mysqli($host, $user, $pass, $db);
+
+    if ($conn->connect_error) {
+        die("Error de conexión: " . $conn->connect_error);
+    }
+
+    // Consulta para obtener los proveedores
+    $sql = "SELECT * FROM proveedor";
+    $resultado = $conn->query($sql);
+
+
     ?>
 
 <!DOCTYPE html>
@@ -60,7 +76,7 @@
 
         <div id="layoutSidenav_content" style="margin-left: 250px; padding: 20px;">
             <main>
-                <h2 style="margin: 25px;">Listado de Usuarios</h2>
+                <h2 style="margin: 25px;">Listado de Proveedores</h2>
                 <div class="table-responsive">
 
 
@@ -80,23 +96,38 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class ="text-center"><?= $datos->idproveedor?></td>
-                        <td><?= $datos->nombreproveedor?></td>
-                        <td><?= $datos->emailproveedor?></td>
-                        <td><?= $datos->telefonoproveedor?></td>
-                        <td>
-                            <a href="ABML-Proveedor/Modificar-Proveedor.php?idproveedor=<?= $datos->idproveedor?>" class="btn btn-small btn-danger"><i class="fa-solid fa-pen-to-square"></i></a>
+    <?php
+    if ($resultado->num_rows > 0) {
+        while ($datos = $resultado->fetch_object()) {
+            ?>
+            <tr>
+                <td class="text-center"><?= $datos->idproveedor ?></td>
+                <td><?= $datos->nombreproveedor ?></td>
+                <td><?= $datos->emailproveedor ?></td>
+                <td><?= $datos->telefonoproveedor ?></td>
+                <td>
 
-                            <form class="Baja-Proveedor-Form" id="Baja-Proveedor-Form" action="ABML-Proveedor/Baja-Proveedor.php" method="POST" style="display:inline;">
-                                <input type="hidden" name="idusuario" value="<?= $datos->idproveedor ?>" />
-                                <button type="submit" class="btn btn-small btn-warning" onclick="return confirm('¿Está seguro de borrar este proveedor?');">
-                                    <i class="fa-solid fa-trash"></i>
-                                </button>
-                            </form>
-                        </td>
-                    </tr>
-            </tbody>
+                <a href="ABML-Proveedor/Modificar-Proveedor.php?idproveedor=<?= $datos->idproveedor ?>" class="btn btn-small btn-danger">
+    <i class="fa-solid fa-pen-to-square"></i>
+</a>
+
+
+                <form class="Baja-Proveedor-Form" action="../Admin-Dashboard/AMBL-Proveedor/Baja-Proveedor.php" method="POST" style="display:inline;">
+                    <input type="hidden" name="idproveedor" value="<?= $datos->idproveedor ?>" />
+                    <button type="submit" class="btn btn-small btn-warning" onclick="return confirm('¿Está seguro de borrar este proveedor?');">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </form>
+            </td>
+        </tr>
+        <?php
+    }
+} else {
+        echo "<tr><td colspan='5'>No hay proveedores registrados.</td></tr>";
+    }
+    ?>
+</tbody>
+
             </table>
             </div> 
             </main>
