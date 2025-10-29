@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     mysqli_stmt_bind_param($stmt, "sssi", $nombreproveedor, $emailproveedor, $telefonoproveedor, $idproveedor);
     mysqli_stmt_execute($stmt);
 
-    header("Location: ../index.php");
+    header("Location: ../Proveedores.php");
     exit;
 }
 
@@ -22,7 +22,7 @@ if ($id <= 0) {
     die("ID de proveedor no válido");
 }
 
-$sql = $conn->query("SELECT * FROM proveedores WHERE idproveedor = $id");
+$sql = $conn->query("SELECT * FROM proveedor WHERE idproveedor = $id");
 $proveedor = $sql->fetch_assoc();
 if (!$proveedor) {
     die("Proveedor no encontrado");
