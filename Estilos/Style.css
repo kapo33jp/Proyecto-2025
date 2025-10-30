@@ -110,21 +110,27 @@ h1, h2, h3 {
     left: 30px;
     border: none;
     background: none;
-    padding: 0;
     cursor: pointer;
     z-index: 1000;
 }
 
-
 .menu-toggle img {
-width: 50px;
-height: 50px;
-border-radius: 50%;
-object-fit: cover;
-border: 3px solid rgba(127, 255, 212, 0.819);
-padding: 2px;
-box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid aquamarine;
+    padding: 3px;
+    box-shadow: 0 0 15px aquamarine;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+.menu-toggle img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px aquamarine;
+}
+
+
 
 
 /* Menú lateral oculto*/

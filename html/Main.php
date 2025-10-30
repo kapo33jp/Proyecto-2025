@@ -53,9 +53,9 @@
 
 
     <!-- Botón para abrir/cerrar el menú lateral -->
-    <button class="menu-toggle" onclick="toggleMenu()">
-        <img src="/Fotos/Moca.webp" alt="Menú">
-    </button>
+  <button class="menu-toggle" onclick="toggleMenu()">
+    <img src="../Fotos/Moca.webp" alt="Menú">
+</button>
 
 
     <!-- Menú lateral de navegación -->
