@@ -1,3 +1,19 @@
+<?php
+
+    session_start();
+    error_reporting(0);
+
+    $validar = $_SESSION['user_idusuario'];
+    $validar = $_SESSION['user_email'];
+    $validar = $_SESSION['user_idrol'];
+
+    if ($validar == null || $validar = '') {
+        header("location: ../html/login.html");
+        die();
+    }
+
+    ?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -19,7 +35,7 @@
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
         <path fill="currentColor" d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"></path>
-        <a class="navbar-brand ps-3" href="index.html">Admin's Dashboard</a>
+        <a class="navbar-brand ps-3" href="index.html">Home</a>
         <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
             <div class="input-group">
                 <input class="form-control" type="text" placeholder="Buscar..." />
@@ -104,14 +120,24 @@
                             <div class="sb-sidenav-menu-heading">Panel de Control
                             </div>
                             <a class="nav-link" href="index.php">
-                                <div class="sb-nav-link-icon"><i class="fa-solid fa-scissors"></i></div>
-                                Empleados
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-users"></i></div>
+                                Usuarios
                             </a>
-                            <a class="nav-link" href="index.php">
+                            
+                            <a class="nav-link" href="..//Admin-Dashboard/Citas.php">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
                                 Citas
                             </a>
                             
+                            <a class="nav-link" href="Proveedores.php">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-truck-fast"></i></div>
+                                Proveedores
+                            </a>
+                            
+                            <a class="nav-link" href="inventario.php">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-boxes-stacked"></i></div>
+                                Inventario
+                            </a>
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">

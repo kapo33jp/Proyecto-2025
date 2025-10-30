@@ -60,13 +60,13 @@
 
         <div id="layoutSidenav_content" style="margin-left: 250px; padding: 20px;">
             <main>
-                <h2 style="margin: 25px;">Listado de Usuarios</h2>
+                <h2 style="margin: 25px;">Inventario Disponible</h2>
                 <div class="table-responsive">
 
 
     <div>
     <button type="button" id="boton-empleado" onclick="window.location.href='Agregar-Usuario.html'"> 
-    <i class="fa-solid fa-user-plus"></i> Agregar Usuario</button> 
+    <i class="fa-solid fa-square-plus"></i> Agregar Items</button> 
     
     </div>  
             <table class="tabla-usuarios">

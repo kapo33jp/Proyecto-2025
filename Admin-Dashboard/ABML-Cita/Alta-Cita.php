@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['Btn-Reserva'])) {
         mysqli_close($conn);
 
         // Redirigir al dashboard (ruta relativa desde ABML-cita)
-        header("Location: ../../html/index.html");
+        header("Location: ../../html/Main.php");
         exit();
     } else {
         echo "Error: " . mysqli_error($conn);

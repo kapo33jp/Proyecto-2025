@@ -15,17 +15,15 @@ if ($conn->connect_errno) {
 $conn->set_charset("utf8mb4");
 
     function acceso_user() {
-        $nombre = isset($_POST['email']) ? $_POST['email'] : '';
-        $password = isset($_POST['password']) ? $_POST['password'] : '';
-        if ($nombre === '' || $password === '') {
-            echo '<div class="alert alert-danger">Faltan credenciales</div>';
-            return;
-        }
-
+    $nombre=$_POST['email'];
+    $password=$_POST['password'];
     session_start();
+        $_SESSION['email']=$nombre;
+
     $_SESSION ['email']=$nombre;
     $conn=mysqli_connect("localhost","root","","bdbarberia");
     $consulta="SELECT * FROM usuarios WHERE email='$nombre' AND contrasena='$password'";
+    
     $resultado=mysqli_query($conn,$consulta);
     $filas=mysqli_fetch_array($resultado);
 
@@ -48,4 +46,5 @@ $conn->set_charset("utf8mb4");
 
         }
     }
+
 ?>

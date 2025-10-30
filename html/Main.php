@@ -1,3 +1,19 @@
+<?php
+
+    session_start();
+    error_reporting(0);
+
+    $validar = $_SESSION['user_idusuario'];
+    $validar = $_SESSION['user_email'];
+    $validar = $_SESSION['user_idrol'];
+
+    if ($validar == null || $validar = '') {
+        header("location: ../html/login.html");
+        die();
+    }
+
+    ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,10 +61,9 @@
     <!-- Menú lateral de navegación -->
     <nav class="menu">
         <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="Servicios.html">Servicios</a></li>
-            <li><a href="Quienes-Somos.html">Quienes somos</a></li>
-            <li><a href="Productos.html">Productos</a></li>
+            <li><a href="Main.php">Inicio</a></li>
+            <li><a href="Quienes-Somos.php">Quienes somos</a></li>
+            <li><a href="Productos.php">Productos</a></li>
         </ul>
     </nav>
 

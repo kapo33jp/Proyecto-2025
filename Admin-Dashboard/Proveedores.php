@@ -11,6 +11,22 @@
         die();
     }
 
+    $host = 'localhost';
+    $user = 'root';
+    $pass = '';
+    $db = 'bdbarberia';
+
+    $conn = new mysqli($host, $user, $pass, $db);
+
+    if ($conn->connect_error) {
+        die("Error de conexión: " . $conn->connect_error);
+    }
+
+    // Consulta para obtener los proveedores
+    $sql = "SELECT * FROM proveedor";
+    $resultado = $conn->query($sql);
+
+
     ?>
 
 <!DOCTYPE html>
@@ -34,7 +50,7 @@
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
         <path fill="currentColor" d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"></path>
-        <a class="navbar-brand ps-3" href="index.html">Home</a>
+        <a class="navbar-brand ps-3" href="index.html">Homes</a>
         <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
             <div class="input-group">
                 <input class="form-control" type="text" placeholder="Buscar..." />
@@ -60,62 +76,58 @@
 
         <div id="layoutSidenav_content" style="margin-left: 250px; padding: 20px;">
             <main>
-                <h2 style="margin: 25px;">Listado de Usuarios</h2>
+                <h2 style="margin: 25px;">Listado de Proveedores</h2>
                 <div class="table-responsive">
 
 
     <div>
-    <button type="button" id="boton-empleado" onclick="window.location.href='Agregar-Usuario.html'"> 
-    <i class="fa-solid fa-user-plus"></i> Agregar Usuario</button> 
-    
+    <button type="button" id="boton-empleado" onclick="window.location.href='Agregar-Proveedor.html'"> 
+    <i class="fa-solid fa-user-plus"></i> Agregar Proveedor</button> 
     </div>  
-            <table class="tabla-usuarios">
+            <table class="tabla-proveedores">
                 <thead class ="bg-gray-50">
                     <tr>
 
                         <th class = "p-3"style="padding-right: 30px" scope="col-8">ID </th>
                         <th style="padding-right: 55px" scope="col-">Nombre</th>
-                        <th style="padding-right: 55px" scope="col-">Apellido</th>
                         <th style="padding-right: 55px" scope="col-">Email</th>
-                        <th style="padding-right: 55px" scope="col-">Contraseña</th>
-                        <th style="padding-right: 55px" scope="col-">Rol</th>
+                        <th style="padding-right: 55px" scope="col-">Telefono</th>
 
                     </tr>
                 </thead>
                 <tbody>
-                    
+    <?php
+    if ($resultado->num_rows > 0) {
+        while ($datos = $resultado->fetch_object()) {
+            ?>
+            <tr>
+                <td class="text-center"><?= $datos->idproveedor ?></td>
+                <td><?= $datos->nombreproveedor ?></td>
+                <td><?= $datos->emailproveedor ?></td>
+                <td><?= $datos->telefonoproveedor ?></td>
+                <td>
 
-                    <?php
-                    include '../php/conexion.php';
+                <a href="AMBL-Proveedor/Modificar-Proveedor.php?idproveedor=<?= $datos->idproveedor ?>" class="btn btn-small btn-danger">
+                <i class="fa-solid fa-pen-to-square"></i>
+                </a>
 
-                    
-                    $sql = $conn->query("SELECT u.*, r.nombrerol FROM usuarios u JOIN roles r ON u.idrol = r.idrol WHERE u.idrol IN (1, 2, 3)");
-                    if (!$sql) { die("Error en la consulta: " . $conn->error); }
-                    while($datos = $sql->fetch_object()) {
-                    ?>
 
-                    <tr>
-                        <td class ="text-center"><?= $datos->idusuario?></td>
-                        <td><?= $datos->nombre?></td>
-                        <td><?= $datos->apellido?></td>
-                        <td><?= $datos->email?></td>
-                        <td><?= $datos->contrasena?></td>
-                        <td><?= $datos->nombrerol ?? '' ?></td>
+                <form class="Baja-Proveedor-Form" action="../Admin-Dashboard/AMBL-Proveedor/Baja-Proveedor.php" method="POST" style="display:inline;">
+                    <input type="hidden" name="idproveedor" value="<?= $datos->idproveedor ?>" />
+                    <button type="submit" class="btn btn-small btn-warning" onclick="return confirm('¿Está seguro de borrar este proveedor?');">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </form>
+            </td>
+        </tr>
+        <?php
+    }
+} else {
+        echo "<tr><td colspan='5'>No hay proveedores registrados.</td></tr>";
+    }
+    ?>
+</tbody>
 
-                        <td>
-                            <a href="ABML-Usuarios/Modificar-Usuario.php?idusuario=<?= $datos->idusuario?>" class="btn btn-small btn-danger"><i class="fa-solid fa-pen-to-square"></i></a>
-
-                            <form class="Baja-Usuario-Form" id="Baja-Usuario-Form" action="ABML-Usuarios/Borrar-Usuario.php" method="POST" style="display:inline;">
-                                <input type="hidden" name="idusuario" value="<?= $datos->idusuario ?>" />
-                                <button type="submit" class="btn btn-small btn-warning" onclick="return confirm('¿Está seguro de borrar este usuario?');">
-                                    <i class="fa-solid fa-trash"></i>
-                                </button>
-                            </form>
-                        </td>
-                    </tr>
-                    <?php } ?>
-            </tbody>
-                    
             </table>
             </div> 
             </main>
@@ -142,7 +154,7 @@
                             </a>
                             
                             <a class="nav-link" href="Proveedores.php">
-                                <div class="sb-nav-link-icon"><i class="fa-solid fa-truck-fast"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-truck-fast"></i></i></div>
                                 Proveedores
                             </a>
                             

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agregar Proveedor</title>
+</head>
+<body>
+    <div class="modal" style="display: block;">
+        <div class="modal-content">
+            <a class="close" aria-label="Cerrar">&times;</a>
+            <h2>Registro de Proveedor</h2>
+
+            <form action="/Admin-Dashboard/AMBL-Proveedor/Alta-Proveedor.php" method="post">
+
+                <!-- Campo de Nombre -->
+                <input type="text" id="nombre" name="nombreproveedor" required placeholder="Nombre del proveedor" /><br /><br />
+
+                <!-- Campo de Email -->
+                <input type="email" id="email" name="emailproveedor" required placeholder="Email del proveedor" /><br /><br />
+
+                <!-- Campo de Teléfono -->
+                <input type="text" id="telefono" name="telefonoproveedor" required placeholder="Teléfono del proveedor" /><br /><br />
+
+                <button type="submit" name="btnproveedor">Registrar</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
