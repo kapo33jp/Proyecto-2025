@@ -69,3 +69,10 @@
     </script>
 </body>
 </html>
+
+    <script>
+        // Cerrar modal al hacer clic en la "X"
+        document.querySelector('.close').addEventListener('click', function() {
+            window.location.href = 'index.php'; // Redirigir a la página de proveedores
+        });
+    </script>

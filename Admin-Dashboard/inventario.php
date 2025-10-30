@@ -114,11 +114,11 @@
                 <h1 class="mt-4">Inventario Disponible</h1>
                 <div class="table-responsive">
                     <div>
-                        <button type="button" id="boton-empleado" onclick="window.location.href='Agregar-Producto.php'">
+                        <button type="button" id="boton-empleado" onclick="window.location.href='Agregar-Producto-Form.php'">
                             <i class="fa-solid fa-square-plus"></i> Agregar Items
                         </button>
                     </div>
-                    <table class="tabla-inventario"
+                    <table class="tabla-inventario" style="width: 50%; margin-top: 20px;">
                         <thead class="bg-gray-50">
                             <tr>
                                 <th class="p-3" scope="col">ID</th>
@@ -131,18 +131,27 @@
                         <tbody>
                             <?php
                             include '../php/conexion.php';
-                            $sql = $conn->query("SELECT * FROM productos");
-                            if (!$sql) { die("Error en la consulta: " . $conn->error); }
-                            while($datos = $sql->fetch_object()) {
-                            ?>
-                            <tr>
-                                <td class="text-center"><?= $datos->idproducto?></td>
-                                <td><?= $datos->nombreproducto?></td>
-                                <td><?= $datos->precioproducto?></td>
-                                <td><?= $datos->tipoproducto?></td>
-                                <td><?= $datos->idproveedor?></td>
-                            </tr>
-                            <?php } ?>
+                            $sql = $conn->query("SELECT producto.*, proveedor.nombreproveedor FROM producto JOIN proveedor ON producto.idproveedor = proveedor.idproveedor");
+                            while($datos = $sql->fetch_object()) {?>
+
+                    <tr>
+                        <td class="text-center"><?= $datos->idproducto ?></td>
+                        <td><?= $datos->nombreproducto ?></td>
+                        <td><?= $datos->precioproducto ?></td>
+                        <td><?= $datos->tipoproducto ?></td>
+                        <td><?= $datos->nombreproveedor ?></td>
+                        <td>
+                        <a href="ABML-Producto/Modificar-Producto.php?idproducto=<?= $datos->idproducto?>" class="btn btn-small btn-danger"><i class="fa-solid fa-pen-to-square"></i></a>
+
+                        <form class="Baja-Producto-Form" id="Baja-Producto-Form" action="ABML-Producto/Baja-Producto.php" method="POST" style="display:inline;">
+                            <input type="hidden" name="idproducto" value="<?= $datos->idproducto ?>" />
+                            <button type="submit" class="btn btn-small btn-warning" onclick="return confirm('¿Está seguro de borrar este producto?');">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </form>
+                    </td>
+                    </tr>
+                    <?php } ?>
                         </tbody>
                     </table>
                 </div>

@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Preparar la consulta SQL
-    $stmt = mysqli_prepare($conn, "INSERT INTO productos (nombreproducto, precioproducto, tipoproducto, idproveedor) VALUES (?, ?, ?, ?)");
+    $stmt = mysqli_prepare($conn, "INSERT INTO producto (nombreproducto, precioproducto, tipoproducto, idproveedor) VALUES (?, ?, ?, ?)");
     if (!$stmt) {
         die("Error al preparar la consulta: " . mysqli_error($conn));
     }
@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Ejecutar y verificar
     if (mysqli_stmt_execute($stmt)) {
         mysqli_stmt_close($stmt);
-        header("Location: ../productos.php");
+        header("Location: ../inventario.php");
         exit();
     } else {
         echo '<div class="alert alert-danger">Error al registrar producto: ' . mysqli_error($conn) . '</div>';

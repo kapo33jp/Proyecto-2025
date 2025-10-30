@@ -74,7 +74,7 @@
     <i class="fa-solid fa-user-plus"></i> Agregar Usuario</button> 
     
     </div>  
-            <table class="tabla-usuarios">
+            <table class="tabla-usuarios" style="width: 50%; margin-top: 20px;">
                 <thead class ="bg-gray-50">
                     <tr>
 
