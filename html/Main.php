@@ -61,7 +61,7 @@
     <!-- Menú lateral de navegación -->
     <nav class="menu">
         <ul>
-            <li><a href="Main.php">Inicio</a></li>\
+            <li><a href="Main.php">Inicio</a></li>
             <li><a href="Quienes-Somos.php">Quienes somos</a></li>
             <li><a href="Productos.php">Productos</a></li>
         </ul>

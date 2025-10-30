@@ -1,54 +1,49 @@
 <?php
+include '../../php/conexion.php';
 
-        include '../../php/conexion.php';
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $idproveedor = intval($_POST['idproveedor']);
+    $nombreproveedor = trim($_POST['nombreproveedor']);
+    $emailproveedor = trim($_POST['emailproveedor']);
+    $telefonoproveedor = trim($_POST['telefonoproveedor']);
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $idusuario = intval($_POST['idusuario']);
-    $nombre = trim($_POST['nombre']);
-    $apellido = trim($_POST['apellido']);
-    $email = trim($_POST['email']);
-    $contrasena = trim($_POST['contrasena']);
+    if ($idproveedor <= 0) die("ID inválido");
 
-    if ($idusuario <= 0) die("ID inválido");
-
-    $stmt = mysqli_prepare($conn, "UPDATE usuarios SET nombre=?, apellido=?, email=?, contrasena=? WHERE idusuario=?");
-    mysqli_stmt_bind_param($stmt, "ssssi", $nombre, $apellido, $email, $contrasena, $idusuario);
+    $stmt = mysqli_prepare($conn, "UPDATE proveedor SET nombreproveedor=?, emailproveedor=?, telefonoproveedor=? WHERE idproveedor=?");
+    mysqli_stmt_bind_param($stmt, "sssi", $nombreproveedor, $emailproveedor, $telefonoproveedor, $idproveedor);
     mysqli_stmt_execute($stmt);
 
-    header("Location: ../index.php"); //Volver al listado
+    header("Location: ../Proveedores.php");
     exit;
 }
 
-$id = isset($_GET['idusuario']) ? intval($_GET['idusuario']) : 0;
+$id = isset($_GET['idproveedor']) ? intval($_GET['idproveedor']) : 0;
 if ($id <= 0) {
-    die("ID de usuario no valido");
+    die("ID de proveedor no válido");
 }
 
-$sql = $conn->query("SELECT * FROM usuarios WHERE idusuario = $id");
-$usuarios = $sql->fetch_assoc();
-if (!$usuarios) {
-    die("Usuario no encontrado");
+$sql = $conn->query("SELECT * FROM proveedor WHERE idproveedor = $id");
+$proveedor = $sql->fetch_assoc();
+if (!$proveedor) {
+    die("Proveedor no encontrado");
 }
-
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Modificar Usuario</title>
+    <title>Modificar Proveedor</title>
 </head>
 <body>
-    <h2>Modificar Usuario</h2>
+    <h2>Modificar Proveedor</h2>
 
-    <form action="Modificar-Usuario.php" method="post">
-        
-        <input type="hidden" name="idusuario" value="<?= $usuarios['idusuario'] ?>">
+    <form action="Modificar-Proveedor.php" method="post">
+        <input type="hidden" name="idproveedor" value="<?= htmlspecialchars($proveedor['idproveedor']) ?>">
 
-        Nombre: <input type="text" name="nombre" value="<?= $usuarios['nombre'] ?>" required><br>
-        Apellido: <input type="text" name="apellido" value="<?= $usuarios['apellido'] ?>" required><br>
-        Email: <input type="email" name="email" value="<?= $usuarios['email'] ?>" required><br>
-        Contraseña: <input type="password" name="password" value="<?= $barbero['contrasena'] ?>" required><br>
+        Nombre: <input type="text" id="nombreproveedor" name="nombreproveedor" value="<?= htmlspecialchars($proveedor['nombreproveedor']) ?>" required><br>
+        Email: <input type="email" id="emailproveedor" name="emailproveedor" value="<?= htmlspecialchars($proveedor['emailproveedor']) ?>" required><br>
+        Teléfono: <input type="text" id="telefonoproveedor" name="telefonoproveedor" value="<?= htmlspecialchars($proveedor['telefonoproveedor']) ?>" required><br>
 
         <button type="submit">Modificar</button>
     </form>
