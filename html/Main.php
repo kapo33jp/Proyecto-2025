@@ -1,19 +1,3 @@
-<?php
-
-    session_start();
-    error_reporting(0);
-
-    $validar = $_SESSION['user_idusuario'];
-    $validar = $_SESSION['user_email'];
-    $validar = $_SESSION['user_idrol'];
-
-    if ($validar == null || $validar = '') {
-        header("location: ../html/login.html");
-        die();
-    }
-
-    ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
