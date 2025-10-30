@@ -12,12 +12,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($idproducto === 0 || $nombreproducto === '' || $precioproducto === '' || $tipoproducto === '' || $idproveedor === 0) {
         echo "<script>
             alert('Por favor complete todos los campos');
-            window.location.href = '../index.php';
+            window.location.href = '../inventario.php';
         </script>";
         exit;
     }
 
-    $stmt = mysqli_prepare($conn, "UPDATE productos SET nombreproducto = ?, precioproducto = ?, tipoproducto = ?, idproveedor = ? WHERE idproducto = ?");
+    $stmt = mysqli_prepare($conn, "UPDATE producto SET nombreproducto = ?, precioproducto = ?, tipoproducto = ?, idproveedor = ? WHERE idproducto = ?");
     mysqli_stmt_bind_param($stmt, "sdsii", $nombreproducto, $precioproducto, $tipoproducto, $idproveedor, $idproducto);
 
     if (mysqli_stmt_execute($stmt)) {
@@ -25,13 +25,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         mysqli_close($conn);
         echo "<script>
             alert('Producto modificado correctamente');
-            window.location.href = '../index.php';
+            window.location.href = '../inventario.php';
         </script>";
         exit;
     } else {
         echo "<script>
             alert('Error al modificar el producto');
-            window.location.href = '../index.php';
+            window.location.href = '../inventario.php';
         </script>";
     }
 }
