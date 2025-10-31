@@ -1,0 +1,219 @@
+/* ----------------------- */
+/* ESTILO GENERAL */
+/* ----------------------- */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle at top, rgba(0,0,0,0.8), #000),
+    url('../Fotos/Adentrooo-modified.jpg') center/cover no-repeat fixed;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* BOTÓN DEL MENÚ */
+.menu-toggle {
+    position: fixed;
+    top: 30px;
+    left: 30px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.menu-toggle img {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid aquamarine;
+    padding: 3px;
+    box-shadow: 0 0 15px aquamarine;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-toggle img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px aquamarine;
+}
+
+/* MENÚ LATERAL */
+.menu {
+    position: fixed;
+    top: 0;
+    left: -230px;
+    width: 200px;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(6px);
+    box-shadow: 2px 0 15px rgba(0,255,200,0.2);
+    transition: left 0.3s ease;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.menu.activo {
+    left: 0;
+}
+
+.menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.menu ul li {
+    margin: 20px 0;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+.menu ul li a:hover {
+    color: aquamarine;
+    text-shadow: 0 0 10px aquamarine;
+}
+
+/* CABECERA */
+header {
+    text-align: center;
+    padding: 120px 20px 60px;
+    position: relative;
+}
+
+header::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 3px;
+    background: aquamarine;
+    box-shadow: 0 0 15px aquamarine;
+}
+
+header h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 4rem;
+    letter-spacing: 3px;
+    color: aquamarine;
+    text-shadow: 0 0 15px rgba(0,255,200,0.8);
+    margin-bottom: 15px;
+    animation: fadeInDown 1s ease;
+}
+
+header p {
+    font-size: 1.2rem;
+    color: #ccc;
+    animation: fadeIn 1.5s ease;
+}
+
+/* SECCIÓN EQUIPO */
+.team {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 50px;
+    padding: 60px 20px;
+}
+
+.card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    width: 300px;
+    text-align: center;
+    padding: 35px 25px;
+    box-shadow: 0 0 20px rgba(0,255,200,0.15);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 30px rgba(0,255,200,0.4);
+}
+
+.card img {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid aquamarine;
+    box-shadow: 0 0 15px rgba(0,255,200,0.5);
+    margin-bottom: 20px;
+    transition: transform 0.3s;
+}
+
+.card:hover img {
+    transform: scale(1.1);
+}
+
+.card h2 {
+    color: aquamarine;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #ccc;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.card button {
+    background-color: aquamarine;
+    color: black;
+    font-weight: bold;
+    border: 2px solid black;
+    border-radius: 8px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.card button:hover {
+    background-color: #48d1b3;
+    transform: scale(1.05);
+}
+
+/* FRASE FINAL */
+.frase {
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: aquamarine;
+    text-shadow: 0 0 15px rgba(0,255,200,0.8);
+    margin: 50px 0;
+}
+
+/* ANIMACIONES */
+@keyframes fadeInDown {
+    from {opacity: 0; transform: translateY(-40px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .team {
+        flex-direction: column;
+        align-items: center;
+    }
+}
