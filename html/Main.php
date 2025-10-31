@@ -47,7 +47,7 @@
 
     <!-- Botón de reserva -->
     
-    <button class="reserva-btn" onclick="window.location.href='Reserva.html'">
+    <button class="reserva-btn" onclick="window.location.href='Reserva.php'">
         <p>Reservar</p> 
     </button>
 

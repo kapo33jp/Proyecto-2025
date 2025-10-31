@@ -47,7 +47,7 @@ if (!$usuarios) {
         Email: <input type="email" name="email" value="<?= $usuarios['email'] ?>" required><br>
 
     <div style="position:relative; display:inline-block;">
-    <input id="contrasenaInput" type="password" name="contrasena" value="<?= htmlspecialchars($usuarios['contrasena'] ?? '') ?>" required style="padding-right:36px;">
+    <input id="contrasenaInput" type="password" name="contrasena" value= <?= htmlspecialchars($usuarios['contrasena'] ?? '') ?>" required style="padding-right:36px;">
     <button type="button" id="togglePassword" aria-label="Mostrar contraseña" title="Mostrar / Ocultar contraseña" style="position:absolute; right:6px; top:50%; transform:translateY(-50%); border:none; background:transparent; cursor:pointer; padding:4px;">
     <svg id="iconEye" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"></path>

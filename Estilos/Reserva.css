@@ -47,8 +47,7 @@ body{
 /* Botón centrado y sin margen izquierdo forzado */
 .boton-reserva{
     border: none;
-    margin-top: 8px;
-    margin-left: 320px;
+    margin: auto;
     padding: 10px 22px;
     cursor: pointer;
     font-size: 16px;

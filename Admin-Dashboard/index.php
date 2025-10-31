@@ -28,35 +28,40 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
         
 <body class="sb-nav-fixed">
-    
-        <!-- Barra superior -->
-        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-        <!-- Sidebar Toggle-->
-        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
-        <path fill="currentColor" d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"></path>
-        <a class="navbar-brand ps-3" href="index.html">Home</a>
-        <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-            <div class="input-group">
-                <input class="form-control" type="text" placeholder="Buscar..." />
-                <button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
+
+    <!-- Barra de navegación superior -->
+<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <a class="navbar-brand ps-3" href="index.php">Home</a>
+
+    <ul class="navbar-nav ms-auto">
+        <li class="nav-item dropdown no-arrow">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 d-none d-lg-inline text-white small">
+                    <?php echo $_SESSION['user_email']; ?>
+                </span>
+                <img class="img-logo rounded-circle" src="../Fotos/User-Logogo.webp" width="40" height="40" style="object-fit: cover; background-color: transparent;">
+            </a>
+            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="#">
+                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Perfil
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="logout.php">
+                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout
+                </a>
             </div>
-        </form>
-        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"><i class="fas fa-user fa-fw"></i></a>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#!">Configuraciones</a></li>
-                    <li><a class="dropdown-item" href="#!">Registro de Actividades</a></li>
-                    <li><hr class="dropdown-divider" /></li>
-                    <li><a class="dropdown-item" href="#!">Cerrar sesión</a></li>
-                </ul>
-            </li>
-        </ul>
-    </nav>
+        </li>
+    </ul>
+</nav>
+
 
     
     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
-    <a class="navbar-brand ps-3" href="index.html">Home</a>
+    <a class="navbar-brand ps-3" href="index.php">Home</a> 
 
         <div id="layoutSidenav_content" style="margin-left: 250px; padding: 20px;">
             <main>
@@ -65,11 +70,11 @@
 
 
     <div>
-    <button type="button" id="boton-empleado" onclick="window.location.href='Agregar-Usuario.html'"> 
+    <button type="button" id="boton-empleado" onclick="window.location.href='Agregar-Usuario.php'"> 
     <i class="fa-solid fa-user-plus"></i> Agregar Usuario</button> 
     
     </div>  
-            <table class="tabla-usuarios">
+            <table class="tabla-usuarios" style="width: 50%; margin-top: 20px;">
                 <thead class ="bg-gray-50">
                     <tr>
 
@@ -169,8 +174,8 @@
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
-                        <div class="small">Logged in as:</div>
-                        Start Bootstrap
+                        
+                <h4>Logueado como:</h4> <?php echo $_SESSION['user_email']; ?>
                     </div>
                 </nav>
             </div>
