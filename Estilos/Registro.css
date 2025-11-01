@@ -1,0 +1,154 @@
+/* Quitar imagen de fondo en Servicios */
+body.servicios {
+    background-image: none !important;
+}
+/* Video de fondo para Servicios */
+#bg-video-servicios {
+    position: fixed;
+    min-width: 100vw;
+    min-height: 100vh;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    pointer-events: none;
+    filter: none;
+}
+
+/* Fondo general y fuente principal */
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #f3f3f3;
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../Fotos/Adentrooo-modified.jpg');
+}
+
+
+html, body {
+    min-height: 100vh;
+    height: 100%;
+    background-position: center center;
+}
+
+/* Fondo del modal (pantalla oscura) */
+    .modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.7);
+}
+
+
+/* Contenido del modal (formulario de login/registro) */
+.modal-content {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #222;
+    margin: 6% auto; /* reducido desde 12% para que la caja esté más arriba */
+    padding: 20px;
+    border-radius: 12px;
+    width: 450px;
+    min-height: 440px; /* usar min-height en lugar de height fijo para dar más espacio hacia arriba */
+    max-width: 900px;
+    color: white;
+    box-shadow: 0 0 10px #000;
+    position: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+
+/* Título del modal */
+.modal-content h2 {
+text-align: center;
+margin-top: 0px;
+font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* Inputs de email, texto y contraseña en el modal (unificados) */
+.modal-content input[type="text"],
+.modal-content input[type="email"],
+.modal-content input[type="password"] {
+    width: 100%;
+    max-width: 380px;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    text-align: center;
+    box-sizing: border-box;
+    background: rgba(255,255,255,0.04);
+    color: #fff;
+}
+
+.modal-content input:focus {
+    outline: 2px solid #57c4d3;
+    outline-offset: 2px;
+}
+
+/* Checkboxes dentro del modal */
+.modal-content input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+    vertical-align: middle;
+    accent-color: hwb(160 50% 0%);
+}
+
+.modal-content .Recordarme {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #fff;
+    margin: 8px 0 14px 0;
+}
+
+/* Botón de registro dentro del modal */
+.modal-content button {
+background-color: #4d59b9;
+border: none;
+color: white;
+font-weight: bold;
+padding: 12px 20px;
+margin-bottom: 10px;
+border-radius: 20px;
+cursor: pointer;
+width: 375px;
+font-size: 16px;
+transition: background-color 0.3s ease;
+}
+
+
+.modal-content button:hover {
+background-color: #363d88;
+padding-bottom: 12px;
+}
+
+
+/* Botón para cerrar el modal (X) */
+.close {
+color: white;
+position: absolute;
+top: 12px;
+right: 18px;
+font-size: 28px;
+font-weight: bold;
+cursor: pointer;
+}
+
+
+.close:hover {
+color: #ff4444;
+}

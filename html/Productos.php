@@ -20,7 +20,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Productos - MOCA-hairstudio</title>
-    <link rel="stylesheet" href="Estilos/estilo.css"> <!-- general -->
     <link rel="stylesheet" href="../Estilos/Productos.css"> <!-- solo productos -->
 </head>
 <body class="productos"> 

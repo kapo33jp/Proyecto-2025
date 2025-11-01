@@ -80,7 +80,7 @@ body.productos .producto p {
     color: #ddd;
 }
 
-/* Botón menú Moca */
+/* BOTÓN DEL MENÚ */
 .menu-toggle {
     position: fixed;
     top: 30px;
@@ -92,59 +92,65 @@ body.productos .producto p {
 }
 
 .menu-toggle img {
-    width: 50px;
-    height: 50px;
+    width: 65px;
+    height: 65px;
     border-radius: 50%;
     object-fit: cover;
     border: 3px solid aquamarine;
-    padding: 2px;
-    box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+    padding: 3px;
+    box-shadow: 0 0 15px aquamarine;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.menu-toggle img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px aquamarine;
+}
 
+/* MENÚ LATERAL */
 .menu {
     position: fixed;
     top: 0;
-    left: -220px; 
-    width: 180px;
+    left: -230px;
+    width: 200px;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.7);
-    flex-direction: column;
-    padding: 20px;
-    box-shadow: 2px 0 6px rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(6px);
+    box-shadow: 2px 0 15px rgba(0,255,200,0.2);
     transition: left 0.3s ease;
     z-index: 999;
     display: flex;
-    overflow-y: auto; 
+    flex-direction: column;
+    justify-content: center;
 }
-
 
 .menu.activo {
     left: 0;
 }
 
-
 .menu ul {
     list-style: none;
     padding: 0;
     margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    gap: 20px;
+    text-align: center;
+}
+
+.menu ul li {
+    margin: 20px 0;
 }
 
 .menu ul li a {
     text-decoration: none;
-    color: #ffffff;
-    font-weight: bold;
-    font-size: 18px;
+    color: white;
+    font-weight: 600;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    transition: color 0.3s, text-shadow 0.3s;
 }
 
 .menu ul li a:hover {
-    color: #4d59b9;
+    color: aquamarine;
+    text-shadow: 0 0 10px aquamarine;
 }
 
 /* Caja del botón de carrito */

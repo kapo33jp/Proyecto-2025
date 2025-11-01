@@ -21,8 +21,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Quiénes Somos - MOCA-hairstudio</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="Quienes-Somos.css"> 
-
+<link rel="stylesheet" href="../Estilos/Quienes-Somos.css">
 </head>
 
 <body>
