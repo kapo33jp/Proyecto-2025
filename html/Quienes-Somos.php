@@ -46,7 +46,7 @@
 <section class="team">
     <div class="card">
         <img src="../Fotos/peluquero1.jpg" alt="Peluquero 1">
-        <h2>Luciano Garcia</h2>
+        <h2> Garcia</h2>
         <p>Descripcion</p>
     </div>
 
