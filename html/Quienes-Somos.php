@@ -44,17 +44,15 @@
 
 <section class="team">
     <div class="card">
-        <img src="https://pm1.aminoapps.com/6877/fc650d83deeef454bce12f3d4a3ff4081efd4a08r1-480-471v2_hq.jpg" alt="Peluquero 1">
-        <h2> Tobogan de Piojos "Alias El Peluca"</h2>
-        <p>Con el peluca tenes la aerodinámica garantizada. Rendimiento +10 km/h.</p>
+        <img src="../Fotos/peluquero1.jpg" alt="Peluquero 1">
+        <h2> Garcia</h2>
+        <p>Descripcion</p>
     </div>
 
     <div class="card">
-        <img src="https://stickerly.pstatic.net/sticker_pack/13279e882d3a25af/8QXXWD/3/15856d78-dad8-4ad6-b7d4-4a44646fc81d-001.png" alt="Peluquero 2">
-        <h2>Monica "Alias Big Mama"</h2>
-        <p>Reina del barrio, patrona del fede turro.
-            Si te movès, te dejo la oreja de souvenir, colta.
-        </p>
+        <img src="../Fotos/peluquero2.jpg" alt="Peluquero 2">
+        <h2>Guille Capote</h2>
+        <p>descripcion</p>
     </div>
 </section>
 

@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $contrasena = isset($_POST['password']) ? $_POST['password'] : '';
 
     //Conexión a la base de datos
-    $conexion = mysqli_connect("localhost", "root", "", "bdbarberia");
+    $conexion = mysqli_connect("localhost", "root", "", "bdbarberia1");
 
     if (!$conexion) {
         die("Conexión fallida: " . mysqli_connect_error());

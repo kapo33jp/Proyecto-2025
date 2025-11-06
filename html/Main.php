@@ -39,9 +39,9 @@
         <a href="https://www.instagram.com/moca_hairstudio/" target="_blank" aria-label="Instagram">
             <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram" />
         </a>
-        <div class="login-box" onclick="openModal()">
+        <a class="login-box" href="login.html">
             <span>Iniciar / Registrarse</span>
-        </div>
+        </a>
     </div>
 
 
@@ -76,24 +76,6 @@
     <eslogan class="Eslogan">
 
     </eslogan>
-
-
-    <!-- Modal de registro/login -->
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2>Inicio de Sesion</h2>
-            <form action="../php/Login.php" method="POST">
-                <!-- Campo de email -->
-                <input type="email" id="email" name="email" required placeholder="Email" /><br /><br />
-                <!-- Campo de contraseña -->
-                <input type="password" id="password" name="password" required placeholder="Contraseña"  /><br /><br />
-                <!-- Checkbox de recordarme -->
-                <div class="Recordarme">
-                    <input type="checkbox" id="Recordarme" name="Recordarme">
-                    <p>Recordarme</p>
-                </div>
-                <br /><br />
 
 
                 <!-- Botón de Inicio de sesion -->
