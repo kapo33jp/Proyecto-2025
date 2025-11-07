@@ -8,6 +8,7 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../Fotos/Adentrooo-modified.jpg');
+    overflow: hidden;
 }
 
 html, body {
