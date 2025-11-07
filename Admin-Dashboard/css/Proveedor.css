@@ -1,0 +1,109 @@
+/* Fuente base */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+/* Modal centrado */
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+}
+
+/* Caja del modal */
+.modal-content {
+    background: #ffffff;
+    width: 380px;
+    padding: 25px 30px;
+    border-radius: 12px;
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.15);
+    text-align: center;
+    position: relative;
+    animation: fadeIn .3s ease;
+}
+
+/* Animación entrada */
+@keyframes fadeIn {
+    from {
+        transform: scale(.95);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Título */
+.modal-content h2 {
+    margin-bottom: 20px;
+    color: #222;
+}
+
+/* Inputs */
+.modal-content input {
+    width: 95%;
+    padding: 11px;
+    border: 1px solid #d3d3d3;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+    transition: .2s;
+}
+
+/* Input focus */
+.modal-content input:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 4px rgba(59,130,246,0.4);
+}
+
+/* Botón Registrar */
+.modal-content button[type="submit"] {
+    width: 100%;
+    background: #3b82f6;
+    color: #fff;
+    border: none;
+    padding: 11px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 5px;
+    transition: .25s;
+}
+
+.modal-content button[type="submit"]:hover {
+    background: #2563eb;
+}
+
+/* X para cerrar */
+.close {
+    position: absolute;
+    right: 12px;
+    top: 10px;
+    font-size: 22px;
+    cursor: pointer;
+    color: #888;
+    transition: .2s;
+}
+
+.close:hover {
+    color: #e11d48;
+}
+
+/* Responsive */
+@media (max-width: 450px) {
+    .modal-content {
+        width: 88%;
+    }
+
+    .modal-content input {
+        width: 100%;
+    }
+}
+

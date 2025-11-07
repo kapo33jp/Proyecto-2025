@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Agregar Usuario</title>
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="/Admin-Dashboard/css/Usuarios.css">
 </head>
 <body>
     <!-- Página de Registro -->

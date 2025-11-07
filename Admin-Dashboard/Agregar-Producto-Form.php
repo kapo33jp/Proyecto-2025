@@ -22,7 +22,9 @@ $proveedores = $conn->query("SELECT idproveedor, nombreproveedor FROM proveedor"
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Agregar Producto</title>
+    
 </head>
+
 <body>
     <div class="modal" style="display: block;">
         <div class="modal-content">

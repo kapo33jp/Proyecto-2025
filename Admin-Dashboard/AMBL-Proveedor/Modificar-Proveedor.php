@@ -34,6 +34,7 @@ if (!$proveedor) {
 <head>
     <meta charset="UTF-8">
     <title>Modificar Proveedor</title>
+    <link rel="stylesheet" href="../css/Mod-Proveedor.css">
 </head>
 <body>
     <h2>Modificar Proveedor</h2>
