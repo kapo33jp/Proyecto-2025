@@ -1,6 +1,7 @@
 /* Quitar imagen de fondo en Servicios */
 body.servicios {
     background-image: none !important;
+    overflow: hidden;
 }
 
 /* Video de fondo para Servicios */
