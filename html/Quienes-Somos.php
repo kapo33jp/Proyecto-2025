@@ -25,6 +25,17 @@
 </head>
 
 <body>
+
+    <!-- Iconos de redes sociales y botón de logindsds  -->
+    <div class="social-icons">
+        <a href="https://www.instagram.com/moca_hairstudio/" target="_blank" aria-label="Instagram">
+            <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram" />
+        </a>
+        <a class="login-box" href="login.html">
+            <span>Iniciar / Registrarse</span>
+        </a>
+    </div>
+    
 <button class="menu-toggle" onclick="toggleMenu()">
     <img src="../Fotos/Moca.webp" alt="Menú">
 </button>
