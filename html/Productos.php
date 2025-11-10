@@ -38,9 +38,10 @@
         </ul>
     </nav>
 
-    <!-- Contenido principal sss -->
+    <!-- Contenido principal -->
     <main class="contenido">
     <h1>Nuestros Productos</h1>
+
     <div class="productos-grid">
         <div class="producto">
             <img src="../Fotos/Cera4.jpg" alt="Cera 4">
@@ -50,6 +51,7 @@
                 <button class="agregar-carrito">Agregar al carrito</button>
             </div>
         </div>
+
         <div class="producto">
             <img src="../Fotos/CERAENPOLVO.jpg" alt="Cera en Polvo">
             <h2>Cera en Polvo</h2>
@@ -58,6 +60,7 @@
                 <button class="agregar-carrito">Agregar al carrito</button>
             </div>
         </div>
+
         <div class="producto">
             <img src="../Fotos/CERAMATTEWAX.jpg" alt="Cera Matte Wax">
             <h2>Cera Matte Wax</h2>
@@ -66,6 +69,7 @@
                 <button class="agregar-carrito">Agregar al carrito</button>
             </div>
         </div>
+        
         <div class="producto">
             <img src="../Fotos/OLEOPARABARBA.jpg" alt="Oleo para Barba">
             <h2>Oleo para Barba</h2>
