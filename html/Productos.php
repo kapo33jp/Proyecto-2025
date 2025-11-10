@@ -24,7 +24,7 @@
 </head>
 <body class="productos"> 
 
-    <!-- Botón para abrir/cerrar el menú lateral pepe-->
+    <!-- Botón para abrir/cerrar el menú lateral -->
     <button class="menu-toggle" onclick="toggleMenu()">
         <img src="../Fotos/Moca.webp" alt="Menú">
     </button>
@@ -45,7 +45,7 @@
     <div class="productos-grid">
         <div class="producto">
             <img src="../Fotos/Cera4.jpg" alt="Cera 4">
-            <h2>Cera 4</h2>
+            <h2>Pasta Capilar</h2>
             <p>UYU 500.00</p>
             <div class="carrito-box">
                 <button class="agregar-carrito">Agregar al carrito</button>
