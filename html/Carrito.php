@@ -111,9 +111,7 @@ $total = 0;
 
     <!-- Iconos de redes sociales y usuario logueado -->
     <div class="social-icons">
-        <a href="https://www.instagram.com/moca_hairstudio/" target="_blank" aria-label="Instagram">
-            <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram" />
-        </a>
+
         
         <?php if(isset($_SESSION['user_email'])): ?>
             <!-- Mostrar usuario logueado -->
