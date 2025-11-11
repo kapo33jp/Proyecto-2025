@@ -1,18 +1,16 @@
 <?php
-
     session_start();
     error_reporting(0);
 
     $validar = $_SESSION['user_idusuario'];
-    $validar = $_SESSION['user_email'];
-    $validar = $_SESSION['user_idrol'];
+    $validar_email = $_SESSION['user_email'];
+    $validar_rol = $_SESSION['user_idrol'];
 
-    if ($validar == null || $validar = '') {
+    if ($validar == null || $validar == '') {
         header("location: ../html/login.html");
         die();
     }
-
-    ?>
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,14 +19,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reserva</title>
     <link rel="stylesheet" href="../Estilos/Reserva.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-        <Form action="../Admin-Dashboard/ABML-Cita/Alta-Cita.php" method="post">
-    <div class="reserva-box" id="reserva-box">
-        <li>
-            <h1>Reserva tu cita</h1>
-        </li>
+    <!-- Iconos de redes sociales y usuario logueado -->
+    <div class="social-icons">
+        
+        <?php if(isset($_SESSION['user_email'])): ?>
+            <!-- Mostrar usuario logueado -->
+            <div class="user-dropdown">
+                <div class="user-toggle" onclick="toggleUserMenu()">
+                    <span class="user-email"><?php echo $_SESSION['user_email']; ?></span>
+                    <img class="user-img" src="../Fotos/User-Logogo.webp" alt="Usuario">
+                </div>
+                <div class="user-menu" id="userMenu">
+                    <a href="#" class="user-menu-item">
+                        <i class="fas fa-user fa-sm fa-fw"></i> Perfil
+                    </a>
+                    <div class="user-menu-divider"></div>
+                    <a href="../php/logout.php" class="user-menu-item">
+                        <i class="fas fa-sign-out-alt fa-sm fa-fw"></i> Cerrar Sesión
+                    </a>
+                </div>
+            </div>
+        <?php endif; ?>
+    </div>
+
+    <Form action="../Admin-Dashboard/ABML-Cita/Alta-Cita.php" method="post">
+        <div class="reserva-box" id="reserva-box">
+            <li>
+                <h1>Reserva tu cita</h1>
+            </li>
             <li>
                 <label for="Fecha">Fecha:</label>
                 <input type="date" id="Fecha" name="Fecha" required>
@@ -64,20 +87,35 @@
                     <option value="">Selecciona un barbero</option>
                     <option value="Guillermo">Guillermo</option>
                     <option value="Luciano">Luciano</option>
-                    </select>
-                    </li>
-                    <li>
-                    <button class="boton-reserva" id="boton-reserva" name="Btn-Reserva" type="submit">Reservar</button>
-                    </li>
-                    <li class="info-box" id="info-box">
-                        <h2>Horario de Atencion</h2>
-                        <p>Lunes a Sabado 10:00 - 19:00</p>
-                        <p>Domingo: Cerrado</p>
-                    </li>
-            </Form>
-
+                </select>
             </li>
-        </form>
-    </div>
+            <li>
+                <button class="boton-reserva" id="boton-reserva" name="Btn-Reserva" type="submit">Reservar</button>
+            </li>
+            <li class="info-box" id="info-box">
+                <h2>Horario de Atencion</h2>
+                <p>Lunes a Sabado 10:00 - 19:00</p>
+                <p>Domingo: Cerrado</p>
+            </li>
+        </div>
+    </Form>
+
+    <script>
+    // Abre o cierra el menú de usuario
+    function toggleUserMenu() {
+        const userMenu = document.getElementById('userMenu');
+        userMenu.classList.toggle('activo');
+    }
+
+    // Cierra el menú de usuario si se hace click fuera de él
+    document.addEventListener('click', function(event) {
+        const userDropdown = document.querySelector('.user-dropdown');
+        const userMenu = document.getElementById('userMenu');
+        
+        if (userDropdown && !userDropdown.contains(event.target)) {
+            userMenu.classList.remove('activo');
+        }
+    });
+    </script>
 </body>
 </html>
