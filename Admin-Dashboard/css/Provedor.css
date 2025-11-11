@@ -1,0 +1,116 @@
+/* ---------------------- */
+/*   FUENTES GENERALES    */
+/* ---------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap');
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(135deg, #d9d9d9, #bfbfbf);
+}
+
+/* ---------------------- */
+/*        MODAL           */
+/* ---------------------- */
+.modal {
+    width: 100%;
+    height: 100vh; /* ✅ hace que abarque toda la pantalla */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    inset: 0; /* ✅ asegura el centrado absoluto */
+}
+
+
+
+/* ---------------------- */
+/*    CAJA DEL FORM       */
+/* ---------------------- */
+.modal-content {
+    background: #ffffff;
+    padding: 35px;
+    border-radius: 16px;
+    width: 420px;
+
+    box-shadow: 0px 6px 18px rgba(0,0,0,0.25);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* ---------------------- */
+/*       TITULO           */
+/* ---------------------- */
+h2 {
+    font-weight: 600;
+    margin-bottom: 25px;
+    font-size: 24px;
+}
+
+/* ---------------------- */
+/*        INPUTS          */
+/* ---------------------- */
+.modal-content input[type="text"],
+.modal-content input[type="email"],
+.modal-content input[type="password"] {
+    width: 90%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #dcdcdc;
+    font-size: 15px;
+    outline: none;
+    transition: 0.2s ease;
+}
+
+.modal-content input:focus {
+    border-color: #4b74ff;
+    box-shadow: 0 0 5px rgba(75,116,255,0.5);
+}
+
+/* ---------------------- */
+/*        BOTONES         */
+/* ---------------------- */
+button {
+    width: 90%;
+    margin-top: 10px;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    background: #4b74ff;
+    color: white;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    background: #000000;
+    transform: scale(1.02);
+}
+
+/* ---------------------- */
+/*      BOTÓN CERRAR      */
+/* ---------------------- */
+.close {
+    color: #444;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    align-self: flex-end;
+    margin-bottom: 5px;
+    transition: 0.2s ease;
+}
+
+.close:hover {
+    color: #ff3f3f;
+}

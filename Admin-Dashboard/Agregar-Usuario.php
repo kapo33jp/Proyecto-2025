@@ -4,11 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Agregar Usuario</title>
-    <link rel="stylesheet" href="/Admin-Dashboard/css/Usuarios.css">
+    <link rel="stylesheet" href="css/Agr-Usuario.css">
 </head>
 <body>
     <!-- Página de Registro -->
-    <div class="modal" style="display: block;">
+    <div class="modal">
         <div class="modal-content">
             <a class="close" aria-label="Cerrar">&times;</a>
             <h2>Registro</h2>

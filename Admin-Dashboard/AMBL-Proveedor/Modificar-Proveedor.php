@@ -34,12 +34,14 @@ if (!$proveedor) {
 <head>
     <meta charset="UTF-8">
     <title>Modificar Proveedor</title>
-    <link rel="stylesheet" href="../css/Mod-Proveedor.css">
+    <link rel="stylesheet" href="../css/Mod-Provedor.css">
 </head>
 <body>
-    <h2>Modificar Proveedor</h2>
+
 
     <form action="Modificar-Proveedor.php" method="post">
+         <a class="close" aria-label="Cerrar">&times;</a>
+           <h2>Modificar Proveedor</h2>
         <input type="hidden" name="idproveedor" value="<?= htmlspecialchars($proveedor['idproveedor']) ?>">
 
         Nombre: <input type="text" id="nombreproveedor" name="nombreproveedor" value="<?= htmlspecialchars($proveedor['nombreproveedor']) ?>" required><br>
@@ -49,4 +51,15 @@ if (!$proveedor) {
         <button type="submit">Modificar</button>
     </form>
 </body>
+
+
+    <script>
+        // Cerrar modal al hacer clic en la "X"
+        document.querySelector('.close').addEventListener('click', function() {
+            window.location.href = '../Proveedores.php'; // Redirigir a la página de proveedores
+        });
+    </script>
+
 </html>
+
+
