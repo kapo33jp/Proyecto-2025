@@ -31,7 +31,7 @@ $proveedores = $conn->query("SELECT idproveedor, nombreproveedor FROM proveedor"
             <a class="close" aria-label="Cerrar">&times;</a>
             <h2>Registro de Producto</h2>
 
-            <form action="..//Admin-Dashboard/ABML-Producto/Alta-Producto.php" method="post">
+            <form action="..//Admin-Dashboard/ABML-Producto/Alta-Producto.php" method="post" enctype="multipart/form-data">
                 <input type="text" name="nombreproducto" required placeholder="Nombre del producto" /><br /><br />
                 <input type="text" name="precioproducto" required placeholder="Precio del producto" /><br /><br />
                 <input type="text" name="tipoproducto" required placeholder="Tipo de producto" /><br /><br />
@@ -43,11 +43,13 @@ $proveedores = $conn->query("SELECT idproveedor, nombreproveedor FROM proveedor"
                     <?php endwhile; ?>
                 </select><br /><br />
 
+                <input type="file" name="imagenproducto" required placeholder="Imagen del producto" /><br /><br />
+
                 <button type="submit" name="btnproducto">Agregar</button>
+
             </form>
         </div>
     </div>
-
     <script>
         document.querySelector('.close').addEventListener('click', function() {
             window.location.href = 'inventario.php';

@@ -112,7 +112,7 @@ if (isset($_POST['nombre'])) {
             <div class="carrito-box">
                 <?php if(isset($_SESSION['user_email'])): ?>
                     <form method="post" action="">
-                        <input type="hidden" name="id" value="5">
+                        <input type="hidden" name="id" value="8">
                         <input type="hidden" name="nombre" value="Pasta Capilar">
                         <input type="hidden" name="precio" value="500">
                         <input type="hidden" name="imagen" value="../Fotos/Cera4.jpg">
@@ -132,7 +132,7 @@ if (isset($_POST['nombre'])) {
             <div class="carrito-box">
                 <?php if(isset($_SESSION['user_email'])): ?>
                     <form method="post" action="">
-                        <input type="hidden" name="id" value="6">
+                        <input type="hidden" name="id" value="9">
                         <input type="hidden" name="nombre" value="Cera en Polvo">
                         <input type="hidden" name="precio" value="600">
                         <input type="hidden" name="imagen" value="../Fotos/CERAENPOLVO.jpg">
@@ -152,7 +152,7 @@ if (isset($_POST['nombre'])) {
             <div class="carrito-box">
                 <?php if(isset($_SESSION['user_email'])): ?>
                     <form method="post" action="">
-                        <input type="hidden" name="id" value="7">
+                        <input type="hidden" name="id" value="10">
                         <input type="hidden" name="nombre" value="Cera Matte Wax">
                         <input type="hidden" name="precio" value="500">
                         <input type="hidden" name="imagen" value="../Fotos/CERAMATTEWAX.jpg">
@@ -172,7 +172,7 @@ if (isset($_POST['nombre'])) {
             <div class="carrito-box">
                 <?php if(isset($_SESSION['user_email'])): ?>
                     <form method="post" action="">
-                        <input type="hidden" name="id" value="8">
+                        <input type="hidden" name="id" value="11">
                         <input type="hidden" name="nombre" value="Oleo para Barba">
                         <input type="hidden" name="precio" value="450">
                         <input type="hidden" name="imagen" value="../Fotos/OLEOPARABARBA.jpg">

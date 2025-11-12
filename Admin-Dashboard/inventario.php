@@ -126,6 +126,7 @@
                                 <th scope="col">Precio</th>
                                 <th scope="col">Tipo</th>
                                 <th scope="col">Proveedor</th>
+                                <th scope="col">Imagen</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -140,6 +141,10 @@
                         <td><?= $datos->precioproducto ?></td>
                         <td><?= $datos->tipoproducto ?></td>
                         <td><?= $datos->nombreproveedor ?></td>
+                        <td>
+                            <?php if ($datos->imagenproducto): ?>
+                                <img src="data:image/jpeg;base64,<?= base64_encode($datos->imagenproducto) ?>" alt="Imagen del producto" style="width: 100px; height: auto;" />
+                            <?php endif; ?>
                         <td>
                         <a href="ABML-Producto/Modificar-Producto.php?idproducto=<?= $datos->idproducto?>" class="btn btn-small btn-danger"><i class="fa-solid fa-pen-to-square"></i></a>
 
