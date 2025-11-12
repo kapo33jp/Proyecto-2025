@@ -8,6 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $precioproducto = trim($_POST['precioproducto'] ?? '');
     $tipoproducto = trim($_POST['tipoproducto'] ?? '');
     $idproveedor = intval($_POST['idproveedor'] ?? 0);
+    $imagenproducto - trim($_POST['imagenproducto'] ?? '');
 
     // Validar conexión
     if (!isset($conn) || !$conn) {
@@ -16,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     mysqli_set_charset($conn, "utf8mb4");
 
     // Validar campos obligatorios
-    if ($nombreproducto === '' || $precioproducto === '' || $tipoproducto === '' || $idproveedor === 0) {
+    if ($nombreproducto === '' || $precioproducto === '' || $tipoproducto === '' || $idproveedor === 0 || $imagenproducto === '') {
         echo '<div class="alert alert-danger">Por favor complete todos los campos obligatorios.</div>';
         exit;
     }
