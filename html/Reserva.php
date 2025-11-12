@@ -54,7 +54,8 @@
             </li>
             <li>
                 <label for="Fecha">Fecha:</label>
-                <input type="date" id="Fecha" name="Fecha" required>
+                <input type="date" id="Fecha" name="Fecha" min="<?php echo date('Y-m-d'); ?>" max="<?php echo date('Y-m-d', strtotime('+14 days')); ?>"required>
+
             </li>
             <li>
                 <label for="Hora">Hora:</label>

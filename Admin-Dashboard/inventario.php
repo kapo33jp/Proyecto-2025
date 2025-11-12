@@ -118,7 +118,7 @@
                             <i class="fa-solid fa-square-plus"></i> Agregar Items
                         </button>
                     </div>
-                    <table class="tabla-inventario" style="width: 50%; margin-top: 20px;">
+                    <table class="tabla-inventario" style="width: 50%; margin-top: 20px; text-align: center;">
                         <thead class="bg-gray-50">
                             <tr>
                                 <th class="p-3" scope="col">ID</th>
