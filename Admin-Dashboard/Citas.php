@@ -70,7 +70,7 @@
                 <h2 style="margin: 25px;">Listado de Citas</h2>
                 <div class="table-responsive">
 
-            <table class="tabla-clientes" style="padding: 20px; border-collapse: separate; border-spacing: 20px 0;">
+            <table class="tablas-admins">
                 <thead class ="bg-gray-50">
                     <tr>
 

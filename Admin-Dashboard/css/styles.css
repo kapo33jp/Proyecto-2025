@@ -11241,4 +11241,19 @@ body {
   font-size: 0.75rem;
   border-radius: 0.375rem !important;
 }
+    /* Estilos personalizados para las tablas en el panel de administració /*n */
 
+
+.tablas-admins {
+  background-color: #ffffff;
+  border-collapse: separate;
+  border-spacing: 10px;
+  padding: 1rem;
+  font-size: 15px;
+  margin-bottom: 2rem;
+  box-shadow: 0.5rem 0.5rem 0.5rem rgb(0, 0, 0, 0.075);
+  border-radius: 0.375rem;
+  overflow: hidden;
+  border: 1px solid #e3e6f0;
+  text-align: center;
+}
