@@ -1,5 +1,6 @@
-<?php
-require('../Proyecto-2025/php/libs/libs/'); // Asegurate de tener FPDF instalado
+<?php 
+
+require('../libs/libs/fpdf.php');
 
 $pdf = new FPDF();
 $pdf->AddPage();
