@@ -121,8 +121,8 @@ $total = 0;
                     <img class="user-img" src="../Fotos/User-Logogo.webp" alt="Usuario">
                 </div>
                 <div class="user-menu" id="userMenu">
-                    <a href="#" class="user-menu-item">
-                        <i class="fas fa-user fa-sm fa-fw"></i> Perfil
+                    <a href="Citas-Usuario.php" class="user-menu-item">
+                        <i class="fas fa-user fa-sm fa-fw"></i> Citas
                     </a>
                     <div class="user-menu-divider"></div>
                     <a href="../php/logout.php" class="user-menu-item">
