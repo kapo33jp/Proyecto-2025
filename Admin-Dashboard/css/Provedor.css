@@ -1,6 +1,4 @@
-/* ---------------------- */
-/*   FUENTES GENERALES    */
-/* ---------------------- */
+/* Fuentes */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap');
 
 body {
@@ -11,54 +9,41 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-
     background: linear-gradient(135deg, #d9d9d9, #bfbfbf);
 }
 
-/* ---------------------- */
-/*        MODAL           */
-/* ---------------------- */
+/* Superposición del modal */
 .modal {
     width: 100%;
-    height: 100vh; /* ✅ hace que abarque toda la pantalla */
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     position: fixed;
-    inset: 0; /* ✅ asegura el centrado absoluto */
+    inset: 0;
 }
 
-
-
-/* ---------------------- */
-/*    CAJA DEL FORM       */
-/* ---------------------- */
+/* Caja de contenido del modal */
 .modal-content {
     background: #ffffff;
     padding: 35px;
     border-radius: 16px;
     width: 420px;
-
     box-shadow: 0px 6px 18px rgba(0,0,0,0.25);
-
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
 }
 
-/* ---------------------- */
-/*       TITULO           */
-/* ---------------------- */
+/* Título */
 h2 {
     font-weight: 600;
     margin-bottom: 25px;
     font-size: 24px;
 }
 
-/* ---------------------- */
-/*        INPUTS          */
-/* ---------------------- */
+/* Inputs */
 .modal-content input[type="text"],
 .modal-content input[type="email"],
 .modal-content input[type="password"] {
@@ -76,9 +61,7 @@ h2 {
     box-shadow: 0 0 5px rgba(75,116,255,0.5);
 }
 
-/* ---------------------- */
-/*        BOTONES         */
-/* ---------------------- */
+/* Botones */
 button {
     width: 90%;
     margin-top: 10px;
@@ -98,9 +81,7 @@ button:hover {
     transform: scale(1.02);
 }
 
-/* ---------------------- */
-/*      BOTÓN CERRAR      */
-/* ---------------------- */
+/* Botón de cerrar */
 .close {
     color: #444;
     font-size: 28px;

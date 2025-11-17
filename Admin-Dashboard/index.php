@@ -72,11 +72,11 @@
 
 
     <div>
-    <button type="button" id="boton-empleado" onclick="window.location.href='Agregar-Usuario.php'"> 
+    <button type="button" id="boton-agregar" onclick="window.location.href='Agregar-Usuario.php'" style="margin-bottom: 15px; background-color: #007bff; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer;"> 
     <i class="fa-solid fa-user-plus"></i> Agregar Usuario</button> 
     
     </div>  
-            <table class="tablas-admins">
+            <table class="table table-bordered">
                 <thead class ="bg-gray-50">
                     <tr>
 
@@ -158,7 +158,7 @@
                                 Inventario
                             </a>
                             
-                            <a class="nav-link" href="inventario.php">
+                            <a class="nav-link" href="..//php/factura.php">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-clipboard-list"></i></i></div>
                                 Factura
                             </a>

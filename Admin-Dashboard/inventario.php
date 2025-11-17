@@ -81,6 +81,10 @@ if (!isset($_SESSION['user_idusuario']) || $_SESSION['user_idusuario'] == null |
                         <div class="sb-nav-link-icon"><i class="fa-solid fa-boxes-stacked"></i></div>
                         Inventario
                     </a>
+                    <a class="nav-link" href="..//php/factura.php">
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-clipboard-list"></i></i></div>
+                        Factura
+                    </a>
                 </div>
             </div>
             <div class="sb-sidenav-footer">
@@ -95,11 +99,11 @@ if (!isset($_SESSION['user_idusuario']) || $_SESSION['user_idusuario'] == null |
                 <h1 class="mt-4">Inventario Disponible</h1>
                 <div class="table-responsive">
                     <div>
-                        <button type="button" id="boton-empleado" onclick="window.location.href='Agregar-Producto-Form.php'">
+                        <button type="button" id="boton-agregar" onclick="window.location.href='Agregar-Producto-Form.php'" style="margin-bottom: 15px; background-color: #007bff; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer;">
                             <i class="fa-solid fa-square-plus"></i> Agregar Items
                         </button>
                     </div>
-                    <table class="tablas-admins">
+                    <table class="table table-bordered">
                         <thead class="bg-gray-50">
                             <tr>
                                 <th class="p-3" scope="col">ID</th>

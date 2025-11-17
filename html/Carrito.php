@@ -186,7 +186,7 @@ $total = 0;
             <!-- Botones de acción -->
             <div class="carrito-botones">
                 <a href="?vaciar=1" class="btn-vaciar">Vaciar carrito</a>
-                <a href="?finalizar=1" class="btn-comprar">Finalizar compra</a>
+                <a href="..//php/factura.php" class="btn-comprar">Finalizar compra</a>
             </div>
 
         <?php endif; ?>

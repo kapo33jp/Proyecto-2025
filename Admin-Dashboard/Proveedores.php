@@ -84,10 +84,10 @@
 
 
     <div>
-    <button type="button" id="boton-empleado" onclick="window.location.href='Agregar-Provedor-Form.html'"> 
+    <button type="button" id="boton-agregar" onclick="window.location.href='Agregar-Provedor-Form.html'" style="margin-bottom: 15px; background-color: #007bff; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer;"> 
     <i class="fa-solid fa-user-plus"></i> Agregar Proveedor</button> 
     </div>  
-            <table class="tablas-admins">
+            <table class="table table-bordered">
                 <thead class ="bg-gray-50">
                     <tr>
 
@@ -166,6 +166,10 @@
                                 Inventario
                             </a>
                             
+                            <a class="nav-link" href="..//php/factura.php">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-clipboard-list"></i></i></div>
+                                Factura
+                            </a>
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">

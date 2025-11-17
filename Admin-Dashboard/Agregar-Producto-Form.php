@@ -20,8 +20,9 @@ $proveedores = $conn->query("SELECT idproveedor, nombreproveedor FROM proveedor"
 <html lang="es">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agregar Producto</title>
+    <link rel="stylesheet" href="..//Admin-Dashboard/css/Agr-item.css">
     
 </head>
 
