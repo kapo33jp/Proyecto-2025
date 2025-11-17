@@ -57,22 +57,32 @@ if (!isset($_SESSION['user_idusuario']) || $_SESSION['user_idusuario'] == null |
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
+
                         <div class="sb-sidenav-menu-heading">Panel de Control</div>
+
                         <a class="nav-link" href="index.php">
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-users"></i></div>
                             Usuarios
                         </a>
+
                         <a class="nav-link" href="Citas.php">
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
                             Citas
                         </a>
+
                         <a class="nav-link" href="Proveedores.php">
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-truck-fast"></i></div>
                             Proveedores
                         </a>
+
                         <a class="nav-link" href="inventario.php">
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-boxes-stacked"></i></div>
                             Inventario
+                        </a>
+
+                        <a class="nav-link" href="..//php/factura.php">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-clipboard-list"></i></i></div>
+                            Factura
                         </a>
                     </div>
                 </div>
@@ -86,7 +96,7 @@ if (!isset($_SESSION['user_idusuario']) || $_SESSION['user_idusuario'] == null |
             <main>
                 <h2 style="margin: 25px;">Listado de Citas</h2>
                 <div class="table-responsive">
-                    <table class="tablas-admins">
+                    <table class="table table-bordered">
                         <thead class="bg-gray-50">
                             <tr>
                                 <th class="p-4" style="padding-right: 30px;" scope="col">ID</th>
