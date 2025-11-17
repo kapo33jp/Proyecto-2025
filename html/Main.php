@@ -75,7 +75,7 @@
 
     <!-- Contenido principal -->
     <main class="contenido">
-        <h1>MOCA-hairstudio</h1>
+        <h1>MOCA-hairstudios</h1>
     </main>
 
     <eslogan class="Eslogan">
