@@ -1,6 +1,4 @@
 <?php
-
-// Incluir archivo de conexión a la base de datos
 include '../../php/conexion.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

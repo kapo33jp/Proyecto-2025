@@ -47,6 +47,21 @@
         <?php endif; ?>
     </div>
 
+        <!-- Botón para abrir/cerrar el menú lateral -->
+    <button class="menu-toggle" onclick="toggleMenu()">
+        <img src="../Fotos/Moca.webp" alt="Menú">
+    </button>
+
+    <!-- Menú lateral de navegación -->
+    <nav class="menu">
+        <ul>
+            <li><a href="Main.php">Inicio</a></li>
+            <li><a href="Quienes-Somos.php">Quienes somos</a></li>
+            <li><a href="Productos.php">Productos</a></li>
+            <li><a href="Carrito.php">Carrito</a></li>
+        </ul>
+    </nav>
+
 <Form action="../Admin-Dashboard/ABML-Cita/Alta-Cita.php" method="post">
     <div class="reserva-box" id="reserva-box">
         <li>
@@ -95,6 +110,8 @@
         <li>
             <button class="boton-reserva" id="boton-reserva" name="Btn-Reserva" type="submit">Reservar</button>
         </li>
+        <br> </br>
+        <plinea>----------------------------------------------------------------</plinea>
         <li class="info-box" id="info-box">
             <h2>Horario de Atencion</h2>
             <p>Lunes a Sabado 10:00 - 19:00</p>
@@ -119,6 +136,32 @@
             userMenu.classList.remove('activo');
         }
     });
+    </script>
+
+        <!-- Scripts para interacción de menú -->
+        
+    <script>
+        // Abre o cierra el menú lateral
+        function toggleMenu() {
+            const menu = document.querySelector('.menu');
+            menu.classList.toggle('activo');
+        }
+
+        // Abre o cierra el menú de usuario
+        function toggleUserMenu() {
+            const userMenu = document.getElementById('userMenu');
+            userMenu.classList.toggle('activo');
+        }
+
+        // Cierra el menú de usuario si se hace click fuera de él
+        document.addEventListener('click', function(event) {
+            const userDropdown = document.querySelector('.user-dropdown');
+            const userMenu = document.getElementById('userMenu');
+            
+            if (userDropdown && !userDropdown.contains(event.target)) {
+                userMenu.classList.remove('activo');
+            }
+        });
     </script>
 </body>
 </html>

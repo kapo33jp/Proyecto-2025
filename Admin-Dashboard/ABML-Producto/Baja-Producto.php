@@ -1,6 +1,5 @@
 <?php
 
-// Conexión a la base de datos
 include '../../php/conexion.php';
 
 // Solo procesar si la petición es POST
