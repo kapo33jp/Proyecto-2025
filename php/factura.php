@@ -16,7 +16,7 @@ $pdf->AddPage();
 $pdf->SetFont('Helvetica','',10);
 $pdf->Cell(0,6,to_iso88591('Moca-HairStudio'),0,1,'C');
 $pdf->SetFont('Helvetica','',7);
-$pdf->Cell(0,5,'RUT: 123456789',0,1,'C');
+$pdf->Cell(0,5,'RUT: 107653482611',0,1,'C');
 $pdf->Cell(0,5,to_iso88591('Gregorio Sanabria 939'),0,1,'C');
 $pdf->Cell(0,5,to_iso88591('Maldonado, Uruguay'),0,1,'C');
 $pdf->Cell(0,5,'Tel: 096 082 949',0,1,'C');
