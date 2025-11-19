@@ -1,4 +1,5 @@
 <?php
+
 include '../../php/conexion.php';
 
 // Si se envía el formulario (POST) actualiza el usuario
@@ -65,10 +66,12 @@ if (!$usuarios) {
 
         <!-- Campo contraseña con botón para mostrar/ocultar -->
         <div style="position:relative; display:inline-block;">
-            Contraseña:
-            <input id="contrasenaInput" type="password" name="contrasena" value="<?= htmlspecialchars($usuarios['contrasena'] ?? '') ?>" required style="padding-right:36px;">
-            <button type="button" id="togglePassword" aria-label="Mostrar contraseña" title="Mostrar / Ocultar contraseña" style="position:absolute; right:6px; top:50%; transform:translateY(-50%); border:none; background:transparent; cursor:pointer; padding:4px;">
-                <!-- Icono inicial (ojo abierto) -->
+        Contraseña:
+                <br>
+        <input id="contrasenaInput" type="password" name="contrasena" value="<?= htmlspecialchars($usuarios['contrasena'] ?? '') ?>" required style="padding-right:36px;">
+
+        <button type="button" id="togglePassword" aria-label="Mostrar contraseña" title="Mostrar / Ocultar contraseña" style="position:absolute; right:6px; top:50%; transform:translateY(-50%); border:none; background:transparent; cursor:pointer; padding:4px;">
+                <br>
                 <svg id="iconEye" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"></path>
                     <circle cx="12" cy="12" r="3"></circle>

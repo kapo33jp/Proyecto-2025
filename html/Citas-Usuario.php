@@ -106,7 +106,7 @@
                         <td><?= $datos->Servicio ?? '' ?></td>
                         <td><?= $datos->Barbero ?? '' ?></td>
                         <td>
-                            <form class="Baja-Empleado-Form" action="../Admin-Dashboard/ABML-Cita/Baja-Cita.php" method="POST" style="display:inline;">
+                            <form class="Baja-Empleado-Form" action="../Admin-Dashboard/ABML-Cita/Baja-Cita-Usuario.php" method="POST" style="display:inline;">
                                 <input type="hidden" name="idcita" value="<?= $datos->idcita ?>" />
                                 <button type="submit" class="btn btn-small btn-warning" onclick="return confirm('¿Está seguro de cancelar esta cita?');">
                                     <i class="fa-solid fa-trash"></i>
