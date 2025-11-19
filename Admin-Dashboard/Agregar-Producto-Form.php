@@ -22,21 +22,29 @@ $proveedores = $conn->query("SELECT idproveedor, nombreproveedor FROM proveedor"
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agregar Producto</title>
+    <!-- Estilos para el modal y el formulario -->
     <link rel="stylesheet" href="..//Admin-Dashboard/css/Agr-item.css">
     
 </head>
 
 <body>
+    <!-- Modal centrado para el registro de productos -->
     <div class="modal" >
         <div class="modal-content">
+            <!-- Enlace para cerrar el modal (redirige a inventario.php) -->
             <a class="close" aria-label="Cerrar">&times;</a>
             <h2>Registro de Producto</h2>
 
+            <!-- Formulario: multipart para permitir subida de imagen -->
             <form action="..//Admin-Dashboard/ABML-Producto/Alta-Producto.php" method="post" enctype="multipart/form-data">
+                <!-- Campo: nombre del producto -->
                 <input type="text" name="nombreproducto" required placeholder="Nombre del producto" /><br /><br />
+                <!-- Campo: precio -->
                 <input type="text" name="precioproducto" required placeholder="Precio del producto" /><br /><br />
+                <!-- Campo: tipo -->
                 <input type="text" name="tipoproducto" required placeholder="Tipo de producto" /><br /><br />
 
+                <!-- Selección de proveedor (poblada dinámicamente) -->
                 <select name="idproveedor" required>
                     <option value="">Seleccione un proveedor</option>
                     <?php while($prov = $proveedores->fetch_object()): ?>
@@ -44,13 +52,16 @@ $proveedores = $conn->query("SELECT idproveedor, nombreproveedor FROM proveedor"
                     <?php endwhile; ?>
                 </select><br /><br />
 
+                <!-- Archivo: imagen del producto -->
                 <input type="file" name="imagenproducto" required placeholder="Imagen del producto" /><br /><br />
 
+                <!-- Botón para enviar el formulario -->
                 <button type="submit" name="btnproducto">Agregar</button>
 
             </form>
         </div>
     </div>
+    <!-- Script: cierra el modal redirigiendo a la página de inventario -->
     <script>
         document.querySelector('.close').addEventListener('click', function() {
             window.location.href = 'inventario.php';

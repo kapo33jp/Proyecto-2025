@@ -9,30 +9,31 @@
 <body>
     <div class="modal">
         <div class="modal-content">
+            <!-- Botón para cerrar el modal -->
             <a class="close" aria-label="Cerrar">&times;</a>
             <h2>Registro de Proveedor</h2>
 
             <form action="/Admin-Dashboard/AMBL-Proveedor/Alta-Proveedor.php" method="post">
-
-                <!-- Campo de Nombre -->
+                <!-- Nombre del proveedor -->
                 <input type="text" id="nombre" name="nombreproveedor" required placeholder="Nombre del proveedor" /><br /><br />
 
-                <!-- Campo de Email -->
+                <!-- Correo electrónico del proveedor -->
                 <input type="email" id="email" name="emailproveedor" required placeholder="Email del proveedor" /><br /><br />
 
-                <!-- Campo de Teléfono -->
+                <!-- Teléfono del proveedor -->
                 <input type="text" id="telefono" name="telefonoproveedor" required placeholder="Teléfono del proveedor" /><br /><br />
 
+                <!-- Botón para enviar el formulario -->
                 <button type="submit" name="btnproveedor">Registrar</button>
             </form>
         </div>
     </div>
-</body>
-</html>
 
-    <script>
-        // Cerrar modal al hacer clic en la "X"
+    <script></script>
+        // Cerrar modal al hacer clic en la "X" y redirigir a la lista de proveedores
         document.querySelector('.close').addEventListener('click', function() {
-            window.location.href = 'Proveedores.php'; // Redirigir a la página de proveedores
+            window.location.href = 'Proveedores.php';
         });
     </script>
+</body>
+</html>

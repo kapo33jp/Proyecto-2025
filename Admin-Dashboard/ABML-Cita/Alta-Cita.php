@@ -1,26 +1,38 @@
 <?php
+session_start();
+include '../../php/conexion.php';
 
-    include '../../php/conexion.php';
-
-// Procesar solo si se envió el formulario (Btn-Reserva)
+// Procesar solo solicitudes POST provenientes del formulario (Btn-Reserva)
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['Btn-Reserva'])) {
 
-    //Definición de variables
-    $idcita = isset($_POST['idcita']) ? trim($_POST['idcita']) : '';
-    $Fecha = isset($_POST['Fecha']) ? trim($_POST['Fecha']) : '';
-    $Hora = isset($_POST['Hora']) ? trim($_POST['Hora']) : '';
-    $Servicio = isset($_POST['Servicio']) ? trim($_POST['Servicio']) : '';
-    $Barbero = isset($_POST['Barbero']) ? trim($_POST['Barbero']) : '';
+    // Obtener campos del formulario
+    $idusuario = trim($_POST['idusuario'] ?? '');
+    $idcita    = trim($_POST['idcita'] ?? '');
+    $Fecha      = trim($_POST['Fecha'] ?? '');
+    $Hora       = trim($_POST['Hora'] ?? '');
+    $Servicio   = trim($_POST['Servicio'] ?? '');
+    $Barbero    = trim($_POST['Barbero'] ?? '');
 
-    $stmt = mysqli_prepare($conn, "INSERT INTO cita (idcita, Fecha, Hora, Servicio, Barbero) VALUES (?, ?, ?, ?, ?)");
-    mysqli_stmt_bind_param($stmt, "sssss", $idcita, $Fecha, $Hora, $Servicio, $Barbero);
+    // Validar usuario
+    if ($idusuario === '') {
+        echo "<script>alert('Error: Usuario no válido');</script>";
+        echo "<script>window.location.href='../../html/Reserva.php';</script>";
+        exit();
+    }
 
-    //Ejecutar
+    // Generar idcita si no se proporciona
+    if ($idcita === '') {
+        $idcita = 'CITA_' . date('YmdHis') . '_' . $idusuario;
+    }
+
+    // Preparar e insertar registro
+    $stmt = mysqli_prepare($conn, "INSERT INTO cita (idcita, idusuario, Fecha, Hora, Servicio, Barbero) VALUES (?, ?, ?, ?, ?, ?)");
+    mysqli_stmt_bind_param($stmt, "sissss", $idcita, $idusuario, $Fecha, $Hora, $Servicio, $Barbero);
+
     if (mysqli_stmt_execute($stmt)) {
         mysqli_stmt_close($stmt);
         mysqli_close($conn);
-
-        // Redirigir al dashboard (ruta relativa desde ABML-cita)
+        // Redirigir al panel principal
         header("Location: ../../html/Main.php");
         exit();
     } else {
@@ -29,5 +41,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['Btn-Reserva'])) {
 
     mysqli_stmt_close($stmt);
     mysqli_close($conn);
+} else {
+    // Si no es POST, redirigir al formulario de reserva
+    header("Location: ../../html/Reserva.php");
+    exit();
 }
 ?>

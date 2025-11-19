@@ -80,7 +80,7 @@
                 <thead class ="bg-gray-50">
                     <tr>
 
-                        <th class = "p-3"style="padding-right: 30px" scope="col-8">ID </th>
+                        <th style="padding-right: 30px; text-align: center;" scope="col-">ID </th>
                         <th style="padding-right: 55px" scope="col-">Nombre</th>
                         <th style="padding-right: 55px" scope="col-">Apellido</th>
                         <th style="padding-right: 55px" scope="col-">Email</th>

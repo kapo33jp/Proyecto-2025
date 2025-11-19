@@ -65,7 +65,6 @@
                 <img class="rounded-circle" src="../Fotos/User-Logogo.webp" width="40" height="40" style="object-fit: cover; background-color: transparent;">
             </a>
             <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="userDropdown">
-                <li><a class="dropdown-item" href="#"><i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i> Perfil</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="logout.php"><i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i> Logout</a></li>
             </ul>
@@ -91,7 +90,7 @@
                 <thead class ="bg-gray-50">
                     <tr>
 
-                        <th class = "p-3"style="padding-right: 30px" scope="col-8">ID </th>
+                        <th style="padding-right: 30px; text-align: center;" scope="col-8">ID </th>
                         <th style="padding-right: 55px" scope="col-">Nombre</th>
                         <th style="padding-right: 55px" scope="col-">Email</th>
                         <th style="padding-right: 55px" scope="col-">Telefono</th>

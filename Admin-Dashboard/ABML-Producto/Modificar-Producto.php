@@ -1,44 +1,50 @@
 <?php
+
 session_start();
 include '../../php/conexion.php';
 
-// Verificar si se recibió el ID del producto por GET
+// Obtener ID del producto desde GET; si no viene, redirigir al inventario
 $idproducto = isset($_GET['idproducto']) ? intval($_GET['idproducto']) : 0;
-
 if ($idproducto === 0) {
     header("Location: ../inventario.php");
     exit;
 }
 
-// Obtener datos del producto
+// Consultar datos actuales del producto
 $sql = $conn->query("SELECT * FROM producto WHERE idproducto = $idproducto");
 $producto = $sql->fetch_object();
 
+// Si no existe el producto, volver al inventario
 if (!$producto) {
     header("Location: ../inventario.php");
     exit;
 }
 
-// Obtener proveedores para el dropdown
+// Obtener lista de proveedores para el select
 $proveedores = $conn->query("SELECT * FROM proveedor");
 
-// Procesar el formulario cuando se envía por POST
+// Procesar envío del formulario (método POST)
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Recuperar y sanitizar datos del formulario
     $idproducto = intval($_POST['idproducto'] ?? 0);
     $nombreproducto = trim($_POST['nombreproducto'] ?? '');
     $precioproducto = trim($_POST['precioproducto'] ?? '');
     $tipoproducto = trim($_POST['tipoproducto'] ?? '');
     $idproveedor = intval($_POST['idproveedor'] ?? 0);
 
+    // Validar campos obligatorios
     if ($idproducto === 0 || $nombreproducto === '' || $precioproducto === '' || $tipoproducto === '' || $idproveedor === 0) {
+        // Mensaje de error si falta algún campo
         echo "<script>
             alert('Por favor complete todos los campos');
         </script>";
     } else {
+        // Preparar y ejecutar la actualización usando prepared statements
         $stmt = mysqli_prepare($conn, "UPDATE producto SET nombreproducto = ?, precioproducto = ?, tipoproducto = ?, idproveedor = ? WHERE idproducto = ?");
         mysqli_stmt_bind_param($stmt, "sdsii", $nombreproducto, $precioproducto, $tipoproducto, $idproveedor, $idproducto);
 
         if (mysqli_stmt_execute($stmt)) {
+            // Cerrar statement y redirigir con mensaje de éxito
             mysqli_stmt_close($stmt);
             echo "<script>
                 alert('Producto modificado correctamente');
@@ -46,6 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </script>";
             exit;
         } else {
+            // Mensaje de error en la actualización
             echo "<script>
                 alert('Error al modificar el producto');
             </script>";
@@ -65,7 +72,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <h2>Modificar Producto</h2>
     
+    <!-- Formulario para editar producto -->
     <form method="POST" action="">
+        <!-- ID oculto para identificar el registro -->
         <input type="hidden" name="idproducto" value="<?= $producto->idproducto ?>">
         
         <div>
