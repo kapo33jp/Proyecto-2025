@@ -87,7 +87,7 @@
     <button type="button" id="boton-empleado" onclick="window.location.href='Agregar-Provedor-Form.html'"> 
     <i class="fa-solid fa-user-plus"></i> Agregar Proveedor</button> 
     </div>  
-            <table class="tablas-admins">
+            <table class="table table-bordered">
                 <thead class ="bg-gray-50">
                     <tr>
 

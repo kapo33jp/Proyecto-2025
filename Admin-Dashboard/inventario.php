@@ -99,7 +99,7 @@ if (!isset($_SESSION['user_idusuario']) || $_SESSION['user_idusuario'] == null |
                             <i class="fa-solid fa-square-plus"></i> Agregar Items
                         </button>
                     </div>
-                    <table class="tablas-admins">
+                    <table class="table table-bordered">
                         <thead class="bg-gray-50">
                             <tr>
                                 <th class="p-3" scope="col">ID</th>

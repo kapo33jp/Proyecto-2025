@@ -86,7 +86,7 @@ if (!isset($_SESSION['user_idusuario']) || $_SESSION['user_idusuario'] == null |
             <main>
                 <h2 style="margin: 25px;">Listado de Citas</h2>
                 <div class="table-responsive">
-                    <table class="tablas-admins">
+                    <table class="table table-bordered">
                         <thead class="bg-gray-50">
                             <tr>
                                 <th class="p-4" style="padding-right: 30px;" scope="col">ID</th>
