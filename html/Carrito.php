@@ -27,7 +27,7 @@ if (!isset($_SESSION['carrito'])) {
     $_SESSION['carrito'] = [];
 }
 
-/* --- SUMAR / RESTAR CANTIDAD --- */
+/* --- SUMAR y RESTAR CANTIDAD --- */
 if (isset($_GET['sumar'])) {
     $index = $_GET['sumar'];
     if (isset($_SESSION['carrito'][$index])) {
