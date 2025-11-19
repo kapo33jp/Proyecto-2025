@@ -174,7 +174,7 @@ html, body {
 
 .menu ul li a:hover {
     color: aquamarine;
-    text-shadow: 0 0 10px rgb(163, 182, 175);
+    text-shadow: 0 0 10px rgb(49, 58, 55);
 }
 
 /* Fondo del modal (pantalla oscura) */

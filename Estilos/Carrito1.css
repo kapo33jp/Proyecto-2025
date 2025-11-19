@@ -6,8 +6,9 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-image: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('../Fotos/Adentrooo-modified.jpg');
+     background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../Fotos/Adentrooo-modified.jpg') center/cover no-repeat fixed;
     overflow: hidden;
+   
 }
 
 html, body {
