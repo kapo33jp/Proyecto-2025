@@ -88,8 +88,8 @@
             <label for="Barbero">Barbero:</label>
             <select id="Barbero" name="Barbero" required>
                 <option value="">Selecciona un barbero</option>
-                <option value="Guillermo">Guillermo</option>
-                <option value="Luciano">Luciano</option>
+                <option value="Guillermo">Guille Capote</option>
+                <option value="Luciano">Luciano Garcia</option>
             </select>
         </li>
         <li>

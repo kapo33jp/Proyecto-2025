@@ -1,5 +1,5 @@
 body{
-    background-color: black;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../Fotos/Adentrooo-modified.jpg') center/cover no-repeat fixed;
     display: flex;
     align-items: center;
     justify-content: center;

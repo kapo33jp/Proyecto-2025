@@ -1,8 +1,7 @@
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-    url('../Fotos/Adentrooo-modified.jpg') center/cover no-repeat fixed;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../Fotos/Adentrooo-modified.jpg') center/cover no-repeat fixed;
     color: white;
     overflow: hidden;
 }
