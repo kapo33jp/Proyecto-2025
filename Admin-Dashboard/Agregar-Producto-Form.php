@@ -27,7 +27,7 @@ $proveedores = $conn->query("SELECT idproveedor, nombreproveedor FROM proveedor"
 </head>
 
 <body>
-    <div class="modal" style="display: block;">
+    <div class="modal" >
         <div class="modal-content">
             <a class="close" aria-label="Cerrar">&times;</a>
             <h2>Registro de Producto</h2>
