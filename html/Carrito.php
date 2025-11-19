@@ -27,46 +27,63 @@ if (!isset($_SESSION['carrito'])) {
     $_SESSION['carrito'] = [];
 }
 
-// Eliminar producto específico del carrito
-if (isset($_GET['eliminar'])) {
-    $index = $_GET['eliminar'];
-    unset($_SESSION['carrito'][$index]);
-    $_SESSION['carrito'] = array_values($_SESSION['carrito']); // Reindexar array
+/* --- SUMAR / RESTAR CANTIDAD --- */
+if (isset($_GET['sumar'])) {
+    $index = $_GET['sumar'];
+    if (isset($_SESSION['carrito'][$index])) {
+        $_SESSION['carrito'][$index]['cantidad']++;
+    }
     header("Location: Carrito.php");
     exit;
 }
 
-// Vaciar todo el carrito
+if (isset($_GET['restar'])) {
+    $index = $_GET['restar'];
+    if (isset($_SESSION['carrito'][$index])) {
+        if ($_SESSION['carrito'][$index]['cantidad'] > 1) {
+            $_SESSION['carrito'][$index]['cantidad']--;
+        }
+    }
+    header("Location: Carrito.php");
+    exit;
+}
+
+/* --- ELIMINAR PRODUCTO --- */
+if (isset($_GET['eliminar'])) {
+    $index = $_GET['eliminar'];
+    unset($_SESSION['carrito'][$index]);
+    $_SESSION['carrito'] = array_values($_SESSION['carrito']); 
+    header("Location: Carrito.php");
+    exit;
+}
+
+/* --- VACIAR CARRITO --- */
 if (isset($_GET['vaciar'])) {
     $_SESSION['carrito'] = [];
     header("Location: Carrito.php");
     exit;
 }
 
-// Procesar finalización de compra
+/* --- FINALIZAR COMPRA --- */
 $mensaje = "";
 if (isset($_GET['finalizar'])) {
     $idusuario = $_SESSION['user_idusuario'];
 
     if (!empty($_SESSION['carrito'])) {
-        // Preparar consultas para verificar e insertar
         $check_stmt = $conn->prepare("SELECT idproducto FROM producto WHERE idproducto = ?");
         $insert_stmt = $conn->prepare("INSERT INTO ventas (idproducto, idusuario, cantidad_producto) VALUES (?, ?, ?)");
-        
+
         $error_ocurrido = false;
-        
-        // Procesar cada producto del carrito
+
         foreach ($_SESSION['carrito'] as $producto) {
             $idproducto = $producto['id'];
             $cantidad = $producto['cantidad'];
-            
-            // Verificar que el producto existe en la base de datos
+
             $check_stmt->bind_param("i", $idproducto);
             $check_stmt->execute();
             $result = $check_stmt->get_result();
-            
+
             if ($result->num_rows > 0) {
-                // Insertar venta con cantidad
                 $insert_stmt->bind_param("iii", $idproducto, $idusuario, $cantidad);
                 if (!$insert_stmt->execute()) {
                     $mensaje = "Error al registrar la venta: " . $insert_stmt->error;
@@ -79,11 +96,10 @@ if (isset($_GET['finalizar'])) {
                 break;
             }
         }
-        
+
         $check_stmt->close();
         $insert_stmt->close();
-        
-        // Si no hubo errores, vaciar carrito y mostrar mensaje de éxito
+
         if (!$error_ocurrido && empty($mensaje)) {
             $_SESSION['carrito'] = [];
             $mensaje = "¡Compra finalizada con éxito!";
@@ -93,7 +109,7 @@ if (isset($_GET['finalizar'])) {
     }
 }
 
-// Calcular total del carrito
+// Calcular total
 $total = 0;
 ?>
 
@@ -104,17 +120,35 @@ $total = 0;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrito - MOCA-hairstudio</title>
     <link rel="stylesheet" href="../Estilos/Carrito1.css">
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .cantidad-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .btn-cant {
+            padding: 4px 10px;
+            background: #ddd;
+            border-radius: 5px;
+            text-decoration: none;
+            color: black;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .btn-cant:hover {
+            background: #bbb;
+        }
+    </style>
 </head>
+
 <body>
 
-    <!-- Iconos de redes sociales y usuario logueado -->
+    <!-- Iconos y usuario -->
     <div class="social-icons">
 
-        
         <?php if(isset($_SESSION['user_email'])): ?>
-            <!-- Mostrar usuario logueado -->
             <div class="user-dropdown">
                 <div class="user-toggle" onclick="toggleUserMenu()">
                     <span class="user-email"><?php echo $_SESSION['user_email']; ?></span>
@@ -133,12 +167,11 @@ $total = 0;
         <?php endif; ?>
     </div>
 
-    <!-- Botón para mostrar/ocultar menú -->
+    <!-- Botón menú -->
     <button class="menu-toggle" onclick="toggleMenu()">
         <img src="../Fotos/Moca.webp" alt="Menú">
     </button>
 
-    <!-- Menú de navegación -->
     <nav class="menu">
         <ul>
             <li><a href="Main.php">Inicio</a></li>
@@ -148,21 +181,17 @@ $total = 0;
         </ul>
     </nav>
 
-    <!-- Contenedor principal del carrito -->
     <div class="carrito-container">
         <h1>Tu Carrito</h1>
 
-        <!-- Mostrar mensajes de éxito o error -->
         <?php if (!empty($mensaje)): ?>
             <p class="mensaje"><?php echo $mensaje; ?></p>
         <?php endif; ?>
 
-        <!-- Carrito vacío -->
         <?php if (empty($_SESSION['carrito'])): ?>
             <p>Tu carrito está vacío.</p>
         <?php else: ?>
 
-            <!-- Lista de productos en el carrito -->
             <div class="lista-carrito">
                 <?php foreach ($_SESSION['carrito'] as $index => $producto):
                     $subtotal = $producto['precio'] * $producto['cantidad'];
@@ -171,49 +200,51 @@ $total = 0;
                     <div class="carrito-item">
                         <img src="<?php echo $producto['imagen']; ?>" alt="<?php echo $producto['nombre']; ?>">
                         <span><?php echo $producto['nombre']; ?></span>
-                        <span>Cant: <?php echo $producto['cantidad']; ?></span>
+
+                        <div class="cantidad-control">
+                            <a href="?restar=<?php echo $index; ?>" class="btn-cant">−</a>
+                            <span><?php echo $producto['cantidad']; ?></span>
+                            <a href="?sumar=<?php echo $index; ?>" class="btn-cant">+</a>
+                        </div>
+
                         <span>UYU <?php echo number_format($subtotal, 2); ?></span>
                         <a href="?eliminar=<?php echo $index; ?>" class="btn-eliminar">X</a>
                     </div>
                 <?php endforeach; ?>
             </div>
 
-            <!-- Total de la compra -->
             <div class="carrito-total">
                 <h3>Total: UYU <?php echo number_format($total, 2); ?></h3>
             </div>
 
-            <!-- Botones de acción -->
             <div class="carrito-botones">
                 <a href="?vaciar=1" class="btn-vaciar">Vaciar carrito</a>
-                <a href="..//php/factura.php" class="btn-comprar">Finalizar compra</a>
+                <a href="../php/factura.php" class="btn-comprar">Finalizar compra</a>
             </div>
 
         <?php endif; ?>
     </div>
 
-    <script>
-    // Abre o cierra el menú lateral
-    function toggleMenu() {
-        const menu = document.querySelector('.menu');
-        menu.classList.toggle('activo');
-    }
+<script>
+function toggleMenu() {
+    const menu = document.querySelector('.menu');
+    menu.classList.toggle('activo');
+}
 
-    // Abre o cierra el menú de usuario
-    function toggleUserMenu() {
-        const userMenu = document.getElementById('userMenu');
-        userMenu.classList.toggle('activo');
-    }
+function toggleUserMenu() {
+    const userMenu = document.getElementById('userMenu');
+    userMenu.classList.toggle('activo');
+}
 
-    // Cierra el menú de usuario si se hace click fuera de él
-    document.addEventListener('click', function(event) {
-        const userDropdown = document.querySelector('.user-dropdown');
-        const userMenu = document.getElementById('userMenu');
-        
-        if (userDropdown && !userDropdown.contains(event.target)) {
-            userMenu.classList.remove('activo');
-        }
-    });
-    </script>
+document.addEventListener('click', function(event) {
+    const userDropdown = document.querySelector('.user-dropdown');
+    const userMenu = document.getElementById('userMenu');
+    
+    if (userDropdown && !userDropdown.contains(event.target)) {
+        userMenu.classList.remove('activo');
+    }
+});
+</script>
+
 </body>
 </html>
