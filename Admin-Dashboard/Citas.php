@@ -44,7 +44,6 @@ if (!isset($_SESSION['user_idusuario']) || $_SESSION['user_idusuario'] == null |
                 <img class="rounded-circle" src="../Fotos/User-Logogo.webp" width="40" height="40" style="object-fit: cover; background-color: transparent;">
             </a>
             <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="userDropdown">
-                <li><a class="dropdown-item" href="#"><i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i> Perfil</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="logout.php"><i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i> Logout</a></li>
             </ul>
@@ -57,22 +56,32 @@ if (!isset($_SESSION['user_idusuario']) || $_SESSION['user_idusuario'] == null |
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
+
                         <div class="sb-sidenav-menu-heading">Panel de Control</div>
+
                         <a class="nav-link" href="index.php">
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-users"></i></div>
                             Usuarios
                         </a>
+
                         <a class="nav-link" href="Citas.php">
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
                             Citas
                         </a>
+
                         <a class="nav-link" href="Proveedores.php">
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-truck-fast"></i></div>
                             Proveedores
                         </a>
+
                         <a class="nav-link" href="inventario.php">
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-boxes-stacked"></i></div>
                             Inventario
+                        </a>
+
+                        <a class="nav-link" href="..//php/factura.php">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-clipboard-list"></i></i></div>
+                            Factura
                         </a>
                     </div>
                 </div>
@@ -83,6 +92,7 @@ if (!isset($_SESSION['user_idusuario']) || $_SESSION['user_idusuario'] == null |
         </div>
 
         <div id="layoutSidenav_content" style="margin-left: 250px; padding: 20px;">
+<<<<<<< HEAD
             <main>
                 <h2 style="margin: 25px;">Listado de Citas</h2>
                 <div class="table-responsive">
@@ -125,6 +135,52 @@ if (!isset($_SESSION['user_idusuario']) || $_SESSION['user_idusuario'] == null |
             </main>
         </div>
     </div>
+=======
+    <main>
+        <h2 style="margin: 25px;">Listado de Citas</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th style="padding-right: 30px; text-align: center;" scope="col">ID</th>
+                        <th style="padding-right: 30px" scope="col">Cliente</th>
+                        <th style="padding-right: 30px" scope="col">Fecha</th>
+                        <th style="padding-right: 30px" scope="col">Hora</th>
+                        <th style="padding-right: 30px" scope="col">Servicio</th>
+                        <th style="padding-right: 30px" scope="col">Barbero</th>
+                        <th style="padding-right: 30px" scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    include '../php/conexion.php';
+                    $sql = $conn->query("SELECT c.*, u.email as user_email FROM cita c LEFT JOIN usuarios u ON c.idusuario = u.idusuario ORDER BY c.Fecha DESC, c.Hora DESC"); 
+
+                    while($datos = $sql->fetch_object()) {
+                    ?>
+                    <tr>
+                        <td class="text-center"><?= $datos->idcita?></td>
+                        <td><?= $datos->user_email ?? 'No asignado' ?></td>
+                        <td><?= $datos->Fecha ?? '' ?></td>
+                        <td><?= $datos->Hora ?? '' ?></td>
+                        <td><?= $datos->Servicio ?? '' ?></td>
+                        <td><?= $datos->Barbero ?? '' ?></td>
+                        <td>
+                            <form class="Baja-Empleado-Form" action="../Admin-Dashboard/ABML-Cita/Baja-Cita.php" method="POST" style="display:inline;">
+                                <input type="hidden" name="idcita" value="<?= $datos->idcita ?>" />
+                                <button type="submit" class="btn btn-small btn-warning" onclick="return confirm('¿Está seguro de cancelar esta cita?');">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div> 
+    </main>
+</div>
+>>>>>>> 5c069c0fe5edfb3747919a94b3186fae9970ccc7
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/scripts.js"></script>

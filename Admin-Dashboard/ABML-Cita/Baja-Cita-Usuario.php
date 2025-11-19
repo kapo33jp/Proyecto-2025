@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Mostrar mensaje de éxito y redirigir a la lista de citas
             // Nota: evitar enviar salida antes de header() para que la redirección funcione correctamente
             echo '<div class="alert alert-success">Usuario eliminado correctamente</div>';
-            header("Location: ../Citas.php");
+            header("Location: ../../html/Citas-Usuario.php");
             exit;
 
         } else {

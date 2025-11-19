@@ -1,45 +1,40 @@
 /* Fuente global */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap');
 
-*{
+* {
     box-sizing: border-box;
 }
 
+/* Layout principal */
 body {
     font-family: 'Montserrat', sans-serif;
     margin: 0;
     padding: 0;
-
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-
     background: linear-gradient(135deg, #d9d9d9, #bfbfbf);
 }
 
-/* Modal: fondo/overlay */
+/* Overlay del modal (cubre toda la pantalla) */
 .modal {
     display: flex;
     justify-content: center;
     align-items: center;
-
     position: fixed;
     inset: 0;
-
     width: 100%;
     height: 100vh;
 }
 
-/* Contenido del modal (caja del formulario) */
+/* Caja del modal (contenido) */
 .modal-content {
     background: #ffffff;
     padding: 35px;
     border-radius: 16px;
     width: 420px;
-
     box-shadow: 0px 6px 18px rgba(0,0,0,0.25);
-
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -55,20 +50,35 @@ h2 {
     color: #222;
 }
 
-/* Inputs de texto, email y contraseña */
-.modal-content input[type="text"],
-.modal-content input[type="email"],
-.modal-content input[type="password"] {
-    width: 100%;
+/* Campos de texto */
+.modal-content input[type="text"] {
+    width: 90%;
     padding: 12px;
     border-radius: 10px;
     border: 1px solid #dcdcdc;
     font-size: 15px;
     outline: none;
     transition: .2s ease;
+    margin-bottom: 15px;
+}
+.modal-content input[type="text"]:focus {
+    border-color: #4b74ff;
+    box-shadow: 0 0 5px rgba(75,116,255,0.5);
 }
 
-.modal-content input:focus {
+/* Campo de archivo */
+.modal-content input[type="file"] {
+    width: 90%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #dcdcdc;
+    font-size: 15px;
+    outline: none;
+    transition: .2s ease;
+    margin-bottom: 15px;
+    background: #fff;
+}
+.modal-content input[type="file"]:focus {
     border-color: #4b74ff;
     box-shadow: 0 0 5px rgba(75,116,255,0.5);
 }
@@ -83,24 +93,14 @@ h2 {
     outline: none;
     transition: .2s ease;
     background: #fff;
+    margin-bottom: 15px;
 }
-
 .modal-content select:focus {
     border-color: #4b74ff;
     box-shadow: 0 0 5px rgba(75,116,255,0.5);
 }
 
-/* Etiquetas (labels) */
-.modal-content label {
-    font-weight: 600;
-    font-size: 14px;
-    color: #333;
-    display: block;
-    width: 90%;
-    text-align: left;
-}
-
-/* Botón de envío */
+/* Botón enviar */
 .modal-content button[type="submit"] {
     width: 90%;
     background: #4b74ff;
@@ -112,14 +112,14 @@ h2 {
     font-weight: 600;
     font-size: 15px;
     transition: .3s ease;
+    margin-top: 10px;
 }
-
 .modal-content button[type="submit"]:hover {
     background: #000000;
     transform: scale(1.02);
 }
 
-/* Botón cerrar (X) */
+/* Botón cerrar (esquina) */
 .close {
     position: absolute;
     right: 12px;
@@ -129,8 +129,8 @@ h2 {
     cursor: pointer;
     color: #888;
     transition: .2s;
+    text-decoration: none;
 }
-
 .close:hover {
     color: #e11d48;
 }

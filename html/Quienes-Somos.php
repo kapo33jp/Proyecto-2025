@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Quiénes Somos - MOCA-hairstudio</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../Estilos/Quienes-Somos.css">
+<link rel="stylesheet" href="../Estilos/Quienes-Somos1.css">
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -67,15 +67,15 @@
 
 <section class="team">
     <div class="card">
-        <img src="../Fotos/peluquero1.jpg" alt="Peluquero 1">
+        <img src="../Fotos/Luciano.jpeg" alt="Peluquero 1">
         <h2>Luciano Garcia</h2>
-        <p>Descripcion</p>
+        <p>Barbero moderno enfocado en fades nítidos y estilos actuales. Técnico, perfeccionista y con muy buen ojo para los detalles.</p>
     </div>
 
     <div class="card">
-        <img src="../Fotos/peluquero2.jpg" alt="Peluquero 2">
+        <img src="../Fotos/Guille.jpeg" alt="Peluquero 2">
         <h2>Guille Capote</h2>
-        <p>descripcion</p>
+        <p>Barbero de estilo clásico y prolijo. Especialista en cortes tradicionales y barbas detalladas. Atención tranquila y precisa.</p>
     </div>
 </section>
 

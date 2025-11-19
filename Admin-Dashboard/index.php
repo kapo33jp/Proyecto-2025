@@ -49,7 +49,6 @@
                 <img class="rounded-circle" src="../Fotos/User-Logogo.webp" width="40" height="40" style="object-fit: cover; background-color: transparent;">
             </a>
             <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="userDropdown">
-                <li><a class="dropdown-item" href="#"><i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i> Perfil</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="logout.php"><i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i> Logout</a></li>
             </ul>
@@ -72,7 +71,7 @@
 
 
     <div>
-    <button type="button" id="boton-empleado" onclick="window.location.href='Agregar-Usuario.php'"> 
+    <button type="button" id="boton-agregar" onclick="window.location.href='Agregar-Usuario.php'" style="margin-bottom: 15px; background-color: #007bff; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer;"> 
     <i class="fa-solid fa-user-plus"></i> Agregar Usuario</button> 
     
     </div>  
@@ -80,7 +79,7 @@
                 <thead class ="bg-gray-50">
                     <tr>
 
-                        <th class = "p-3"style="padding-right: 30px" scope="col-8">ID </th>
+                        <th style="padding-right: 30px; text-align: center;" scope="col-">ID </th>
                         <th style="padding-right: 55px" scope="col-">Nombre</th>
                         <th style="padding-right: 55px" scope="col-">Apellido</th>
                         <th style="padding-right: 55px" scope="col-">Email</th>
@@ -156,6 +155,11 @@
                             <a class="nav-link" href="inventario.php">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-boxes-stacked"></i></div>
                                 Inventario
+                            </a>
+                            
+                            <a class="nav-link" href="..//php/factura.php">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-clipboard-list"></i></i></div>
+                                Factura
                             </a>
                             
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">

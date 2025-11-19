@@ -10,6 +10,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    flex-direction: column;
 }
 
 /* Contenedor del formulario */
@@ -35,17 +36,21 @@ h2 {
 
 /* Campos de entrada */
 input[type="text"],
-input[type="email"],
-input[type="password"] {
+input[type="number"],
+select {
     padding: 12px;
     border-radius: 6px;
     border: 1px solid #ccc;
     outline: none;
     font-size: 14px;
     transition: .2s;
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-input:focus {
+input:focus,
+select:focus {
     border-color: #007bff;
     box-shadow: 0 0 4px rgba(0,123,255,0.4);
 }
@@ -61,22 +66,61 @@ button {
     font-size: 15px;
     font-weight: 500;
     transition: .2s;
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
 }
 
 button:hover {
     background: #0069d9;
 }
 
-/* Botón para mostrar/ocultar contraseña */
-#togglePassword {
-    color: #007bff;
-    border: none;
-    background: transparent;
+/* Enlace de cancelar */
+a {
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background: #f8f9fa;
+    color: #333;
     cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
     transition: .2s;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-#togglePassword:hover {
-    opacity: 0.75;
-    transform: scale(1.1);
+a:hover {
+    background: #e9ecef;
+}
+
+/* Contenedor de botones */
+form > div:last-child {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+form > div:last-child a,
+form > div:last-child button {
+    flex: 1;
+}
+
+/* Etiquetas */
+label {
+    text-align: left;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Grupos de formulario */
+form > div {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
 }
