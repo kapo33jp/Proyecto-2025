@@ -77,7 +77,6 @@
             <table class="table table-bordered">
                 <thead class="bg-gray-50">
                     <tr>
-                        <th style="padding-right: 30px; text-align: center;" scope="col">ID</th>
                         <th style="padding-right: 30px" scope="col">Cliente</th>
                         <th style="padding-right: 30px" scope="col">Fecha</th>
                         <th style="padding-right: 30px" scope="col">Hora</th>
@@ -99,7 +98,6 @@
                     while($datos = $sql->fetch_object()) {
                     ?>
                     <tr>
-                        <td class="text-center"><?= $datos->idcita ?></td>
                         <td><?= $datos->user_email ?? 'No asignado' ?></td>
                         <td><?= $datos->Fecha ?? '' ?></td>
                         <td><?= $datos->Hora ?? '' ?></td>

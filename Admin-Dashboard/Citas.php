@@ -92,50 +92,6 @@ if (!isset($_SESSION['user_idusuario']) || $_SESSION['user_idusuario'] == null |
         </div>
 
         <div id="layoutSidenav_content" style="margin-left: 250px; padding: 20px;">
-<<<<<<< HEAD
-            <main>
-                <h2 style="margin: 25px;">Listado de Citas</h2>
-                <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <thead class="bg-gray-50">
-                            <tr>
-                                <th class="p-4" style="padding-right: 30px;" scope="col">ID</th>
-                                <th style="padding-right: 30px" scope="col">Fecha</th>
-                                <th style="padding-right: 30px" scope="col">Hora</th>
-                                <th style="padding-right: 30px" scope="col">Servicio</th>
-                                <th style="padding-right: 30px" scope="col">Barbero</th>
-                                <th style="padding-right: 30px" scope="col">Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            include '../php/conexion.php';
-                            $sql = $conn->query("SELECT * FROM cita");
-                            while($datos = $sql->fetch_object()) {      
-                            ?>
-                            <tr>
-                                <td class="text-center"><?= $datos->idcita?></td>
-                                <td><?= $datos->Fecha ?? '' ?></td>
-                                <td><?= $datos->Hora ?? '' ?></td>
-                                <td><?= $datos->Servicio ?? '' ?></td>
-                                <td><?= $datos->Barbero ?? '' ?></td>
-                                <td>
-                                    <form class="Baja-Empleado-Form" action="../Admin-Dashboard/ABML-Cita/Baja-Cita.php" method="POST" style="display:inline;">
-                                        <input type="hidden" name="idcita" value="<?= $datos->idcita ?>" />
-                                        <button type="submit" class="btn btn-small btn-warning" onclick="return confirm('¿Está seguro de cancelar esta cita?');">
-                                            <i class="fa-solid fa-trash"></i>
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
-                </div> 
-            </main>
-        </div>
-    </div>
-=======
     <main>
         <h2 style="margin: 25px;">Listado de Citas</h2>
         <div class="table-responsive">
@@ -180,7 +136,6 @@ if (!isset($_SESSION['user_idusuario']) || $_SESSION['user_idusuario'] == null |
         </div> 
     </main>
 </div>
->>>>>>> 5c069c0fe5edfb3747919a94b3186fae9970ccc7
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/scripts.js"></script>
