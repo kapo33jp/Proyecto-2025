@@ -1,6 +1,10 @@
 <?php
 session_start();
-error_reporting(0);
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 
 // Configuración de conexión a base de datos
 $host = 'localhost';
@@ -70,8 +74,10 @@ if (isset($_GET['finalizar'])) {
     $idusuario = $_SESSION['user_idusuario'];
 
     if (!empty($_SESSION['carrito'])) {
-        $check_stmt = $conn->prepare("SELECT idproducto FROM producto WHERE idproducto = ?");
-        $insert_stmt = $conn->prepare("INSERT INTO ventas (idproducto, idusuario, cantidad_producto) VALUES (?, ?, ?)");
+
+        // Traer idproducto y PRECIO CORRECTO (precioproducto)
+        $check_stmt = $conn->prepare("SELECT idproducto, precioproducto FROM producto WHERE idproducto = ?");
+        $insert_stmt = $conn->prepare("INSERT INTO ventas (idproducto, idusuario, cantidad, precio, total) VALUES (?, ?, ?, ?, ?)");
 
         $error_ocurrido = false;
 
@@ -79,17 +85,31 @@ if (isset($_GET['finalizar'])) {
             $idproducto = $producto['id'];
             $cantidad = $producto['cantidad'];
 
+            // Verificar existencia y obtener precio real desde la BD
             $check_stmt->bind_param("i", $idproducto);
             $check_stmt->execute();
             $result = $check_stmt->get_result();
 
             if ($result->num_rows > 0) {
-                $insert_stmt->bind_param("iii", $idproducto, $idusuario, $cantidad);
+                $producto_db = $result->fetch_assoc();
+                $precio_unitario = (float)$producto_db['precioproducto'];
+                $total_producto = $precio_unitario * $cantidad;
+
+                // Insertar venta
+                $insert_stmt->bind_param("iiiid", 
+                    $idproducto, 
+                    $idusuario, 
+                    $cantidad, 
+                    $precio_unitario, 
+                    $total_producto
+                );
+
                 if (!$insert_stmt->execute()) {
                     $mensaje = "Error al registrar la venta: " . $insert_stmt->error;
                     $error_ocurrido = true;
                     break;
                 }
+
             } else {
                 $mensaje = "Error: El producto con ID $idproducto no existe.";
                 $error_ocurrido = true;
@@ -104,10 +124,13 @@ if (isset($_GET['finalizar'])) {
             $_SESSION['carrito'] = [];
             $mensaje = "¡Compra finalizada con éxito!";
         }
+
     } else {
         $mensaje = "El carrito está vacío.";
     }
 }
+
+
 
 // Calcular total
 $total = 0;
@@ -219,7 +242,7 @@ $total = 0;
 
             <div class="carrito-botones">
                 <a href="?vaciar=1" class="btn-vaciar">Vaciar carrito</a>
-                <a href="../php/factura.php" class="btn-comprar">Finalizar compra</a>
+                <a href="?finalizar=1" class="btn-comprar">Finalizar compra</a>
             </div>
 
         <?php endif; ?>

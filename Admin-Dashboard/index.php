@@ -157,9 +157,9 @@
                                 Inventario
                             </a>
                             
-                            <a class="nav-link" href="..//php/factura.php">
+                            <a class="nav-link" href="..//Admin-Dashboard/Ventas.php">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-clipboard-list"></i></i></div>
-                                Factura
+                                Ventas
                             </a>
                             
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">

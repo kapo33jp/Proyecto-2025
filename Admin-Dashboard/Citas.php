@@ -79,9 +79,9 @@ if (!isset($_SESSION['user_idusuario']) || $_SESSION['user_idusuario'] == null |
                             Inventario
                         </a>
 
-                        <a class="nav-link" href="..//php/factura.php">
+                        <a class="nav-link" href="..//Admin-Dashboard/Ventas.php">
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-clipboard-list"></i></i></div>
-                            Factura
+                            Ventas
                         </a>
                     </div>
                 </div>
