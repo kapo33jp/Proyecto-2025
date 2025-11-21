@@ -29,7 +29,13 @@ if (!isset($_SESSION['user_idusuario']) || $_SESSION['user_idusuario'] == null |
 <!-- Barra de navegación superior -->
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
     <!-- Elementos a la IZQUIERDA -->
-        <a class="navbar-brand ps-3">Moca-HairStudio Management</a>
+    <div class="d-flex">
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <a class="navbar-brand ps-3" href="index.php">Home</a>
+    </div>
+
     <!-- Elementos a la DERECHA -->
     <ul class="navbar-nav ms-auto">
         <li class="nav-item dropdown">
@@ -40,10 +46,8 @@ if (!isset($_SESSION['user_idusuario']) || $_SESSION['user_idusuario'] == null |
                 <img class="rounded-circle" src="../Fotos/User-Logogo.webp" width="40" height="40" style="object-fit: cover; background-color: transparent;">
             </a>
             <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="userDropdown">
-                <li><a class="dropdown-item" href="#"><i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i> Perfil</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="logout.php"><i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i> Logout</a></li>
-            </ul>
             </ul>
         </li>
     </ul>
@@ -82,62 +86,55 @@ if (!isset($_SESSION['user_idusuario']) || $_SESSION['user_idusuario'] == null |
                     </a>
                 </div>
             </div>
+            <div class="sb-sidenav-footer">
+                <h4>Logueado como:</h4> <?php echo $_SESSION['user_email']; ?>
+            </div>
         </nav>
     </div>
 
     <div id="layoutSidenav_content" style="margin-left: 250px; padding: 20px; padding-top: 60px;">
         <main>
             <div class="container-fluid px-4">
-                <h1 class="mt-4">Inventario Disponible</h1>
+                <h1 class="mt-4">Ventas</h1>
                 <div class="table-responsive">
-                    <div>
-                        <button type="button" id="boton-agregar" onclick="window.location.href='Agregar-Producto-Form.php'" style="margin-bottom: 15px; background-color: #007bff; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer;">
-                            <i class="fa-solid fa-square-plus"></i> Agregar Items
-                        </button>
-                    </div>
-                    <table class="table table-bordered">
-                        <thead class="bg-gray-50">
-                            <tr>
-                                <th scope="col" style="padding-right: 30px; text-align: center;">ID</th>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Precio</th>
-                                <th scope="col">Tipo</th>
-                                <th scope="col">Proveedor</th>
-                                <th scope="col">Imagen</th>
-                                <th scope="col">Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            include '../php/conexion.php';
-                            $sql = $conn->query("SELECT producto.*, proveedor.nombreproveedor FROM producto JOIN proveedor ON producto.idproveedor = proveedor.idproveedor");
-                            while($datos = $sql->fetch_object()) { ?>
-                            <tr>
-                                <td class="text-center"><?= $datos->idproducto ?></td>
-                                <td><?= $datos->nombreproducto ?></td>
-                                <td><?= $datos->precioproducto ?></td>
-                                <td><?= $datos->tipoproducto ?></td>
-                                <td><?= $datos->nombreproveedor ?></td>
-                                <td>
-                                    <?php if ($datos->imagenproducto): ?>
-                                        <img src="data:image/jpeg;base64,<?= base64_encode($datos->imagenproducto) ?>" alt="Imagen del producto" style="width: 100px; height: auto;" />
-                                    <?php endif; ?>
-                                </td>
-                                <td>
-                                    <a href="ABML-Producto/Modificar-Producto.php?idproducto=<?= $datos->idproducto?>" class="btn btn-small btn-danger">
-                                        <i class="fa-solid fa-pen-to-square"></i>
-                                    </a>
-                                    <form class="Baja-Producto-Form" action="ABML-Producto/Baja-Producto.php" method="POST" style="display:inline;">
-                                        <input type="hidden" name="idproducto" value="<?= $datos->idproducto ?>" />
-                                        <button type="submit" class="btn btn-small btn-warning" onclick="return confirm('¿Está seguro de borrar este producto?');">
-                                            <i class="fa-solid fa-trash"></i>
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
+                        <table class="table table-bordered">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th scope="col" style="padding-right: 30px; text-align: center;">ID Venta</th>
+                                    <th scope="col">Producto</th>
+                                    <th scope="col">Usuario</th> 
+                                    <th scope="col">Cantidad</th>
+                                    <th scope="col">Precio Unitario</th>
+                                    <th scope="col">Total</th>
+                                    <th scope="col">Acciones</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <?php
+                                include '../php/conexion.php';
+
+                                $sql = $conn->query(" SELECT v.*, p.nombreproducto, u.nombre AS nombreusuario FROM ventas v JOIN producto p ON v.idproducto = p.idproducto JOIN usuarios u ON v.idusuario = u.idusuario ORDER BY v.idventa DESC ");
+
+                                while($datos = $sql->fetch_object()) { ?>
+                                <tr>
+                                    <td class="text-center"><?= $datos->idventa ?></td>
+                                    <td><?= $datos->nombreproducto ?></td>
+                                    <td><?= $datos->nombreusuario ?></td> 
+                                    <td class="text-center"><?= $datos->cantidad ?></td>
+                                    <td>$<?= number_format($datos->precio, 2) ?></td>
+                                    <td>$<?= number_format($datos->total, 2) ?></td>
+                                    <td>
+                                        <!-- BOTÓN DE FACTURA CORREGIDO -->
+                                        <a href="../php/factura.php?idventa=<?= $datos->idventa ?>" 
+                                        class="btn btn-small btn-dark">
+                                            <i class="fa-solid fa-file-powerpoint"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
                 </div>
             </div>
         </main>
