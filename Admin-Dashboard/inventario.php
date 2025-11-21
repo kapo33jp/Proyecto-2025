@@ -29,13 +29,7 @@ if (!isset($_SESSION['user_idusuario']) || $_SESSION['user_idusuario'] == null |
 <!-- Barra de navegación superior -->
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
     <!-- Elementos a la IZQUIERDA -->
-    <div class="d-flex">
-        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle">
-            <i class="fas fa-bars"></i>
-        </button>
-        <a class="navbar-brand ps-3" href="index.php">Home</a>
-    </div>
-
+        <a class="navbar-brand ps-3">Moca-HairStudio Management</a>
     <!-- Elementos a la DERECHA -->
     <ul class="navbar-nav ms-auto">
         <li class="nav-item dropdown">
@@ -46,8 +40,10 @@ if (!isset($_SESSION['user_idusuario']) || $_SESSION['user_idusuario'] == null |
                 <img class="rounded-circle" src="../Fotos/User-Logogo.webp" width="40" height="40" style="object-fit: cover; background-color: transparent;">
             </a>
             <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="userDropdown">
+                <li><a class="dropdown-item" href="#"><i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i> Perfil</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="logout.php"><i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i> Logout</a></li>
+            </ul>
             </ul>
         </li>
     </ul>
@@ -85,9 +81,6 @@ if (!isset($_SESSION['user_idusuario']) || $_SESSION['user_idusuario'] == null |
                         Ventas
                     </a>
                 </div>
-            </div>
-            <div class="sb-sidenav-footer">
-                <h4>Logueado como:</h4> <?php echo $_SESSION['user_email']; ?>
             </div>
         </nav>
     </div>

@@ -32,13 +32,7 @@
 <!-- Barra de navegación superior -->
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
     <!-- Elementos a la IZQUIERDA -->
-    <div class="d-flex">
-        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle">
-            <i class="fas fa-bars"></i>
-        </button>
-        <a class="navbar-brand ps-3" href="index.php">Home</a>
-    </div>
-
+        <a class="navbar-brand ps-3">Moca-HairStudio Management</a>
     <!-- Elementos a la DERECHA -->
     <ul class="navbar-nav ms-auto">
         <li class="nav-item dropdown">
@@ -178,9 +172,6 @@
                                 </nav>
                             </div>
                         </div>
-                    </div>
-                    <div class="sb-sidenav-footer">
-                    <h4>Logueado como:</h4> <?php echo $_SESSION['user_email']; ?>
                     </div>
                 </nav>
             </div>
