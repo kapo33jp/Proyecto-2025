@@ -162,7 +162,7 @@
                                 Ventas
                             </a>
                             
-                            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parentLogueado="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
                                         Autenticacion 
@@ -180,8 +180,7 @@
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
-                        
-                <h4>Logueado como:</h4> <?php echo $_SESSION['user_email']; ?>
+                    <h4>Logueado como:</h4> <?php echo $_SESSION['user_email']; ?>
                     </div>
                 </nav>
             </div>
