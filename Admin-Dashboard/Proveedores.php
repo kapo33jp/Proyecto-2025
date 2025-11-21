@@ -1,33 +1,27 @@
 <?php
+session_start();
+error_reporting(0);
 
-    session_start();
-    error_reporting(0);
+if (empty($_SESSION['user_idusuario'])) {
+    header("location: ../html/login.html");
+    exit;
+}
 
-    $validar = $_SESSION['user_idusuario'];
-    $validar = $_SESSION['user_email'];
-    $validar = $_SESSION['user_idrol'];
-    if ($validar == null || $validar = '') {
-        header("location: ../html/login.html");
-        die();
-    }
+$host = 'localhost';
+$user = 'root';
+$pass = '';
+$db = 'bdbarberia';
 
-    $host = 'localhost';
-    $user = 'root';
-    $pass = '';
-    $db = 'bdbarberia';
+$conn = new mysqli($host, $user, $pass, $db);
 
-    $conn = new mysqli($host, $user, $pass, $db);
+if ($conn->connect_error) {
+    die("Error de conexión: " . $conn->connect_error);
+}
 
-    if ($conn->connect_error) {
-        die("Error de conexión: " . $conn->connect_error);
-    }
+$sql = "SELECT * FROM proveedor";
+$resultado = $conn->query($sql);
+?>
 
-    // Consulta para obtener los proveedores
-    $sql = "SELECT * FROM proveedor";
-    $resultado = $conn->query($sql);
-
-
-    ?>
 
 <!DOCTYPE html>
 <html lang="en">
